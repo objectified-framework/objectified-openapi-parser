@@ -1,5 +1,5 @@
 {
-  "name": "objectified-oepnapi-parser",
+  "name": "@objectified/openapi-parser",
   "version": "0.1.0",
   "description": "Objectified OpenAPI 3.1 Parser for TypeScript",
   "scripts": {
