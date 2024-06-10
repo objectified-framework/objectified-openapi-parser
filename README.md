@@ -1,6 +1,6 @@
 # objectified-openapi-parser
 
-This is an OpenAPI 3.1 Parser for the Objectified Framework.
+This is an OpenAPI 3.1 Parser for the [Objectified Framework](https://www.github.com/objectified-framework/).
 
 ## Use
 
