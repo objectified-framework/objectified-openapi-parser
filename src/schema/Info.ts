@@ -1,5 +1,4 @@
-import {ContactStore} from '../stores/ContactStore';
-import {LicenseStore} from '../stores/LicenseStore';
+import {ContactStore, LicenseStore} from '../stores';
 
 export class Info {
   private title: string;
