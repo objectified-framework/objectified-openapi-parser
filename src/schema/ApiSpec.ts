@@ -1,8 +1,5 @@
-import {Components} from '../schema/Components';
-import {Path} from './Path';
-import {ServerStore} from '../stores/ServerStore';
-import {TagStore} from '../stores/TagStore';
-import {Info} from './Info';
+import {Components, Info, Path} from '.';
+import {ServerStore, TagStore} from '../stores';
 
 export class ApiSpec {
   private components: Components;

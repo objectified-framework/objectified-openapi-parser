@@ -1,4 +1,4 @@
-import {ContentStore} from "./ContentStore";
+import {ContentStore} from '.';
 
 export class RequestBodyStore {
   private description: string;

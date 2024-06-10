@@ -1,5 +1,5 @@
-import {Schema} from './Schema';
-import {SecuritySchemeStore} from '../stores/SecuritySchemeStore';
+import {SecuritySchemeStore} from '../stores';
+import {Schema} from '.';
 
 export class Components {
   private schemas: Schema[];

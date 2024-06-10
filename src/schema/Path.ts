@@ -1,7 +1,4 @@
-import {SecuritySchemeStore} from "../stores/SecuritySchemeStore";
-import {RequestBodyStore} from "../stores/RequestBodyStore";
-import {ResponseStore} from "../stores/ResponseStore";
-import {SecurityStore} from '../stores/SecurityStore';
+import {RequestBodyStore, ResponseStore, SecurityStore} from '../stores';
 
 export class Path {
   private operation: string;

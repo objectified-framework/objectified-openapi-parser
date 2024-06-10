@@ -1,4 +1,4 @@
-import {Schema} from "../schema/Schema";
+import {Schema} from '../schema';
 
 export class ContentStore {
   private schema: Schema;

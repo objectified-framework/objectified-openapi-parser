@@ -1,11 +1,11 @@
-import {ResponseStore} from '../stores/ResponseStore';
+import {ResponseStore} from '../stores';
 
 export class Response {
   private responseCode: string;
   private response: ResponseStore;
 
   constructor(private readonly segment: any) {
-
+    throw new Error('Response not yet handled');
   }
 
   public getResponseCode = (): string => this.responseCode;

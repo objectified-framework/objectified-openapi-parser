@@ -1,4 +1,4 @@
-import {OAuthFlowsStore} from './OAuthFlowsStore';
+import {OAuthFlowsStore} from '.';
 
 export class SecuritySchemeStore {
   private type: string;

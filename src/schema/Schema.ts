@@ -1,4 +1,4 @@
-import {PropertyStore} from '../stores/PropertyStore';
+import {PropertyStore} from '../stores';
 
 export class Schema {
   private type: string;

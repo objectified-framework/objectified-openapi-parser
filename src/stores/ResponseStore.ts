@@ -1,5 +1,4 @@
-import {PropertyStore} from './PropertyStore';
-import {Schema} from '../schema/Schema';
+import {Schema} from '../schema';
 
 export class ResponseStore {
   private description: string;
