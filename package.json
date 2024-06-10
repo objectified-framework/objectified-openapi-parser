@@ -9,16 +9,14 @@
   "author": "ksuenobu@fastmail.com",
   "license": "Apache License 2.0",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.7.0",
-    "@typescript-eslint/parser": "^7.7.0",
-    "prettier": "^3.3.1",
-    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "4.2.0",
     "typescript": "^5.4.5",
     "yaml": "^2.4.5"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3"
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "prettier": "^3.3.1"
   }
 }
