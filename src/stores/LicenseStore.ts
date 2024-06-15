@@ -14,4 +14,12 @@ export class LicenseStore {
 
     console.log(`[LicenseStore]: name=${this.name}`);
   }
+
+  public getName = (): string => this.name;
+  public getIdentifier = (): string => this.identifier;
+  public getUrl = (): string => this.url;
+
+  public setName = (name: string) => this.name = name;
+  public setIdentifier = (identifier: string) => this.identifier = identifier;
+  public setUrl = (url: string) => this.url = url;
 }

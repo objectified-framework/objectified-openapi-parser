@@ -45,6 +45,8 @@ export class Components {
   }
 
   public getSchemas = (): Schema[] => this.schemas;
+  public getSecuritySchemas = (): any => this.securitySchemes;
 
   public setSchemas = (schemas: Schema[]) => this.schemas = schemas;
+  public setSecuritySchemas = (securitySchemas: any) => this.securitySchemes = securitySchemas;
 }

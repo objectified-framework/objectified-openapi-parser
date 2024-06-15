@@ -86,4 +86,22 @@ export class SecuritySchemeStore {
 
     console.log(`[SecurityStore] Created type=${this.type}`);
   }
+
+  public getType = (): string => this.type;
+  public getDescription = (): string => this.description;
+  public getName = (): string => this.name;
+  public getIn  = (): string => this.in;
+  public getScheme = (): string => this.scheme;
+  public getBearerFormat = (): string => this.bearerFormat;
+  public getOpenIdConnectUrl = (): string => this.openIdConnectUrl;
+  public getFlows = (): any => this.flows;
+
+  public setType = (type: string) => this.type = type;
+  public setDescription = (description: string) => this.description = description;
+  public setName = (name: string) => this.name = name;
+  public setIn = (_in: string) => this.in = _in;
+  public setScheme = (scheme: string) => this.scheme = scheme;
+  public setBearerFormat = (bearerFormat: string) => this.bearerFormat = bearerFormat;
+  public setOpenIdConnectUrl = (openIdConnectUrl: string) => this.openIdConnectUrl = openIdConnectUrl;
+  public setFlows = (flows: any) => this.flows = flows;
 }

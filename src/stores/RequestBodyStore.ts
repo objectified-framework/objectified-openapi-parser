@@ -22,4 +22,12 @@ export class RequestBodyStore {
       this.contents.push(new ContentStore(contentType, contentTypeSchema));
     }
   }
+
+  public getDescription = (): string => this.description;
+  public isRequired = (): boolean => this.required;
+  public getContents = (): ContentStore[] => this.contents;
+
+  public setDescription = (description: string) => this.description = description;
+  public setRequired = (required: boolean) => this.required = required;
+  public setContents = (contents: ContentStore[]) => this.contents = contents;
 }

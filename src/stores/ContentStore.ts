@@ -8,4 +8,8 @@ export class ContentStore {
 
     console.log(`[ContentStore]: contentType=${contentType}`);
   }
+
+  public getSchema = (): Schema => this.schema;
+
+  public setSchema = (schema: Schema) => this.schema = schema;
 }

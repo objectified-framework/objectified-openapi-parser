@@ -55,12 +55,14 @@ export class Schema {
 
   public setType = (type: string) => this.type = type;
   public setDescription = (description: string) => this.description = description;
+  public setRef = (ref: string) => this.ref = ref;
   public setRequired = (required: string[]) => this.required = required;
   public setProperties = (properties: PropertyStore[]) => this.properties = properties;
 
   public getName = (): string => this.name;
   public getType = (): string => this.type;
   public getDescription = (): string => this.description;
+  public getRef = (): string => this.ref;
   public getRequired = (): string[] => this.required;
   public getProperties = (): PropertyStore[] => this.properties;
 

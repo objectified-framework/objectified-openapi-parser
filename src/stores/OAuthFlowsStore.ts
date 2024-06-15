@@ -58,4 +58,14 @@ export class OAuthFlowsStore {
       this.scopes = segment['scopes'];
     }
   }
+
+  public getAuthorizationUrl = (): string => this.authorizationUrl;
+  public getTokenUrl = (): string => this.tokenUrl;
+  public getRefreshUrl = (): string => this.refreshUrl;
+  public getScopes = (): any => this.scopes;
+
+  public setAuthorizationUrl = (authorizationUrl: string) => this.authorizationUrl = authorizationUrl;
+  public setTokenUrl = (tokenUrl: string) => this.tokenUrl = tokenUrl;
+  public setRefreshUrl = (refreshUrl: string) => this.refreshUrl = refreshUrl;
+  public setScopes = (scopes: any) => this.scopes = scopes;
 }

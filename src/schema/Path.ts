@@ -52,4 +52,24 @@ export class Path {
       }
     }
   }
+
+  public getOperation = (): string => this.operation;
+  public getPathUrl = (): string => this.pathUrl;
+  public getTags = (): string[] => this.tags;
+  public getSummary = (): string => this.summary;
+  public getOperationId = (): string => this.operationId;
+  public getDescription = (): string => this.description;
+  public getSecurity = (): SecurityStore => this.security;
+  public getRequestBody = (): RequestBodyStore => this.requestBody;
+  public getResponses = (): ResponseStore[] => this.responses;
+
+  public setOperation = (operation: string) => this.operation = operation;
+  public setPathUrl = (pathUrl: string) => this.pathUrl = pathUrl;
+  public setTags = (tags: string[]) => this.tags = tags;
+  public setSummary = (summary: string) => this.summary = summary;
+  public setOperationId = (operationId: string) => this.operationId = operationId;
+  public setDescription = (description: string) => this.description = description;
+  public setSecurity = (security: SecurityStore) => this.security = security;
+  public setRequestBody = (requestBody: RequestBodyStore) => this.requestBody = requestBody;
+  public setResponses = (responses: ResponseStore[]) => this.responses = responses;
 }

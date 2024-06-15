@@ -8,4 +8,12 @@ export class ContactStore {
     this.url = segment['url'] ?? null;
     this.email = segment['email'] ?? null;
   }
+
+  public getName = (): string => this.name;
+  public getUrl = (): string => this.url;
+  public getEmail = (): string => this.email;
+
+  public setName = (name: string) => this.name = name;
+  public setUrl = (url: string) => this.url = url;
+  public setEmail = (email: string) => this.email = email;
 }
