@@ -2,15 +2,17 @@ export class TagStore {
   private name: string;
   private description: string;
 
-  constructor(private readonly segment: any) {
-    if (!segment['name']) {
-      throw new Error('Name is missing from tag definition');
+  constructor(private readonly segment?: any) {
+    if (segment) {
+      if (!segment['name']) {
+        throw new Error('Name is missing from tag definition');
+      }
+
+      this.name = segment['name'];
+      this.description = segment['description'] ?? '';
+
+      console.log(`[TagStore] name=${this.name} description=${this.description}`);
     }
-
-    this.name = segment['name'];
-    this.description = segment['description'] ?? '';
-
-    console.log(`[TagStore] name=${this.name} description=${this.description}`);
   }
 
   public getName = (): string => this.name;

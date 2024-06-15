@@ -3,10 +3,12 @@ export class ContactStore {
   private url: string;
   private email: string;
 
-  public constructor(private readonly segment: any) {
-    this.name = segment['name'] ?? null;
-    this.url = segment['url'] ?? null;
-    this.email = segment['email'] ?? null;
+  public constructor(private readonly segment?: any) {
+    if (segment) {
+      this.name = segment['name'] ?? null;
+      this.url = segment['url'] ?? null;
+      this.email = segment['email'] ?? null;
+    }
   }
 
   public getName = (): string => this.name;

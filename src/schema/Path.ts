@@ -11,44 +11,46 @@ export class Path {
   private requestBody: RequestBodyStore;
   private responses: ResponseStore[];
 
-  constructor(pathUrl: string, operation: string, private readonly segment: any) {
-    this.operation = operation;
-    this.pathUrl = pathUrl;
+  constructor(pathUrl?: string, operation?: string, private readonly segment?: any) {
+    if (segment) {
+      this.operation = operation;
+      this.pathUrl = pathUrl;
 
-    if (!segment['tags']) {
-      throw new Error(`Verb '${operation}' contains no associated Tags`);
-    }
+      if (!segment['tags']) {
+        throw new Error(`Verb '${operation}' contains no associated Tags`);
+      }
 
-    if (!segment['responses']) {
-      throw new Error(`Verb '${operation}' contains no defined responses`);
-    }
+      if (!segment['responses']) {
+        throw new Error(`Verb '${operation}' contains no defined responses`);
+      }
 
-    if (!segment['operationId']) {
-      throw new Error(`Verb '${operation}' missing operationId`);
-    }
+      if (!segment['operationId']) {
+        throw new Error(`Verb '${operation}' missing operationId`);
+      }
 
-    console.log(`[Path]: url=${pathUrl} operation=${operation}`);
+      console.log(`[Path]: url=${pathUrl} operation=${operation}`);
 
-    this.tags = segment['tags'];
-    this.summary = segment['summary'] ?? null;
-    this.operationId = segment['operationId'];
-    this.description = segment['description'] ?? null;
+      this.tags = segment['tags'];
+      this.summary = segment['summary'] ?? null;
+      this.operationId = segment['operationId'];
+      this.description = segment['description'] ?? null;
 
-    if (segment['security']) {
-      this.security = new SecurityStore(segment['security']);
-    }
+      if (segment['security']) {
+        this.security = new SecurityStore(segment['security']);
+      }
 
-    if (segment['requestBody']) {
-      this.requestBody = new RequestBodyStore(segment['requestBody']);
-    }
+      if (segment['requestBody']) {
+        this.requestBody = new RequestBodyStore(segment['requestBody']);
+      }
 
-    if (segment['responses']) {
-      this.responses = [];
+      if (segment['responses']) {
+        this.responses = [];
 
-      const responses = segment['responses'];
+        const responses = segment['responses'];
 
-      for(const responseCode of Object.keys(responses)) {
-        this.responses.push(new ResponseStore(responseCode, responses[responseCode]));
+        for (const responseCode of Object.keys(responses)) {
+          this.responses.push(new ResponseStore(responseCode, responses[responseCode]));
+        }
       }
     }
   }

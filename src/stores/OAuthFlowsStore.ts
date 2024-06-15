@@ -4,58 +4,60 @@ export class OAuthFlowsStore {
   private refreshUrl: string;
   private scopes: any;
 
-  public constructor(private readonly flowType: string, private readonly segment: any) {
-    const lowerFlowType = flowType.toLowerCase();
+  public constructor(private flowType?: string, private readonly segment?: any) {
+    if (flowType && segment) {
+      const lowerFlowType = flowType.toLowerCase();
 
-    this.scopes = {};
+      this.scopes = {};
 
-    switch(lowerFlowType) {
-      case 'implicit':
-        this.authorizationUrl = segment['authorizationUrl'];
+      switch (lowerFlowType) {
+        case 'implicit':
+          this.authorizationUrl = segment['authorizationUrl'];
 
-        if (!this.authorizationUrl) {
-          throw new Error(`"${flowType}" oauth2 security scheme requires a valid authorizationUrl`);
-        }
-        break;
+          if (!this.authorizationUrl) {
+            throw new Error(`"${flowType}" oauth2 security scheme requires a valid authorizationUrl`);
+          }
+          break;
 
-      case 'authorizationcode':
-        this.authorizationUrl = segment['authorizationUrl'];
-        this.tokenUrl = segment['tokenUrl'];
+        case 'authorizationcode':
+          this.authorizationUrl = segment['authorizationUrl'];
+          this.tokenUrl = segment['tokenUrl'];
 
-        if (!this.authorizationUrl) {
-          throw new Error(`"${flowType}" oauth2 security scheme requires a valid authorizationUrl`);
-        }
+          if (!this.authorizationUrl) {
+            throw new Error(`"${flowType}" oauth2 security scheme requires a valid authorizationUrl`);
+          }
 
-        if (!this.tokenUrl) {
-          throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
-        }
+          if (!this.tokenUrl) {
+            throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
+          }
 
-        break;
+          break;
 
-      case 'password':
-        this.tokenUrl = segment['tokenUrl'];
+        case 'password':
+          this.tokenUrl = segment['tokenUrl'];
 
-        if (!this.tokenUrl) {
-          throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
-        }
-        break;
+          if (!this.tokenUrl) {
+            throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
+          }
+          break;
 
-      case 'clientcredentials':
-        this.tokenUrl = segment['tokenUrl'];
+        case 'clientcredentials':
+          this.tokenUrl = segment['tokenUrl'];
 
-        if (!this.tokenUrl) {
-          throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
-        }
-        break;
+          if (!this.tokenUrl) {
+            throw new Error(`"${flowType}" oauth2 security scheme requires a valid tokenUrl`);
+          }
+          break;
 
-      default:
-        throw new Error(`Flow type '${flowType}' unsupported in flows store`);
-    }
+        default:
+          throw new Error(`Flow type '${flowType}' unsupported in flows store`);
+      }
 
-    this.refreshUrl = segment['refreshUrl'];
+      this.refreshUrl = segment['refreshUrl'];
 
-    if (segment['scopes']) {
-      this.scopes = segment['scopes'];
+      if (segment['scopes']) {
+        this.scopes = segment['scopes'];
+      }
     }
   }
 
@@ -63,9 +65,11 @@ export class OAuthFlowsStore {
   public getTokenUrl = (): string => this.tokenUrl;
   public getRefreshUrl = (): string => this.refreshUrl;
   public getScopes = (): any => this.scopes;
+  public getFlowType = (): string => this.flowType;
 
   public setAuthorizationUrl = (authorizationUrl: string) => this.authorizationUrl = authorizationUrl;
   public setTokenUrl = (tokenUrl: string) => this.tokenUrl = tokenUrl;
   public setRefreshUrl = (refreshUrl: string) => this.refreshUrl = refreshUrl;
   public setScopes = (scopes: any) => this.scopes = scopes;
+  public setFlowType = (flowType: string) => this.flowType = flowType;
 }

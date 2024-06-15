@@ -4,7 +4,7 @@ export class Response {
   private responseCode: string;
   private response: ResponseStore;
 
-  constructor(private readonly segment: any) {
+  constructor(private readonly segment?: any) {
     throw new Error('Response not yet handled');
   }
 

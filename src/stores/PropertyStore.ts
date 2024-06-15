@@ -10,33 +10,35 @@ export class PropertyStore {
   private enumValues: string[];
   private arrayOf: PropertyStore;
 
-  constructor(private readonly name: string, private readonly segment: any) {
-    if (segment['$ref']) {
-      console.log(`[PropertyStore]: References '${segment['$ref']}'`);
-      this.reference = segment['$ref'];
-    }
-
-    this.type = null;
-
-    if (segment['type'] && !this.reference) {
-      const propertyType = segment['type'].toLowerCase().trim();
-
-      if (propertyType === 'array' && !segment['items']) {
-        throw new Error(`Property '${name}' contains type 'array' but references no items`);
+  constructor(private name?: string, private readonly segment?: any) {
+    if (name && segment) {
+      if (segment['$ref']) {
+        console.log(`[PropertyStore]: References '${segment['$ref']}'`);
+        this.reference = segment['$ref'];
       }
 
-      if (propertyType === 'array') {
-        this.arrayOf = new PropertyStore(this.name, segment['items']);
-      }
-    }
+      this.type = null;
 
-    this.description = (segment['description'] ?? '').trim();
-    this.format = (segment['format'] ?? '').trim();
-    this.minimum = parseInt((segment['minimum'] ?? '0').trim());
-    this.maxLength = segment['maxLength'] ? parseInt(segment['maxLength']) : null;
-    this.pattern = segment['pattern'] ?? null;
-    this.defaultValue = segment['defaultValue'] ?? null;
-    this.enumValues = segment['enum'] ?? null;
+      if (segment['type'] && !this.reference) {
+        const propertyType = segment['type'].toLowerCase().trim();
+
+        if (propertyType === 'array' && !segment['items']) {
+          throw new Error(`Property '${name}' contains type 'array' but references no items`);
+        }
+
+        if (propertyType === 'array') {
+          this.arrayOf = new PropertyStore(this.name, segment['items']);
+        }
+      }
+
+      this.description = (segment['description'] ?? '').trim();
+      this.format = (segment['format'] ?? '').trim();
+      this.minimum = parseInt((segment['minimum'] ?? '0').trim());
+      this.maxLength = segment['maxLength'] ? parseInt(segment['maxLength']) : null;
+      this.pattern = segment['pattern'] ?? null;
+      this.defaultValue = segment['defaultValue'] ?? null;
+      this.enumValues = segment['enum'] ?? null;
+    }
   }
 
   public setType = (type: string) => this.type = type;
@@ -49,6 +51,7 @@ export class PropertyStore {
   public setDefaultValue = (defaultValue: string) => this.defaultValue = defaultValue;
   public setEnumValues = (enumValues: string[]) => this.enumValues = enumValues;
   public setArrayOf = (arrayOf: PropertyStore) => this.arrayOf = arrayOf;
+  public setName = (name: string) => this.name = name;
 
   public getName = (): string => this.name;
   public getType = (): string => this.type;
