@@ -20,6 +20,7 @@ export class RequestBodyStore {
       for (const contentType of Object.keys(content)) {
         const contentTypeSchema = content[contentType];
 
+        // Change to a map operation instead of a for-loop
         this.contents.push(new ContentStore(contentType, contentTypeSchema));
       }
     }

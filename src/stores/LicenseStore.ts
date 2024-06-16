@@ -5,13 +5,9 @@ export class LicenseStore {
 
   public constructor(private readonly segment?: any) {
     if (segment) {
-      if (!segment['name']) {
-        throw new Error('Name is required in license section of info');
-      }
-
-      this.name = segment['name'];
-      this.identifier = segment['identifier'] ?? null;
-      this.url = segment['url'] ?? null;
+      this.setName(segment['name'] ?? null);
+      this.setIdentifier(segment['identifier'] ?? null);
+      this.setUrl(segment['url'] ?? null);
 
       console.log(`[LicenseStore]: name=${this.name}`);
     }
@@ -21,7 +17,13 @@ export class LicenseStore {
   public getIdentifier = (): string => this.identifier;
   public getUrl = (): string => this.url;
 
-  public setName = (name: string) => this.name = name;
+  public setName = (name: string) => {
+    if (!name) {
+      throw new Error('Name is required in license section of info');
+    }
+
+    this.name = name;
+  }
   public setIdentifier = (identifier: string) => this.identifier = identifier;
   public setUrl = (url: string) => this.url = url;
 }

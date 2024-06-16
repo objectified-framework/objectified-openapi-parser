@@ -5,7 +5,7 @@ export class ContentStore {
 
   constructor(private contentType?: string, private readonly segment?: any) {
     if (contentType && segment) {
-      this.schema = new Schema(contentType, segment['schema']);
+      this.setSchema(new Schema(contentType, segment['schema']));
 
       console.log(`[ContentStore]: contentType=${contentType}`);
     }

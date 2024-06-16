@@ -5,9 +5,9 @@ export class ContactStore {
 
   public constructor(private readonly segment?: any) {
     if (segment) {
-      this.name = segment['name'] ?? null;
-      this.url = segment['url'] ?? null;
-      this.email = segment['email'] ?? null;
+      this.setName(segment['name'] ?? null);
+      this.setUrl(segment['url'] ?? null);
+      this.setEmail(segment['email'] ?? null);
     }
   }
 

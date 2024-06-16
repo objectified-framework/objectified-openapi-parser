@@ -2,7 +2,7 @@ export class SecurityStore {
   private security: any;
 
   constructor(private readonly segment?: any) {
-    this.security = segment;
+    this.setSecurity(segment);
   }
 
   public getSecurity = (): any => this.security;

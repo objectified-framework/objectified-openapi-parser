@@ -13,6 +13,7 @@ export class ResponseStore {
 
       if (segment.content) {
         for (const contentType of Object.keys(segment.content)) {
+          // Rewrite here to use a map
           const schema = new Schema(contentType, segment.content[contentType].schema);
 
           console.log(`[ResponseStore] Saving schema for content type '${contentType}'`);
