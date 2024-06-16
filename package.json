@@ -4,7 +4,8 @@
   "description": "Objectified OpenAPI 3.1 Parser for TypeScript",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "prettier -c src/* --write"
   },
   "author": "ksuenobu@fastmail.com",
   "license": "Apache License 2.0",
