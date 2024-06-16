@@ -1,4 +1,4 @@
-import {ContactStore, LicenseStore} from '../stores';
+import { ContactStore, LicenseStore } from '../stores';
 
 export class Info {
   private title: string;
@@ -45,11 +45,13 @@ export class Info {
   public getContact = (): ContactStore => this.contact;
   public getLicense = (): LicenseStore => this.license;
 
-  public setTitle = (title: string) => this.title = title;
-  public setSummary = (summary: string) => this.summary = summary;
-  public setDescription = (description: string) => this.description = description;
-  public setTermsOfService = (termsOfService: string) => this.termsOfService = termsOfService;
-  public setVersion = (version: string) => this.version = version;
-  public setContact = (contact: ContactStore) => this.contact = contact;
-  public setLicense = (license: LicenseStore) => this.license = license;
+  public setTitle = (title: string) => (this.title = title);
+  public setSummary = (summary: string) => (this.summary = summary);
+  public setDescription = (description: string) =>
+    (this.description = description);
+  public setTermsOfService = (termsOfService: string) =>
+    (this.termsOfService = termsOfService);
+  public setVersion = (version: string) => (this.version = version);
+  public setContact = (contact: ContactStore) => (this.contact = contact);
+  public setLicense = (license: LicenseStore) => (this.license = license);
 }

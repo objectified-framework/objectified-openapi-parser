@@ -7,5 +7,5 @@ export class SecurityStore {
 
   public getSecurity = (): any => this.security;
 
-  public setSecurity = (security: any) => this.security = security;
+  public setSecurity = (security: any) => (this.security = security);
 }

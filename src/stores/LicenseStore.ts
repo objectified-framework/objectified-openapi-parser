@@ -23,7 +23,7 @@ export class LicenseStore {
     }
 
     this.name = name;
-  }
-  public setIdentifier = (identifier: string) => this.identifier = identifier;
-  public setUrl = (url: string) => this.url = url;
+  };
+  public setIdentifier = (identifier: string) => (this.identifier = identifier);
+  public setUrl = (url: string) => (this.url = url);
 }

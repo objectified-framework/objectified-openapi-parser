@@ -15,7 +15,7 @@ export class ContactStore {
   public getUrl = (): string => this.url;
   public getEmail = (): string => this.email;
 
-  public setName = (name: string) => this.name = name;
-  public setUrl = (url: string) => this.url = url;
-  public setEmail = (email: string) => this.email = email;
+  public setName = (name: string) => (this.name = name);
+  public setUrl = (url: string) => (this.url = url);
+  public setEmail = (email: string) => (this.email = email);
 }

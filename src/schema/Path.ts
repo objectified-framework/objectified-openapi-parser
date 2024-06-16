@@ -1,4 +1,4 @@
-import {RequestBodyStore, ResponseStore, SecurityStore} from '../stores';
+import { RequestBodyStore, ResponseStore, SecurityStore } from '../stores';
 
 export class Path {
   private operation: string;
@@ -11,7 +11,11 @@ export class Path {
   private requestBody: RequestBodyStore;
   private responses: ResponseStore[];
 
-  constructor(pathUrl?: string, operation?: string, private readonly segment?: any) {
+  constructor(
+    pathUrl?: string,
+    operation?: string,
+    private readonly segment?: any,
+  ) {
     if (segment) {
       this.operation = operation;
       this.pathUrl = pathUrl;
@@ -49,7 +53,9 @@ export class Path {
         const responses = segment['responses'];
 
         for (const responseCode of Object.keys(responses)) {
-          this.responses.push(new ResponseStore(responseCode, responses[responseCode]));
+          this.responses.push(
+            new ResponseStore(responseCode, responses[responseCode]),
+          );
         }
       }
     }
@@ -65,13 +71,17 @@ export class Path {
   public getRequestBody = (): RequestBodyStore => this.requestBody;
   public getResponses = (): ResponseStore[] => this.responses;
 
-  public setOperation = (operation: string) => this.operation = operation;
-  public setPathUrl = (pathUrl: string) => this.pathUrl = pathUrl;
-  public setTags = (tags: string[]) => this.tags = tags;
-  public setSummary = (summary: string) => this.summary = summary;
-  public setOperationId = (operationId: string) => this.operationId = operationId;
-  public setDescription = (description: string) => this.description = description;
-  public setSecurity = (security: SecurityStore) => this.security = security;
-  public setRequestBody = (requestBody: RequestBodyStore) => this.requestBody = requestBody;
-  public setResponses = (responses: ResponseStore[]) => this.responses = responses;
+  public setOperation = (operation: string) => (this.operation = operation);
+  public setPathUrl = (pathUrl: string) => (this.pathUrl = pathUrl);
+  public setTags = (tags: string[]) => (this.tags = tags);
+  public setSummary = (summary: string) => (this.summary = summary);
+  public setOperationId = (operationId: string) =>
+    (this.operationId = operationId);
+  public setDescription = (description: string) =>
+    (this.description = description);
+  public setSecurity = (security: SecurityStore) => (this.security = security);
+  public setRequestBody = (requestBody: RequestBodyStore) =>
+    (this.requestBody = requestBody);
+  public setResponses = (responses: ResponseStore[]) =>
+    (this.responses = responses);
 }

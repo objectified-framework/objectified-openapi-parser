@@ -4,7 +4,10 @@ export class OAuthFlowsStore {
   private refreshUrl: string;
   private scopes: any;
 
-  public constructor(private flowType?: string, private readonly segment?: any) {
+  public constructor(
+    private flowType?: string,
+    private readonly segment?: any,
+  ) {
     if (flowType && segment) {
       // const lowerFlowType = flowType.toLowerCase();
       //
@@ -65,12 +68,13 @@ export class OAuthFlowsStore {
   public getScopes = (): any => this.scopes;
   public getFlowType = (): string => this.flowType;
 
-  public setAuthorizationUrl = (authorizationUrl: string) => this.authorizationUrl = authorizationUrl;
-  public setTokenUrl = (tokenUrl: string) => this.tokenUrl = tokenUrl;
-  public setRefreshUrl = (refreshUrl: string) => this.refreshUrl = refreshUrl;
-  public setScopes = (scopes: any) => this.scopes = scopes;
+  public setAuthorizationUrl = (authorizationUrl: string) =>
+    (this.authorizationUrl = authorizationUrl);
+  public setTokenUrl = (tokenUrl: string) => (this.tokenUrl = tokenUrl);
+  public setRefreshUrl = (refreshUrl: string) => (this.refreshUrl = refreshUrl);
+  public setScopes = (scopes: any) => (this.scopes = scopes);
   public setFlowType = (flowType: string) => {
-    switch(flowType.toLowerCase()) {
+    switch (flowType.toLowerCase()) {
       case 'implicit':
       case 'authorizationcode':
       case 'password':
@@ -81,5 +85,5 @@ export class OAuthFlowsStore {
       default:
         throw new Error(`Unknown flow type specified: '${flowType}'`);
     }
-  }
+  };
 }

@@ -1,4 +1,4 @@
-import {PropertyStore} from '../stores';
+import { PropertyStore } from '../stores';
 
 export class Schema {
   private type: string;
@@ -7,11 +7,16 @@ export class Schema {
   private required: string[];
   private properties: PropertyStore[];
 
-  constructor(private name?: string, private readonly segment?: any) {
+  constructor(
+    private name?: string,
+    private readonly segment?: any,
+  ) {
     if (name && segment) {
       if (!segment['type'] && !segment['$ref']) {
         if (segment['properties']) {
-          throw new Error('Segment failed to process: missing "type" and "$ref": has properties, maybe this type should be "object"?');
+          throw new Error(
+            'Segment failed to process: missing "type" and "$ref": has properties, maybe this type should be "object"?',
+          );
         }
 
         throw new Error('Segment failed to process: missing "type" and "$ref"');
@@ -34,13 +39,17 @@ export class Schema {
       this.required = schemaRequired;
       this.description = schemaDescription.trim();
 
-      console.log(`[Schema]: name=${name} type=${schemaType} required=${schemaRequired.toString()} description=${schemaDescription.trim()}`);
+      console.log(
+        `[Schema]: name=${name} type=${schemaType} required=${schemaRequired.toString()} description=${schemaDescription.trim()}`,
+      );
 
       if (segment['properties']) {
         const schemaProperties = segment['properties'];
         const schemaPropertyNames = Object.keys(schemaProperties);
 
-        console.log(`[Schema]: Contains ${schemaPropertyNames.length} properties`);
+        console.log(
+          `[Schema]: Contains ${schemaPropertyNames.length} properties`,
+        );
 
         for (const propertyName of schemaPropertyNames) {
           const propertySchema = schemaProperties[propertyName];
@@ -55,12 +64,14 @@ export class Schema {
     }
   }
 
-  public setName = (name: string) => this.name = name;
-  public setType = (type: string) => this.type = type;
-  public setDescription = (description: string) => this.description = description;
-  public setRef = (ref: string) => this.ref = ref;
-  public setRequired = (required: string[]) => this.required = required;
-  public setProperties = (properties: PropertyStore[]) => this.properties = properties;
+  public setName = (name: string) => (this.name = name);
+  public setType = (type: string) => (this.type = type);
+  public setDescription = (description: string) =>
+    (this.description = description);
+  public setRef = (ref: string) => (this.ref = ref);
+  public setRequired = (required: string[]) => (this.required = required);
+  public setProperties = (properties: PropertyStore[]) =>
+    (this.properties = properties);
 
   public getName = (): string => this.name;
   public getType = (): string => this.type;
@@ -69,8 +80,10 @@ export class Schema {
   public getRequired = (): string[] => this.required;
   public getProperties = (): PropertyStore[] => this.properties;
 
-  public isObject = (): boolean => this.type != null && this.type.toLowerCase() === 'object';
+  public isObject = (): boolean =>
+    this.type != null && this.type.toLowerCase() === 'object';
 
   public addRequired = (required: string) => this.required.push(required);
-  public addProperty = (property: PropertyStore) => this.properties.push(property);
+  public addProperty = (property: PropertyStore) =>
+    this.properties.push(property);
 }

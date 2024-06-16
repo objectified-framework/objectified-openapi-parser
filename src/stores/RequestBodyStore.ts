@@ -1,4 +1,4 @@
-import {ContentStore} from '.';
+import { ContentStore } from '.';
 
 export class RequestBodyStore {
   private description: string;
@@ -30,7 +30,8 @@ export class RequestBodyStore {
   public isRequired = (): boolean => this.required;
   public getContents = (): ContentStore[] => this.contents;
 
-  public setDescription = (description: string) => this.description = description;
-  public setRequired = (required: boolean) => this.required = required;
-  public setContents = (contents: ContentStore[]) => this.contents = contents;
+  public setDescription = (description: string) =>
+    (this.description = description);
+  public setRequired = (required: boolean) => (this.required = required);
+  public setContents = (contents: ContentStore[]) => (this.contents = contents);
 }

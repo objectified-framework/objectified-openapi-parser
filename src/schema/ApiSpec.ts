@@ -1,5 +1,5 @@
-import {Components, Info, Path} from '.';
-import {ServerStore, TagStore} from '../stores';
+import { Components, Info, Path } from '.';
+import { ServerStore, TagStore } from '../stores';
 
 export class ApiSpec {
   private components: Components;
@@ -44,11 +44,12 @@ export class ApiSpec {
     }
   }
 
-  public setComponents = (components: Components) => this.components = components;
-  public setPaths = (paths: Path[]) => this.paths = paths;
-  public setServers = (servers: ServerStore[]) => this.servers = servers;
-  public setTags = (tags: TagStore[]) => this.tags = tags;
-  public setInfo = (info: Info) => this.info = info;
+  public setComponents = (components: Components) =>
+    (this.components = components);
+  public setPaths = (paths: Path[]) => (this.paths = paths);
+  public setServers = (servers: ServerStore[]) => (this.servers = servers);
+  public setTags = (tags: TagStore[]) => (this.tags = tags);
+  public setInfo = (info: Info) => (this.info = info);
 
   public getComponents = (): Components => this.components;
   public getPaths = (): Path[] => this.paths;

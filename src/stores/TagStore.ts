@@ -11,13 +11,16 @@ export class TagStore {
       this.name = segment['name'];
       this.description = segment['description'] ?? '';
 
-      console.log(`[TagStore] name=${this.name} description=${this.description}`);
+      console.log(
+        `[TagStore] name=${this.name} description=${this.description}`,
+      );
     }
   }
 
   public getName = (): string => this.name;
   public getDescription = (): string => this.description;
 
-  public setName = (name: string) => this.name = name;
-  public setDescription = (description: string) => this.description = description;
+  public setName = (name: string) => (this.name = name);
+  public setDescription = (description: string) =>
+    (this.description = description);
 }

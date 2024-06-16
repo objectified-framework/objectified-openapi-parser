@@ -1,4 +1,4 @@
-import {ResponseStore} from '../stores';
+import { ResponseStore } from '../stores';
 
 export class Response {
   private responseCode: string;
@@ -11,6 +11,7 @@ export class Response {
   public getResponseCode = (): string => this.responseCode;
   public getResponse = (): ResponseStore => this.response;
 
-  public setResponseCode = (responseCode: string) => this.responseCode = responseCode;
-  public setResponse = (response: ResponseStore) => this.response = response;
+  public setResponseCode = (responseCode: string) =>
+    (this.responseCode = responseCode);
+  public setResponse = (response: ResponseStore) => (this.response = response);
 }
