@@ -1,3 +1,4 @@
+// Covers 4.8.4.1
 export class LicenseStore {
   private name: string;
   private identifier: string;

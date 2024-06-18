@@ -1,5 +1,6 @@
 import { ContactStore, LicenseStore } from '../stores';
 
+// Covers 4.8.2.1
 export class Info {
   private title: string;
   private summary: string;

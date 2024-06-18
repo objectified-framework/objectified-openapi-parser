@@ -1,3 +1,4 @@
+// Covers 4.8.24.2
 export class PropertyStore {
   private type: string;
   private description: string;

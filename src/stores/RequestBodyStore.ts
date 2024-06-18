@@ -1,5 +1,6 @@
 import { ContentStore } from '.';
 
+// Covers 4.8.13.1
 export class RequestBodyStore {
   private description: string;
   private required: boolean;

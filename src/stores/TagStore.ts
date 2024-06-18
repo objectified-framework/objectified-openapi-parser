@@ -1,3 +1,4 @@
+// Covers 4.8.11.1 and 4.8.22.1
 export class TagStore {
   private name: string;
   private description: string;

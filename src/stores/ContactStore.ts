@@ -1,3 +1,4 @@
+// Covers 4.8.3.1
 export class ContactStore {
   private name: string;
   private url: string;
