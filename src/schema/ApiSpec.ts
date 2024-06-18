@@ -18,8 +18,6 @@ export class ApiSpec {
 
       const pathList = Object.keys(segment['paths']);
 
-      console.log(`[ApiSpec] Processing ${pathList.length} paths`);
-
       // Parse the "path" section of the OpenAPI document
       for (const pathUrl of pathList) {
         const path = segment['paths'][pathUrl];
@@ -44,8 +42,7 @@ export class ApiSpec {
     }
   }
 
-  public setComponents = (components: Components) =>
-    (this.components = components);
+  public setComponents = (components: Components) => (this.components = components);
   public setPaths = (paths: Path[]) => (this.paths = paths);
   public setServers = (servers: ServerStore[]) => (this.servers = servers);
   public setTags = (tags: TagStore[]) => (this.tags = tags);

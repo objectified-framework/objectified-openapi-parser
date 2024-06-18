@@ -19,10 +19,6 @@ export class Components {
 
       const componentsRootKeys = Object.keys(componentsRoot);
 
-      console.log(
-        `[Components]: Processing ${componentsRootKeys.length} schema entry/ies`,
-      );
-
       for (const schemaName of componentsRootKeys) {
         const schemaEntry = componentsRoot[schemaName];
 
@@ -36,18 +32,10 @@ export class Components {
       this.securitySchemes = {};
 
       if (segment['components']['securitySchemes']) {
-        console.log(`[Components]: Parsing security schemes`);
+        for (const schemeName of Object.keys(segment['components']['securitySchemes'])) {
+          const securitySchema = segment['components']['securitySchemes'][schemeName];
 
-        for (const schemeName of Object.keys(
-          segment['components']['securitySchemes'],
-        )) {
-          const securitySchema =
-            segment['components']['securitySchemes'][schemeName];
-
-          this.securitySchemes[schemeName] = new SecuritySchemeStore(
-            securitySchema,
-          );
-          console.log(`[Components]: Added security scheme '${schemeName}'`);
+          this.securitySchemes[schemeName] = new SecuritySchemeStore(securitySchema);
         }
       }
     }
@@ -57,6 +45,5 @@ export class Components {
   public getSecuritySchemas = (): any => this.securitySchemes;
 
   public setSchemas = (schemas: Schema[]) => (this.schemas = schemas);
-  public setSecuritySchemas = (securitySchemas: any) =>
-    (this.securitySchemes = securitySchemas);
+  public setSecuritySchemas = (securitySchemas: any) => (this.securitySchemes = securitySchemas);
 }

@@ -68,8 +68,7 @@ export class OAuthFlowsStore {
   public getScopes = (): any => this.scopes;
   public getFlowType = (): string => this.flowType;
 
-  public setAuthorizationUrl = (authorizationUrl: string) =>
-    (this.authorizationUrl = authorizationUrl);
+  public setAuthorizationUrl = (authorizationUrl: string) => (this.authorizationUrl = authorizationUrl);
   public setTokenUrl = (tokenUrl: string) => (this.tokenUrl = tokenUrl);
   public setRefreshUrl = (refreshUrl: string) => (this.refreshUrl = refreshUrl);
   public setScopes = (scopes: any) => (this.scopes = scopes);

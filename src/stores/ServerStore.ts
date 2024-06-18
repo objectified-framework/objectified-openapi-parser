@@ -11,9 +11,7 @@ export class ServerStore {
       this.url = segment['url'];
       this.description = segment['description'] ?? '';
 
-      console.log(
-        `[ServerStore] url=${this.url} description=${this.description}`,
-      );
+      console.log(`[ServerStore] url=${this.url} description=${this.description}`);
     }
   }
 
@@ -21,6 +19,5 @@ export class ServerStore {
   public getDescription = (): string => this.description;
 
   public setUrl = (url: string) => (this.url = url);
-  public setDescription = (description: string) =>
-    (this.description = description);
+  public setDescription = (description: string) => (this.description = description);
 }

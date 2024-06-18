@@ -9,8 +9,6 @@ export class ContentStore {
   ) {
     if (contentType && segment) {
       this.setSchema(new Schema(contentType, segment['schema']));
-
-      console.log(`[ContentStore]: contentType=${contentType}`);
     }
   }
 
@@ -18,6 +16,5 @@ export class ContentStore {
   public getContentType = (): string => this.contentType;
 
   public setSchema = (schema: Schema) => (this.schema = schema);
-  public setContentType = (contentType: string) =>
-    (this.contentType = contentType);
+  public setContentType = (contentType: string) => (this.contentType = contentType);
 }

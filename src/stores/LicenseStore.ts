@@ -8,8 +8,6 @@ export class LicenseStore {
       this.setName(segment['name'] ?? null);
       this.setIdentifier(segment['identifier'] ?? null);
       this.setUrl(segment['url'] ?? null);
-
-      console.log(`[LicenseStore]: name=${this.name}`);
     }
   }
 

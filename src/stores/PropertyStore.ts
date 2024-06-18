@@ -20,26 +20,21 @@ export class PropertyStore {
     this.setDescription((segment['description'] ?? '').trim());
     this.setFormat((segment['format'] ?? '').trim());
     this.setMinimum(parseInt((segment['minimum'] ?? '0').trim()));
-    this.setMaxLength(
-      segment['maxLength'] ? parseInt(segment['maxLength']) : null,
-    );
+    this.setMaxLength(segment['maxLength'] ? parseInt(segment['maxLength']) : null);
     this.setPattern(segment['pattern'] ?? null);
     this.setDefaultValue(segment['defaultValue'] ?? null);
     this.setEnumValues(segment['enum'] ?? null);
   }
 
   public setType = (type: string) => (this.type = type);
-  public setDescription = (description: string) =>
-    (this.description = description);
+  public setDescription = (description: string) => (this.description = description);
   public setFormat = (format: string) => (this.format = format);
   public setMinimum = (minimum: number) => (this.minimum = minimum);
   public setMaxLength = (maxLength: number) => (this.maxLength = maxLength);
   public setPattern = (pattern: string) => (this.pattern = pattern);
   public setReference = (reference: string) => (this.reference = reference);
-  public setDefaultValue = (defaultValue: string) =>
-    (this.defaultValue = defaultValue);
-  public setEnumValues = (enumValues: string[]) =>
-    (this.enumValues = enumValues);
+  public setDefaultValue = (defaultValue: string) => (this.defaultValue = defaultValue);
+  public setEnumValues = (enumValues: string[]) => (this.enumValues = enumValues);
   public setArrayOf = (arrayOf: PropertyStore) => (this.arrayOf = arrayOf);
   public setName = (name: string) => (this.name = name);
 

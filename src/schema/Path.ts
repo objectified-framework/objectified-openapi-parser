@@ -32,8 +32,6 @@ export class Path {
         throw new Error(`Verb '${operation}' missing operationId`);
       }
 
-      console.log(`[Path]: url=${pathUrl} operation=${operation}`);
-
       this.tags = segment['tags'];
       this.summary = segment['summary'] ?? null;
       this.operationId = segment['operationId'];
@@ -53,9 +51,7 @@ export class Path {
         const responses = segment['responses'];
 
         for (const responseCode of Object.keys(responses)) {
-          this.responses.push(
-            new ResponseStore(responseCode, responses[responseCode]),
-          );
+          this.responses.push(new ResponseStore(responseCode, responses[responseCode]));
         }
       }
     }
@@ -75,13 +71,9 @@ export class Path {
   public setPathUrl = (pathUrl: string) => (this.pathUrl = pathUrl);
   public setTags = (tags: string[]) => (this.tags = tags);
   public setSummary = (summary: string) => (this.summary = summary);
-  public setOperationId = (operationId: string) =>
-    (this.operationId = operationId);
-  public setDescription = (description: string) =>
-    (this.description = description);
+  public setOperationId = (operationId: string) => (this.operationId = operationId);
+  public setDescription = (description: string) => (this.description = description);
   public setSecurity = (security: SecurityStore) => (this.security = security);
-  public setRequestBody = (requestBody: RequestBodyStore) =>
-    (this.requestBody = requestBody);
-  public setResponses = (responses: ResponseStore[]) =>
-    (this.responses = responses);
+  public setRequestBody = (requestBody: RequestBodyStore) => (this.requestBody = requestBody);
+  public setResponses = (responses: ResponseStore[]) => (this.responses = responses);
 }

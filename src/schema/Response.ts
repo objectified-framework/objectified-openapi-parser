@@ -11,7 +11,6 @@ export class Response {
   public getResponseCode = (): string => this.responseCode;
   public getResponse = (): ResponseStore => this.response;
 
-  public setResponseCode = (responseCode: string) =>
-    (this.responseCode = responseCode);
+  public setResponseCode = (responseCode: string) => (this.responseCode = responseCode);
   public setResponse = (response: ResponseStore) => (this.response = response);
 }

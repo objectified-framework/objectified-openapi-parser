@@ -32,8 +32,6 @@ export class Info {
       if (segment['license']) {
         this.license = new LicenseStore(segment['license']);
       }
-
-      console.log(`[Info]: title=${this.title} version=${this.version}`);
     }
   }
 
@@ -47,10 +45,8 @@ export class Info {
 
   public setTitle = (title: string) => (this.title = title);
   public setSummary = (summary: string) => (this.summary = summary);
-  public setDescription = (description: string) =>
-    (this.description = description);
-  public setTermsOfService = (termsOfService: string) =>
-    (this.termsOfService = termsOfService);
+  public setDescription = (description: string) => (this.description = description);
+  public setTermsOfService = (termsOfService: string) => (this.termsOfService = termsOfService);
   public setVersion = (version: string) => (this.version = version);
   public setContact = (contact: ContactStore) => (this.contact = contact);
   public setLicense = (license: LicenseStore) => (this.license = license);
