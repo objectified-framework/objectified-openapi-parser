@@ -83,8 +83,6 @@ export class SecuritySchemeStore {
       }
 
       this.description = segment['description'] ?? null;
-
-      console.log(`[SecurityStore] Created type=${this.type}`);
     }
   }
 

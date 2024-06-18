@@ -10,8 +10,6 @@ export class TagStore {
 
       this.name = segment['name'];
       this.description = segment['description'] ?? '';
-
-      console.log(`[TagStore] name=${this.name} description=${this.description}`);
     }
   }
 

@@ -9,8 +9,6 @@ export class ResponseStore {
     private readonly segment?: any,
   ) {
     if (responseCode && segment) {
-      console.log(`[ResponseStore] responseCode=${responseCode}`);
-
       this.description = segment.description;
       this.content = {};
 
@@ -18,8 +16,6 @@ export class ResponseStore {
         for (const contentType of Object.keys(segment.content)) {
           // Rewrite here to use a map
           const schema = new Schema(contentType, segment.content[contentType].schema);
-
-          console.log(`[ResponseStore] Saving schema for content type '${contentType}'`);
 
           this.content[contentType] = schema;
         }

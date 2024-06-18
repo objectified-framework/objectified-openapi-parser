@@ -10,8 +10,6 @@ export class ServerStore {
 
       this.url = segment['url'];
       this.description = segment['description'] ?? '';
-
-      console.log(`[ServerStore] url=${this.url} description=${this.description}`);
     }
   }
 
