@@ -22,5 +22,5 @@ export class ServerStore {
 
   public setUrl = (url: string) => (this.url = url);
   public setDescription = (description: string) => (this.description = description);
-  public setVariables = (variables: any) => this.variables = variables;
+  public setVariables = (variables: any) => (this.variables = variables);
 }
