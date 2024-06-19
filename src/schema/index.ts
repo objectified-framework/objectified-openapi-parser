@@ -16,3 +16,5 @@ export * from './SecurityRequirement';
 export * from './Schema';
 export * from './PathItem';
 export * from './Paths';
+export * from './Parameter';
+export * from './MediaType';
