@@ -1,7 +1,7 @@
 // Covers 4.8.6.1
 export class ServerVariable {
   private _enum: [string];
-  private _default: string;
+  private _default: string; // Required
   private _description: string;
 
   constructor() {
