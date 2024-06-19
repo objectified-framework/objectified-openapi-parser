@@ -10,3 +10,4 @@ export * from './Discriminator';
 export * from './XML';
 export * from './OAuthFlow';
 export * from './OAuthFlows';
+export * from './Example';
