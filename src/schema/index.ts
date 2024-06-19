@@ -18,3 +18,4 @@ export * from './PathItem';
 export * from './Paths';
 export * from './Parameter';
 export * from './MediaType';
+export * from './Header';
