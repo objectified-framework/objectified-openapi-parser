@@ -14,3 +14,5 @@ export * from './Example';
 export * from './SecurityScheme';
 export * from './SecurityRequirement';
 export * from './Schema';
+export * from './PathItem';
+export * from './Paths';
