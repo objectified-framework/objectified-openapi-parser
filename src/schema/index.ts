@@ -12,3 +12,4 @@ export * from './OAuthFlow';
 export * from './OAuthFlows';
 export * from './Example';
 export * from './SecurityScheme';
+export * from './SecurityRequirement';
