@@ -7,3 +7,4 @@ export * from './Reference';
 export * from './ExternalDocumentation';
 export * from './Tag';
 export * from './Discriminator';
+export * from './XML';
