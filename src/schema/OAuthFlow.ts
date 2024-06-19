@@ -5,10 +5,10 @@ export type OAuthFlowHash = {
 
 // Covers 4.8.29.1
 export class OAuthFlow {
-  private _authorizationUrl: string;
-  private _tokenUrl: string;
+  private _authorizationUrl: string; // Required
+  private _tokenUrl: string; // Required
   private _refreshUrl: string;
-  private _scopes: OAuthFlowHash;
+  private _scopes: OAuthFlowHash; // Required
 
   constructor() {
     this._scopes = {};
