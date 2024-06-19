@@ -7,7 +7,7 @@ export type ServerVariablesMap = {
 
 // Covers 4.8.5.1
 export class Server {
-  private _url: string;
+  private _url: string; // Required
   private _description: string;
   private _variables: ServerVariablesMap;
 
