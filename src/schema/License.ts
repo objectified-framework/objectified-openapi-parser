@@ -1,6 +1,6 @@
 // Covers 4.8.4.1
 export class License {
-  private _name: string;
+  private _name: string; // Required
   private _identifier: string;
   private _url: string;
 
