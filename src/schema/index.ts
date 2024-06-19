@@ -8,3 +8,4 @@ export * from './ExternalDocumentation';
 export * from './Tag';
 export * from './Discriminator';
 export * from './XML';
+export * from './OAuthFlow';
