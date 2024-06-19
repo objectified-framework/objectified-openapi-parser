@@ -9,5 +9,5 @@ export class ExternalDocumentation {
   public getUrl = (): string => this._url;
 
   public setDescription = (description: string) => (this._description = description);
-  public setUrl = (url: string) => this._url;
+  public setUrl = (url: string) => (this._url = url);
 }
