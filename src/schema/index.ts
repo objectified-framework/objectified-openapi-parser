@@ -6,3 +6,4 @@ export * from './Server';
 export * from './Reference';
 export * from './ExternalDocumentation';
 export * from './Tag';
+export * from './Discriminator';
