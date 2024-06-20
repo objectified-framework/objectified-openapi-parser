@@ -1,23 +1,15 @@
 // Covers 4.8.30.1
-export type SecurityRequirementHash = {
-  [key in string]: string[];
-};
-
-// Covers 4.8.30.1
 export class SecurityRequirement {
-  private _hash: SecurityRequirementHash;
+  private _name: string;
+  private _declarations: string[];
 
   constructor() {
-    this._hash = {};
+    this._declarations = [];
   }
 
-  public getByKey = (key: string): string[] => this._hash[key] ?? [];
+  public getName = (): string => this._name;
+  public getDeclarations = (): string[] => this._declarations;
 
-  public setValueForKey = (key: string, value: string) => {
-    if (!this._hash[key]) {
-      this._hash[key] = [];
-    }
-
-    this._hash[key].push(value);
-  };
+  public setName = (name: string) => (this._name = name);
+  public setDeclarations = (declarations: string[]) => (this._declarations = declarations);
 }
