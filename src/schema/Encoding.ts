@@ -5,6 +5,10 @@ export type HeaderReferenceMap = {
   [key in string]: Header | Reference;
 };
 
+export type EncodingMap = {
+  [key in string]: Encoding;
+};
+
 // Covers 4.8.15.1
 export class Encoding {
   private _contentType: string;
