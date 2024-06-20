@@ -19,3 +19,4 @@ export * from './Paths';
 export * from './Parameter';
 export * from './MediaType';
 export * from './Header';
+export * from './Operation';
