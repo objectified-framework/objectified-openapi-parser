@@ -27,3 +27,4 @@ export * from './Callback';
 export * from './Responses';
 export * from './Encoding';
 export * from './Link';
+export * from './Response';
