@@ -1,6 +1,11 @@
 import { Schema } from './Schema';
 import { MediaTypeMap } from './MediaType';
 import { ExampleOrReferenceMap } from './Parameter';
+import { Reference } from './Reference';
+
+export type HeaderOrReferenceMap = {
+  [key in string]: Header | Reference;
+};
 
 // Covers 4.8.21.1
 export class Header {

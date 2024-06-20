@@ -1,4 +1,8 @@
-import { MediaTypeMap } from '.';
+import { MediaTypeMap, Reference } from '.';
+
+export type RequestBodyOrReferenceMap = {
+  [key in string]: RequestBody | Reference;
+};
 
 // Covers 4.8.13.1
 export class RequestBody {

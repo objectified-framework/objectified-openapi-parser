@@ -1,5 +1,9 @@
 import { PathItem, Reference } from '.';
 
+export type CallbackOrReferenceMap = {
+  [key in string]: Callback | Reference;
+};
+
 // Covers 4.8.18.1
 export class Callback {
   private _expression: string;

@@ -5,6 +5,10 @@ export type ExampleOrReferenceMap = {
   [key in string]: Example | Reference;
 };
 
+export type ParameterOrReferenceMap = {
+  [key in string]: Parameter | Reference;
+};
+
 // Covers 4.8.12.2
 export class Parameter {
   private _name: string; // Required

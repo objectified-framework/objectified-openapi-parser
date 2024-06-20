@@ -1,5 +1,9 @@
 import { Discriminator, DiscriminatorMap, ExternalDocumentation, XML } from '.';
 
+export type SchemaMap = {
+  [key in string]: Schema;
+};
+
 // Covers 4.8.24.1
 export class Schema {
   private _schema: any; // Required, this is a JSON Schema

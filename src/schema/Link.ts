@@ -1,7 +1,11 @@
-import { Server } from '.';
+import { Reference, Server } from '.';
 
 export type ParametersMap = {
   [key in string]: any | string;
+};
+
+export type LinkOrReferenceMap = {
+  [key in string]: Link | Reference;
 };
 
 // Covers 4.8.20.1

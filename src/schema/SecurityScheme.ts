@@ -1,4 +1,8 @@
-import { OAuthFlows } from '.';
+import { OAuthFlows, Reference } from '.';
+
+export type SecuritySchemeOrReferenceMap = {
+  [key in string]: SecurityScheme | Reference;
+};
 
 // Covers 4.8.27.1
 export class SecurityScheme {

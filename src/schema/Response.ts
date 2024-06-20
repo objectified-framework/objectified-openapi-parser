@@ -8,6 +8,10 @@ export type ResponseLinkMap = {
   [key in string]: Link | Reference;
 };
 
+export type ResponseOrReferenceMap = {
+  [key in string]: Response | Reference;
+};
+
 // Covers 4.8.17.1
 export class Response {
   private _description: string;

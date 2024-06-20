@@ -1,5 +1,9 @@
 import { Operation, Parameter, Reference, Server } from '.';
 
+export type PathItemOrReferenceMap = {
+  [key in string]: PathItem | Reference;
+};
+
 // Covers 4.8.9.1
 export class PathItem {
   private _ref: string;
