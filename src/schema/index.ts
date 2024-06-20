@@ -23,3 +23,4 @@ export * from './Operation';
 export * from './Components';
 export * from './OpenAPI';
 export * from './RequestBody';
+export * from './Callback';
