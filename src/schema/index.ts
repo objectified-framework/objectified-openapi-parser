@@ -22,3 +22,4 @@ export * from './Header';
 export * from './Operation';
 export * from './Components';
 export * from './OpenAPI';
+export * from './RequestBody';
