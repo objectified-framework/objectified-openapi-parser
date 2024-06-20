@@ -1,5 +1,6 @@
 import { Components, ExternalDocumentation, Info, PathItem, Paths, Reference, SecurityRequirement, Server, Tag } from '.';
 
+// Covers 4.8.1.1
 export type WebHooksMap = {
   [key in string]: PathItem | Reference;
 };
