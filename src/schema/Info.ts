@@ -52,4 +52,12 @@ export class Info {
   public setContact = (contact: Contact) => (this._contact = contact);
   public setLicense = (license: License) => (this._license = license);
   public setVersion = (version: string) => (this._version = version);
+
+  toString() {
+    return (
+      `[Info]: _title=${this._title} _summary=${this._summary} _description=${this._description} ` +
+      `_termsOfService=${this._termsOfService} _contact=${this._contact} _license=${this._license} ` +
+      `_version=${this._version}`
+    );
+  }
 }
