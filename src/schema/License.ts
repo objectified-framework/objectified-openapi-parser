@@ -8,16 +8,16 @@ export class License {
 
   constructor() {}
 
-  public parse(segment: any): License {
+  public static parse(segment: any): License {
     const obj = new License();
 
     if (!segment['name']) {
       throw new ParsingError('License segment is missing required "name"');
     }
 
-    this.setName(segment['name']);
-    this.setIdentifier(segment['identifier'] ?? null);
-    this.setUrl(segment['url'] ?? null);
+    obj.setName(segment['name']);
+    obj.setIdentifier(segment['identifier'] ?? null);
+    obj.setUrl(segment['url'] ?? null);
 
     return obj;
   }

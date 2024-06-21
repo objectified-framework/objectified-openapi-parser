@@ -1,4 +1,5 @@
 import { Contact, License } from '.';
+import { ParsingError } from '../ParsingError';
 
 // Covers 4.8.2.1
 export class Info {
@@ -15,8 +16,23 @@ export class Info {
     this._license = new License();
   }
 
-  public parse(segment: any): Info {
+  public static parse(segment: any): Info {
     const obj = new Info();
+
+    if (!segment['title']) {
+      throw new ParsingError('Info segment is missing required "title"');
+    }
+
+    if (!segment['version']) {
+      throw new ParsingError('Info segment is missing required "version"');
+    }
+
+    obj.setTitle(segment['title']);
+    obj.setSummary(segment['summary']);
+    obj.setTermsOfService(segment['termsOfService']);
+    obj.setContact(segment['contact'] ? Contact.parse(segment['contact']) : null);
+    obj.setLicense(segment['license'] ? License.parse(segment['license']) : null);
+    obj.setVersion(segment['version']);
 
     return obj;
   }
