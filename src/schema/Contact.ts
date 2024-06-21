@@ -6,6 +6,12 @@ export class Contact {
 
   constructor() {}
 
+  public parse(segment: any): Contact {
+    const obj = new Contact();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getUrl = (): string => this._url;
   public getEmail = (): string => this._email;

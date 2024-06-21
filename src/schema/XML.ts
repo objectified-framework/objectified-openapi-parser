@@ -8,6 +8,12 @@ export class XML {
 
   constructor() {}
 
+  public parse(segment: any): XML {
+    const obj = new XML();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getNamespace = (): string => this._namespace;
   public getPrefix = (): string => this._prefix;

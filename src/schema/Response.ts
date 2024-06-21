@@ -25,6 +25,12 @@ export class Response {
     this._links = {};
   }
 
+  public parse(segment: any): Response {
+    const obj = new Response();
+
+    return obj;
+  }
+
   public getDescription = (): string => this._description;
   public getHeaders = (): ResponseHeaderMap => this._headers;
   public getContent = (): MediaTypeMap => this._content;

@@ -15,6 +15,12 @@ export class Server {
     this._variables = {};
   }
 
+  public parse(segment: any): Server {
+    const obj = new Server();
+
+    return obj;
+  }
+
   public getUrl = (): string => this._url;
   public getDescription = (): string => this._description;
   public getVariables = (): ServerVariablesMap => this._variables;

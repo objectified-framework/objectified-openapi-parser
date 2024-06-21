@@ -31,6 +31,12 @@ export class Parameter {
     this._content = {};
   }
 
+  public parse(segment: any): Parameter {
+    const obj = new Parameter();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getIn = (): string => this._in;
   public getDescription = (): string => this._description;

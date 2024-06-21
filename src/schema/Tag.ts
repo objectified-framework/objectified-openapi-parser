@@ -10,6 +10,12 @@ export class Tag {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  public parse(segment: any): Tag {
+    const obj = new Tag();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getDescription = (): string => this._description;
   public getExternalDocs = (): ExternalDocumentation => this._externalDocs;

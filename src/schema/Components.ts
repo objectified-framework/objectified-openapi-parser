@@ -37,6 +37,12 @@ export class Components {
     this._pathItems = {};
   }
 
+  public parse(segment: any): Components {
+    const obj = new Components();
+
+    return obj;
+  }
+
   public getSchemas = (): SchemaMap => this._schemas;
   public getResponses = (): ResponseOrReferenceMap => this._responses;
   public getParameters = (): ParameterOrReferenceMap => this._parameters;

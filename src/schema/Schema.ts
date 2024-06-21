@@ -18,6 +18,12 @@ export class Schema {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  public parse(segment: any): Schema {
+    const obj = new Schema();
+
+    return obj;
+  }
+
   public getSchema = (): any => this._schema;
   public getDiscriminator = (): Discriminator => this._discriminator;
   public getXml = (): XML => this._xml;

@@ -6,6 +6,12 @@ export class Reference {
 
   constructor() {}
 
+  public parse(segment: any): Reference {
+    const obj = new Reference();
+
+    return obj;
+  }
+
   public getRef = (): string => this._ref;
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;

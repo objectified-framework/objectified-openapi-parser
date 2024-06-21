@@ -14,6 +14,12 @@ export class OAuthFlows {
     this._authorizationCode = new OAuthFlow();
   }
 
+  public parse(segment: any): OAuthFlows {
+    const obj = new OAuthFlows();
+
+    return obj;
+  }
+
   public getImplicit = (): OAuthFlow => this._implicit;
   public getPassword = (): OAuthFlow => this._password;
   public getClientCredentials = (): OAuthFlow => this._clientCredentials;

@@ -33,6 +33,12 @@ export class PathItem {
     this._parameters = [];
   }
 
+  public parse(segment: any): PathItem {
+    const obj = new PathItem();
+
+    return obj;
+  }
+
   public getRef = (): string => this._ref;
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;

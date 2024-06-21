@@ -23,6 +23,12 @@ export class Operation {
     this._servers = [];
   }
 
+  public parse(segment: any): Operation {
+    const obj = new Operation();
+
+    return obj;
+  }
+
   public getTags = (): string[] => this._tags;
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;

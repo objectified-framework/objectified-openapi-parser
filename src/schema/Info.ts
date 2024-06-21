@@ -15,6 +15,12 @@ export class Info {
     this._license = new License();
   }
 
+  public parse(segment: any): Info {
+    const obj = new Info();
+
+    return obj;
+  }
+
   public getTitle = (): string => this._title;
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;

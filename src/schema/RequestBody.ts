@@ -14,6 +14,12 @@ export class RequestBody {
     this._content = {};
   }
 
+  public parse(segment: any): RequestBody {
+    const obj = new RequestBody();
+
+    return obj;
+  }
+
   public getDescription = (): string => this._description;
   public getContent = (): MediaTypeMap => this._content;
   public isRequired = (): boolean => this._required;

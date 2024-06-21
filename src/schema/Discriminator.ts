@@ -12,6 +12,12 @@ export class Discriminator {
     this._mapping = {};
   }
 
+  public parse(segment: any): Discriminator {
+    const obj = new Discriminator();
+
+    return obj;
+  }
+
   public getPropertyName = (): string => this._propertyName;
   public getMapping = (): DiscriminatorMap => this._mapping;
 

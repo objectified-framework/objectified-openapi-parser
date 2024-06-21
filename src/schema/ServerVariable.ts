@@ -8,6 +8,12 @@ export class ServerVariable {
     this._enum = [];
   }
 
+  public parse(segment: any): ServerVariable {
+    const obj = new ServerVariable();
+
+    return obj;
+  }
+
   public getEnum = (): string[] => this._enum;
   public getDefault = (): string => this._default;
   public getDescription = (): string => this._description;

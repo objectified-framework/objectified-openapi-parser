@@ -7,6 +7,12 @@ export class SecurityRequirement {
     this._declarations = [];
   }
 
+  public parse(segment: any): SecurityRequirement {
+    const obj = new SecurityRequirement();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getDeclarations = (): string[] => this._declarations;
 

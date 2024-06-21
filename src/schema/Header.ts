@@ -27,6 +27,12 @@ export class Header {
     this._content = {};
   }
 
+  public parse(segment: any): Header {
+    const obj = new Header();
+
+    return obj;
+  }
+
   public getDescription = (): string => this._description;
   public isRequired = (): boolean => this._required;
   public isDeprecated = (): boolean => this._deprecated;

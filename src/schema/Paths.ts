@@ -13,6 +13,12 @@ export class Paths {
     this._paths = {};
   }
 
+  public parse(segment: any): Paths {
+    const obj = new Paths();
+
+    return obj;
+  }
+
   public getPaths = (): PathMap => this._paths;
 
   public setPaths = (paths: PathMap) => (this._paths = paths);

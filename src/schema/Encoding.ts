@@ -21,6 +21,12 @@ export class Encoding {
     this._headers = {};
   }
 
+  public parse(segment: any): Encoding {
+    const obj = new Encoding();
+
+    return obj;
+  }
+
   public getContentType = (): string => this._contentType;
   public getHeaders = (): HeaderReferenceMap => this._headers;
   public getStyle = (): string => this._style;

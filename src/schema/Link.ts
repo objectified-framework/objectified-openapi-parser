@@ -22,6 +22,12 @@ export class Link {
     this._server = new Server();
   }
 
+  public parse(segment: any): Link {
+    const obj = new Link();
+
+    return obj;
+  }
+
   public getOperationRef = (): string => this._operationRef;
   public getOperationId = (): string => this._operationId;
   public getParameters = (): ParametersMap => this._parameters;

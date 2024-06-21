@@ -18,6 +18,12 @@ export class MediaType {
     this._encoding = {};
   }
 
+  public parse(segment: any): MediaType {
+    const obj = new MediaType();
+
+    return obj;
+  }
+
   public getSchema = (): Schema => this._schema;
   public getExample = (): any => this._example;
   public getExamples = (): ExampleOrReferenceMap => this._examples;

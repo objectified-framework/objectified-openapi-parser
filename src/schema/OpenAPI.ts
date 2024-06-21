@@ -29,6 +29,12 @@ export class OpenAPI {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  public parse(segment: any): OpenAPI {
+    const obj = new OpenAPI();
+
+    return obj;
+  }
+
   public getOpenApi = (): string => this._openapi;
   public getInfo = (): Info => this._info;
   public getJsonSchemaDialect = (): string => this._jsonSchemaDialect;

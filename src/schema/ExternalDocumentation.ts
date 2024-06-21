@@ -5,6 +5,12 @@ export class ExternalDocumentation {
 
   constructor() {}
 
+  public parse(segment: any): ExternalDocumentation {
+    const obj = new ExternalDocumentation();
+
+    return obj;
+  }
+
   public getDescription = (): string => this._description;
   public getUrl = (): string => this._url;
 

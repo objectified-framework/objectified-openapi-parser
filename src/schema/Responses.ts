@@ -11,6 +11,12 @@ export class Responses {
     this._response = null;
   }
 
+  public parse(segment: any): Responses {
+    const obj = new Responses();
+
+    return obj;
+  }
+
   public getDefault = (): Response | Reference => this._default;
   public getStatusCode = (): string => this._statusCode;
   public getResponse = (): Response | Reference => this._response;

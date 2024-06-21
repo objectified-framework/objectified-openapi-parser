@@ -13,6 +13,12 @@ export class Callback {
     this._value = null;
   }
 
+  public parse(segment: any): Callback {
+    const obj = new Callback();
+
+    return obj;
+  }
+
   public getExpression = (): string => this._expression;
   public getValue = (): PathItem | Reference => this._value;
 

@@ -19,6 +19,12 @@ export class SecurityScheme {
     this._flows = new OAuthFlows();
   }
 
+  public parse(segment: any): SecurityScheme {
+    const obj = new SecurityScheme();
+
+    return obj;
+  }
+
   public getType = (): string => this._type;
   public getDescription = (): string => this._description;
   public getName = (): string => this._name;

@@ -7,6 +7,12 @@ export class Example {
 
   constructor() {}
 
+  public parse(segment: any): Example {
+    const obj = new Example();
+
+    return obj;
+  }
+
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;
   public getValue = (): any => this._value;

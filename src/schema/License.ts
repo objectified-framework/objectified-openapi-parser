@@ -6,6 +6,12 @@ export class License {
 
   constructor() {}
 
+  public parse(segment: any): License {
+    const obj = new License();
+
+    return obj;
+  }
+
   public getName = (): string => this._name;
   public getIdentifier = (): string => this._identifier;
   public getUrl = (): string => this._url;

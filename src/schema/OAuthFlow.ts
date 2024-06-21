@@ -14,6 +14,12 @@ export class OAuthFlow {
     this._scopes = {};
   }
 
+  public parse(segment: any): OAuthFlow {
+    const obj = new OAuthFlow();
+
+    return obj;
+  }
+
   public getAuthorizationUrl = (): string => this._authorizationUrl;
   public getTokenUrl = (): string => this._tokenUrl;
   public getRefreshUrl = (): string => this._refreshUrl;
