@@ -1,4 +1,5 @@
 import { Components, ExternalDocumentation, Info, PathItem, Paths, Reference, SecurityRequirement, Server, Tag } from '.';
+import { ParsingError } from '../ParsingError';
 
 // Covers 4.8.1.1
 export type WebHooksMap = {
@@ -6,6 +7,9 @@ export type WebHooksMap = {
 };
 
 // Covers 4.8.1.1
+//
+// This is the top level parsing structure.  Any OpenAPI specs should be passed to the `parse` function in this
+// class, as it is from where parsing starts.
 export class OpenAPI {
   private _openapi: string; // Required
   private _info: Info; // Required
@@ -32,7 +36,22 @@ export class OpenAPI {
   public parse(segment: any): OpenAPI {
     const obj = new OpenAPI();
 
+    if (!segment['openapi']) {
+      throw new ParsingError('OpenAPI spec is missing top-level "openapi" version');
+    }
+
+    if (!segment['info']) {
+      throw new ParsingError('OpenAPI spec is missing top-level "info" definition');
+    }
+
+    this.setOpenApi(segment['openapi']);
+    this.setInfo(segment['info']);
+
     return obj;
+  }
+
+  toString(): string {
+    return `[OpenAPI]: _openapi=${this._openapi} _info=${this._info}`;
   }
 
   public getOpenApi = (): string => this._openapi;
