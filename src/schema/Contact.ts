@@ -9,6 +9,10 @@ export class Contact {
   public parse(segment: any): Contact {
     const obj = new Contact();
 
+    this.setName(segment['name'] ?? null);
+    this.setUrl(segment['url'] ?? null);
+    this.setEmail(segment['email'] ?? null);
+
     return obj;
   }
 
@@ -19,4 +23,8 @@ export class Contact {
   public setName = (name: string) => (this._name = name);
   public setUrl = (url: string) => (this._url = url);
   public setEmail = (email: string) => (this._email = email);
+
+  toString() {
+    return `[Contact]: _name=${this._name} _url=${this._url} _email=${this._email}`;
+  }
 }
