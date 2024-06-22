@@ -23,7 +23,7 @@ export class Operation {
     this._servers = [];
   }
 
-  public parse(segment: any): Operation {
+  public static parse(segment: any): Operation {
     const obj = new Operation();
 
     obj.setTags(segment['tags'] ?? null);

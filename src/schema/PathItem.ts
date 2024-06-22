@@ -18,7 +18,7 @@ export class PathItem {
   private _patch: Operation;
   private _trace: Operation;
   private _servers: Server[];
-  private _parameters: Parameter[] | Reference[];
+  private _parameters: Parameter[] & Reference[];
 
   constructor() {
     this._get = new Operation();
@@ -36,6 +36,32 @@ export class PathItem {
   public static parse(segment: any): PathItem {
     const obj = new PathItem();
 
+    obj.setRef(segment['$ref'] ?? null);
+    obj.setSummary(segment['summary'] ?? null);
+    obj.setDescription(segment['description'] ?? null);
+    obj.setGet(segment['get'] ? Operation.parse(segment['get']) : null);
+    obj.setPut(segment['put'] ? Operation.parse(segment['put']) : null);
+    obj.setPost(segment['post'] ? Operation.parse(segment['post']) : null);
+    obj.setDelete(segment['delete'] ? Operation.parse(segment['delete']) : null);
+    obj.setOptions(segment['options'] ? Operation.parse(segment['options']) : null);
+    obj.setHead(segment['head'] ? Operation.parse(segment['head']) : null);
+    obj.setPatch(segment['patch'] ? Operation.parse(segment['patch']) : null);
+    obj.setTrace(segment['trace'] ? Operation.parse(segment['trace']) : null);
+
+    if (segment['servers']) {
+      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+    }
+
+    if (segment['parameters']) {
+      segment['parameters'].forEach((value) => {
+        if (Reference.isReference(value)) {
+          obj.getParameters().push(Reference.parse(value));
+        } else {
+          obj.getParameters().push(Parameter.parse(value));
+        }
+      });
+    }
+
     return obj;
   }
 
@@ -51,7 +77,7 @@ export class PathItem {
   public getPatch = (): Operation => this._patch;
   public getTrace = (): Operation => this._trace;
   public getServers = (): Server[] => this._servers;
-  public getParameters = (): Parameter[] | Reference[] => this._parameters;
+  public getParameters = (): Parameter[] & Reference[] => this._parameters;
 
   public setRef = (ref: string) => (this._ref = ref);
   public setSummary = (summary: string) => (this._summary = summary);
@@ -65,5 +91,13 @@ export class PathItem {
   public setPatch = (op: Operation) => (this._patch = op);
   public setTrace = (op: Operation) => (this._trace = op);
   public setServers = (servers: Server[]) => (this._servers = servers);
-  public setParameters = (parameters: Parameter[] | Reference[]) => (this._parameters = parameters);
+  public setParameters = (parameters: Parameter[] & Reference[]) => (this._parameters = parameters);
+
+  toString() {
+    return (
+      `[PathItem] _ref=${this._ref} _summary=${this._summary} _description=${this._description} _get=${this._get} ` +
+      `_put=${this._put} _post=${this._post} _delete=${this._delete} _options=${this._options} _head=${this._head} ` +
+      `_patch=${this._patch} _trace=${this._trace} _servers=${this._servers} _parameters=${this._parameters}`
+    );
+  }
 }
