@@ -22,6 +22,8 @@ export class Reference {
     return obj;
   }
 
+  public static isReference = (segment: any): boolean => segment['$ref'] != null;
+
   public getRef = (): string => this._ref;
   public getSummary = (): string => this._summary;
   public getDescription = (): string => this._description;
