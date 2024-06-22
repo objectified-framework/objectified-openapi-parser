@@ -1,4 +1,5 @@
-import { Header, Link, MediaTypeMap, Reference } from '.';
+import { Header, Link, MediaType, MediaTypeMap, Reference } from '.';
+import { ParsingError } from '../ParsingError';
 
 export type ResponseHeaderMap = {
   [key in string]: Header | Reference;
@@ -25,8 +26,30 @@ export class Response {
     this._links = {};
   }
 
-  public parse(segment: any): Response {
+  public static parse(segment: any): Response {
     const obj = new Response();
+
+    if (!segment['description']) {
+      throw new ParsingError('Response segment is missing required "description"');
+    }
+
+    obj.setDescription(segment['description']);
+    segment['headers'].forEach((value, key) => {
+      if (value.contains('$ref')) {
+        obj.getHeaders()[key] = Reference.parse(value);
+      } else {
+        obj.getHeaders()[key] = Header.parse(value);
+      }
+    });
+
+    segment['content'].forEach((value, key) => (obj.getContent()[key] = MediaType.parse(value)));
+    segment['links'].forEach((value, key) => {
+      if (value.contains('$ref')) {
+        obj.getLinks()[key] = Reference.parse(value);
+      } else {
+        obj.getLinks()[key] = Link.parse(value);
+      }
+    });
 
     return obj;
   }
@@ -40,4 +63,8 @@ export class Response {
   public setHeaders = (headers: ResponseHeaderMap) => (this._headers = headers);
   public setContent = (content: MediaTypeMap) => (this._content = content);
   public setLinks = (links: ResponseLinkMap) => (this._links = links);
+
+  toString() {
+    return `[Response] _description=${this._description} _headers=${this._headers} _content=${this._content} ` + `_links=${this._links}`;
+  }
 }

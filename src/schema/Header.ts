@@ -27,7 +27,7 @@ export class Header {
     this._content = {};
   }
 
-  public parse(segment: any): Header {
+  public static parse(segment: any): Header {
     const obj = new Header();
 
     return obj;

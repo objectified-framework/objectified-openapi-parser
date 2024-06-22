@@ -6,7 +6,7 @@ export class Reference {
 
   constructor() {}
 
-  public parse(segment: any): Reference {
+  public static parse(segment: any): Reference {
     const obj = new Reference();
 
     return obj;

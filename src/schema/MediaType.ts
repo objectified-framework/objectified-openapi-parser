@@ -18,7 +18,7 @@ export class MediaType {
     this._encoding = {};
   }
 
-  public parse(segment: any): MediaType {
+  public static parse(segment: any): MediaType {
     const obj = new MediaType();
 
     return obj;
