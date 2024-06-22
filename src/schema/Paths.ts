@@ -13,7 +13,7 @@ export class Paths {
     this._paths = {};
   }
 
-  public parse(segment: any): Paths {
+  public static parse(segment: any): Paths {
     const obj = new Paths();
 
     segment.forEach((value, key) => (obj.getPaths()[key] = PathItem.parse(value)));

@@ -33,7 +33,7 @@ export class OpenAPI {
     this._externalDocs = new ExternalDocumentation();
   }
 
-  public parse(segment: any): OpenAPI {
+  public static parse(segment: any): OpenAPI {
     const obj = new OpenAPI();
 
     if (!segment['openapi']) {
@@ -44,14 +44,45 @@ export class OpenAPI {
       throw new ParsingError('OpenAPI spec is missing top-level "info" definition');
     }
 
-    this.setOpenApi(segment['openapi']);
-    this.setInfo(segment['info']);
+    obj.setOpenApi(segment['openapi']);
+    obj.setInfo(segment['info']);
+    obj.setJsonSchemaDialect(segment['jsonSchemaDialect'] ?? false);
+
+    if (segment['servers']) {
+      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+    }
+
+    if (segment['paths']) {
+      obj.setPaths(Paths.parse(segment['paths']));
+    }
+
+    if (segment['webhooks']) {
+      segment['webhooks'].forEach((value, key) => {
+        if (Reference.isReference(value)) {
+          obj.getWebhooks()[key] = Reference.parse(value);
+        } else {
+          obj.getWebhooks()[key] = PathItem.parse(value);
+        }
+      });
+    }
+
+    if (segment['components']) {
+      obj.setComponents(Components.parse(segment['components']));
+    }
+
+    if (segment['security']) {
+      segment['security'].forEach((value) => obj.getSecurity().push(SecurityRequirement.parse(value)));
+    }
+
+    if (segment['tags']) {
+      segment['tags'].forEach((value) => obj.getTags().push(Tag.parse(value)));
+    }
+
+    if (segment['externalDocs']) {
+      obj.setExternalDocs(ExternalDocumentation.parse(segment['externalDocs']));
+    }
 
     return obj;
-  }
-
-  toString(): string {
-    return `[OpenAPI]: _openapi=${this._openapi} _info=${this._info}`;
   }
 
   public getOpenApi = (): string => this._openapi;
@@ -75,4 +106,12 @@ export class OpenAPI {
   public setSecurity = (security: SecurityRequirement[]) => (this._security = security);
   public setTags = (tags: Tag[]) => (this._tags = tags);
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
+
+  toString(): string {
+    return (
+      `[OpenAPI]: _openapi=${this._openapi} _info=${this._info} _jsonSchemaDialect=${this._jsonSchemaDialect} ` +
+      `_servers=${this._servers} _paths=${this._paths} _webhooks=${this._webhooks} _components=${this._components} ` +
+      `_security=${this._security} _tags=${this._tags} _externalDocs=${this._externalDocs}`
+    );
+  }
 }

@@ -11,7 +11,7 @@ export class Tag {
     this._externalDocs = new ExternalDocumentation();
   }
 
-  public parse(segment: any): Tag {
+  public static parse(segment: any): Tag {
     const obj = new Tag();
 
     if (!segment['name']) {

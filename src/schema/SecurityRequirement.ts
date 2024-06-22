@@ -7,7 +7,7 @@ export class SecurityRequirement {
     this._declarations = [];
   }
 
-  public parse(segment: any): SecurityRequirement {
+  public static parse(segment: any): SecurityRequirement {
     const obj = new SecurityRequirement();
 
     const key = Object.keys(segment)[0];

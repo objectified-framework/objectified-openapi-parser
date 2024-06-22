@@ -37,7 +37,7 @@ export class Components {
     this._pathItems = {};
   }
 
-  public parse(segment: any): Components {
+  public static parse(segment: any): Components {
     const obj = new Components();
 
     return obj;
