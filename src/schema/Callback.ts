@@ -15,6 +15,16 @@ export class Callback {
 
   public static parse(segment: any): Callback {
     const obj = new Callback();
+    const key = Object.keys(segment)[0];
+    const value = segment[key];
+
+    obj.setExpression(key);
+
+    if (Reference.isReference(value)) {
+      obj.setValue(Reference.parse(value));
+    } else {
+      obj.setValue(PathItem.parse(value));
+    }
 
     return obj;
   }
@@ -24,4 +34,8 @@ export class Callback {
 
   public setExpression = (expression: string) => (this._expression = expression);
   public setValue = (value: PathItem | Reference) => (this._value = value);
+
+  toString() {
+    return `[Callback] _expression=${this._expression} _value=${this._value}`;
+  }
 }
