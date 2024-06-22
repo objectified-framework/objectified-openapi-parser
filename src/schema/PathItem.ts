@@ -33,7 +33,7 @@ export class PathItem {
     this._parameters = [];
   }
 
-  public parse(segment: any): PathItem {
+  public static parse(segment: any): PathItem {
     const obj = new PathItem();
 
     return obj;
