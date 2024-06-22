@@ -1,4 +1,4 @@
-import { EncodingMap, ExampleOrReferenceMap, Schema } from '.';
+import { Encoding, EncodingMap, Example, ExampleOrReferenceMap, Reference, Schema } from '.';
 
 // Covers 4.8.14.1
 export type MediaTypeMap = {
@@ -21,6 +21,26 @@ export class MediaType {
   public static parse(segment: any): MediaType {
     const obj = new MediaType();
 
+    if (segment['schema']) {
+      obj.setSchema(Schema.parse(segment['schema']));
+    }
+
+    obj.setExample(segment['example'] ?? null);
+
+    if (segment['examples']) {
+      segment['examples'].forEach((value, key) => {
+        if (value.contains('$ref')) {
+          obj.getExamples()[key] = Reference.parse(value);
+        } else {
+          obj.getExamples()[key] = Example.parse(value);
+        }
+      });
+    }
+
+    if (segment['encoding']) {
+      segment['encoding'].forEach((value, key) => (obj.getEncoding()[key] = Encoding.parse(value)));
+    }
+
     return obj;
   }
 
@@ -33,4 +53,8 @@ export class MediaType {
   public setExample = (example: any) => (this._example = example);
   public setExamples = (examples: ExampleOrReferenceMap) => (this._examples = examples);
   public setEncoding = (encoding: EncodingMap) => (this._encoding = encoding);
+
+  toString() {
+    return `[MediaType] _schema=${this._schema} _example=${this._example} _examples=${this._examples} _encoding=${this._encoding}`;
+  }
 }

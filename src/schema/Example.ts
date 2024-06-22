@@ -7,7 +7,7 @@ export class Example {
 
   constructor() {}
 
-  public parse(segment: any): Example {
+  public static parse(segment: any): Example {
     const obj = new Example();
 
     obj.setSummary(segment['summary'] ?? null);

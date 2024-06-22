@@ -21,7 +21,7 @@ export class Encoding {
     this._headers = {};
   }
 
-  public parse(segment: any): Encoding {
+  public static parse(segment: any): Encoding {
     const obj = new Encoding();
 
     return obj;

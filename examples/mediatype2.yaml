@@ -1,0 +1,4 @@
+schema:
+  type: string
+  contentMediaType: image/png
+  contentEncoding: base64

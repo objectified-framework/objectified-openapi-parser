@@ -18,7 +18,7 @@ export class Schema {
     this._externalDocs = new ExternalDocumentation();
   }
 
-  public parse(segment: any): Schema {
+  public static parse(segment: any): Schema {
     const obj = new Schema();
 
     return obj;
