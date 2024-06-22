@@ -1,14 +1,17 @@
 import { Reference, Response } from '.';
 
+export type ResponsesOrReferenceMap = {
+  [key in string]: Response | Reference;
+};
+
 // Covers 4.8.16.1
 export class Responses {
   private _default: Response | Reference;
-  private _statusCode: string;
-  private _response: Response | Reference;
+  private _responses: ResponsesOrReferenceMap;
 
   constructor() {
     this._default = null;
-    this._response = null;
+    this._responses = {};
   }
 
   public static parse(segment: any): Responses {
@@ -20,31 +23,30 @@ export class Responses {
       } else {
         obj.setDefault(Response.parse(segment['default']));
       }
-    } else {
-      const key = Object.keys(segment)[0];
-      const value = segment[key];
-
-      obj.setStatusCode(key);
-
-      if (Reference.isReference(value)) {
-        obj.setResponse(Reference.parse(value));
-      } else {
-        obj.setResponse(Response.parse(value));
-      }
     }
+
+    const map: any = new Map(segment);
+
+    map['default'] = null;
+
+    map.forEach((value, key) => {
+      if (Reference.isReference(value)) {
+        obj.getResponses()[key] = Reference.parse(value);
+      } else {
+        obj.getResponses()[key] = Response.parse(value);
+      }
+    });
 
     return obj;
   }
 
   public getDefault = (): Response | Reference => this._default;
-  public getStatusCode = (): string => this._statusCode;
-  public getResponse = (): Response | Reference => this._response;
+  public getResponses = (): ResponsesOrReferenceMap => this._responses;
 
   public setDefault = (_default: Response | Reference) => (this._default = _default);
-  public setStatusCode = (statusCode: string) => (this._statusCode = statusCode);
-  public setResponse = (response: Response | Reference) => (this._response = response);
+  public setResponses = (responses: ResponsesOrReferenceMap) => (this._responses = responses);
 
   toString() {
-    return `[Responses] _default=${this._default} statusCode=${this._statusCode} _response=${this._response}`;
+    return `[Responses] _default=${this._default} _responses=${this._responses}`;
   }
 }
