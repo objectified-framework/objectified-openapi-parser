@@ -13,7 +13,7 @@ export class Callback {
     this._value = null;
   }
 
-  public parse(segment: any): Callback {
+  public static parse(segment: any): Callback {
     const obj = new Callback();
 
     return obj;

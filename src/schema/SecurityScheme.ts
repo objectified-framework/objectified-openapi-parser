@@ -20,7 +20,7 @@ export class SecurityScheme {
     this._flows = new OAuthFlows();
   }
 
-  public parse(segment: any): SecurityScheme {
+  public static parse(segment: any): SecurityScheme {
     const obj = new SecurityScheme();
 
     if (!segment['type']) {
