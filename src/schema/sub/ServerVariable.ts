@@ -1,5 +1,5 @@
 // Covers 4.8.6.1
-import { ParsingError } from '../ParsingError';
+import { ParsingError } from '../../ParsingError';
 
 export class ServerVariable {
   private _enum: string[];

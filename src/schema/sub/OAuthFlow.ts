@@ -1,5 +1,5 @@
 // Covers 4.8.29.1
-import { ParsingError } from '../ParsingError';
+import { ParsingError } from '../../ParsingError';
 
 export type OAuthFlowHash = {
   [key in string]: string;

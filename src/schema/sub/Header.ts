@@ -1,5 +1,5 @@
-import { Schema } from './Schema';
-import { MediaType, MediaTypeMap } from './MediaType';
+import { Schema } from '../Schema';
+import { MediaType, MediaTypeMap } from '../MediaType';
 import { ExampleOrReferenceMap } from './Parameter';
 import { Reference } from './Reference';
 import { Example } from './Example';
