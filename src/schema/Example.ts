@@ -10,6 +10,11 @@ export class Example {
   public parse(segment: any): Example {
     const obj = new Example();
 
+    obj.setSummary(segment['summary'] ?? null);
+    obj.setDescription(segment['description'] ?? null);
+    obj.setValue(segment['value'] ?? null);
+    obj.setExternalValue(segment['externalValue'] ?? null);
+
     return obj;
   }
 
@@ -22,4 +27,8 @@ export class Example {
   public setDescription = (description: string) => (this._description = description);
   public setValue = (value: any) => (this._value = value);
   public setExternalValue = (externalValue: string) => (this._externalValue = externalValue);
+
+  toString() {
+    return `[Example]: _summary=${this._summary} _description=${this._description} _value=${JSON.stringify(this._value)} _externalValue=${this._externalValue}`;
+  }
 }
