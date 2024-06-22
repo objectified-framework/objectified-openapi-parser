@@ -11,6 +11,12 @@ export class XML {
   public static parse(segment: any): XML {
     const obj = new XML();
 
+    obj.setName(segment['name'] ?? null);
+    obj.setNamespace(segment['namespace'] ?? null);
+    obj.setPrefix(segment['prefix'] ?? null);
+    obj.setAttribute(segment['attribute'] ?? false);
+    obj.setWrapped(segment['wrapped'] ?? false);
+
     return obj;
   }
 
@@ -25,4 +31,8 @@ export class XML {
   public setPrefix = (prefix: string) => (this._prefix = prefix);
   public setAttribute = (attribute: boolean) => (this._attribute = attribute);
   public setWrapped = (wrapped: boolean) => (this._wrapped = wrapped);
+
+  toString() {
+    return `[XML] _name=${this._name} _namespace=${this._namespace} _prefix=${this._prefix} _attribute=${this._attribute} _wrapped=${this._wrapped}`;
+  }
 }
