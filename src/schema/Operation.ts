@@ -7,7 +7,7 @@ export class Operation {
   private _description: string;
   private _externalDocs: ExternalDocumentation;
   private _operationId: string;
-  private _parameters: Parameter[] | Reference[];
+  private _parameters: Parameter[] & Reference[];
   private _requestBody: RequestBody | Reference;
   private _responses: Responses;
   private _deprecated: boolean;
@@ -26,6 +26,50 @@ export class Operation {
   public parse(segment: any): Operation {
     const obj = new Operation();
 
+    obj.setTags(segment['tags'] ?? null);
+    obj.setSummary(segment['summary'] ?? null);
+    obj.setDescription(segment['description'] ?? null);
+
+    if (segment['externalDocs']) {
+      obj.setExternalDocs(ExternalDocumentation.parse(segment['externalDocs']));
+    }
+
+    obj.setOperationId(segment['operationId'] ?? null);
+
+    if (segment['parameters']) {
+      segment['parameters'].forEach((value) => {
+        if (Reference.isReference(value)) {
+          obj.getParameters().push(Reference.parse(value));
+        } else {
+          obj.getParameters().push(Parameter.parse(value));
+        }
+      });
+    }
+
+    if (segment['requestBody']) {
+      segment['requestBody'].forEach((value) => {
+        if (Reference.isReference(value)) {
+          obj.setRequestBody(Reference.parse(value));
+        } else {
+          obj.setRequestBody(RequestBody.parse(value));
+        }
+      });
+    }
+
+    if (segment['responses']) {
+      obj.setResponses(Responses.parse(segment['responses']));
+    }
+
+    obj.setDeprecated(segment['deprecated'] ?? false);
+
+    if (segment['security']) {
+      segment['security'].forEach((value) => obj.getSecurity().push(SecurityRequirement.parse(value)));
+    }
+
+    if (segment['servers']) {
+      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+    }
+
     return obj;
   }
 
@@ -34,7 +78,7 @@ export class Operation {
   public getDescription = (): string => this._description;
   public getExternalDocs = (): ExternalDocumentation => this._externalDocs;
   public getOperationId = (): string => this._operationId;
-  public getParameters = (): Parameter[] | Reference[] => this._parameters;
+  public getParameters = (): Parameter[] & Reference[] => this._parameters;
   public getRequestBody = (): RequestBody | Reference => this._requestBody;
   public getResponses = (): Responses => this._responses;
   public isDeprecated = (): boolean => this._deprecated;
@@ -46,9 +90,10 @@ export class Operation {
   public setDescription = (description: string) => (this._description = description);
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
   public setOperationId = (operationId: string) => (this._operationId = operationId);
-  public setParameters = (parameters: Parameter[] | Reference[]) => (this._parameters = parameters);
+  public setParameters = (parameters: Parameter[] & Reference[]) => (this._parameters = parameters);
   public setRequestBody = (requestBody: RequestBody | Reference) => (this._requestBody = requestBody);
   public setResponses = (responses: Responses) => (this._responses = responses);
+  public setDeprecated = (deprecated: boolean) => (this._deprecated = deprecated);
   public setSecurity = (security: SecurityRequirement[]) => (this._security = security);
   public setServers = (servers: Server[]) => (this._servers = servers);
 }

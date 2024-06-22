@@ -11,7 +11,7 @@ export class Responses {
     this._response = null;
   }
 
-  public parse(segment: any): Responses {
+  public static parse(segment: any): Responses {
     const obj = new Responses();
 
     if (segment['default']) {

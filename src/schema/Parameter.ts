@@ -31,7 +31,7 @@ export class Parameter {
     this._content = {};
   }
 
-  public parse(segment: any): Parameter {
+  public static parse(segment: any): Parameter {
     const obj = new Parameter();
 
     return obj;

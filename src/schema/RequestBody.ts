@@ -15,7 +15,7 @@ export class RequestBody {
     this._content = {};
   }
 
-  public parse(segment: any): RequestBody {
+  public static parse(segment: any): RequestBody {
     const obj = new RequestBody();
 
     if (!segment['content']) {
