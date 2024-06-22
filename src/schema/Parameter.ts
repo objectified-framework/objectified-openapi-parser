@@ -103,4 +103,13 @@ export class Parameter {
   public setExample = (example: any) => (this._example = example);
   public setExamples = (examples: ExampleOrReferenceMap) => (this._examples = examples);
   public setContent = (content: MediaTypeMap) => (this._content = content);
+
+  toString() {
+    return (
+      `[Parameter] _name=${this._name} _in=${this._in} _description=${this._description} _required=${this._required} ` +
+      `_deprecated=${this._deprecated} _allowEmptyValue=${this._allowEmptyValue} _style=${this._style} _explode=${this._explode} ` +
+      `_allowReserved=${this._allowReserved} _schema=${this._schema} _example=${this._example} _examples=${this._examples} ` +
+      `_content=${this._content}`
+    );
+  }
 }
