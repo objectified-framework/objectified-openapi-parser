@@ -24,4 +24,8 @@ export class Paths {
   public getPaths = (): PathMap => this._paths;
 
   public setPaths = (paths: PathMap) => (this._paths = paths);
+
+  toString() {
+    return `[Paths] _paths=${this._paths}`;
+  }
 }
