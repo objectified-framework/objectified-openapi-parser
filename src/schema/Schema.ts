@@ -60,4 +60,8 @@ export class Schema {
   public setXml = (xml: XML) => (this._xml = xml);
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
   public setExample = (example: any) => (this._example = example);
+
+  toString() {
+    return `[Schema] _schema=${JSON.stringify(this._schema)} _discriminator=${this._discriminator} _xml=${this._xml} _externalDocs=${this._externalDocs} _example=${this._example}`;
+  }
 }
