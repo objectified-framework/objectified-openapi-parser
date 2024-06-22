@@ -8,7 +8,7 @@ export class ServerVariable {
     this._enum = [];
   }
 
-  public parse(segment: any): ServerVariable {
+  public static parse(segment: any): ServerVariable {
     const obj = new ServerVariable();
 
     return obj;
