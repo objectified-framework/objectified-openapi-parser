@@ -1,7 +1,8 @@
 import { Schema } from './Schema';
-import { MediaTypeMap } from './MediaType';
+import { MediaType, MediaTypeMap } from './MediaType';
 import { ExampleOrReferenceMap } from './Parameter';
 import { Reference } from './Reference';
+import { Example } from './Example';
 
 export type HeaderOrReferenceMap = {
   [key in string]: Header | Reference;
@@ -30,6 +31,33 @@ export class Header {
   public static parse(segment: any): Header {
     const obj = new Header();
 
+    obj.setDescription(segment['description'] ?? null);
+    obj.setRequired(segment['required'] ?? false);
+    obj.setDeprecated(segment['deprecated'] ?? false);
+    obj.setStyle(segment['style'] ?? null);
+    obj.setExplode(segment['explode'] ?? false);
+    obj.setAllowReserved(segment['allowReserved'] ?? false);
+
+    if (segment['schema']) {
+      obj.setSchema(Schema.parse(segment['schema']));
+    }
+
+    obj.setExample(segment['example'] ?? null);
+
+    if (segment['examples']) {
+      segment['examples'].forEach((value, key) => {
+        if (Reference.isReference(value)) {
+          obj.getExamples()[key] = Reference.parse(value);
+        } else {
+          obj.getExamples()[key] = Example.parse(value);
+        }
+      });
+    }
+
+    if (segment['content']) {
+      segment['content'].forEach((value, key) => (obj.getContent()[key] = MediaType.parse(value)));
+    }
+
     return obj;
   }
 
@@ -56,4 +84,13 @@ export class Header {
   public setExample = (example: any) => (this._example = example);
   public setExamples = (examples: ExampleOrReferenceMap) => (this._examples = examples);
   public setContent = (content: MediaTypeMap) => (this._content = content);
+
+  toString() {
+    return (
+      `[Header] _description=${this._description} _required=${this._required} ` +
+      `_deprecated=${this._deprecated} _allowEmptyValue=${this._allowEmptyValue} _style=${this._style} _explode=${this._explode} ` +
+      `_allowReserved=${this._allowReserved} _schema=${this._schema} _example=${this._example} _examples=${this._examples} ` +
+      `_content=${this._content}`
+    );
+  }
 }
