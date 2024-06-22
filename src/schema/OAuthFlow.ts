@@ -1,4 +1,6 @@
 // Covers 4.8.29.1
+import { ParsingError } from '../ParsingError';
+
 export type OAuthFlowHash = {
   [key in string]: string;
 };
@@ -17,6 +19,23 @@ export class OAuthFlow {
   public parse(segment: any): OAuthFlow {
     const obj = new OAuthFlow();
 
+    if (!segment['authorizationUrl']) {
+      throw new ParsingError('OAuthFlow segment is missing required "authorizationUrl"');
+    }
+
+    if (!segment['tokenUrl']) {
+      throw new ParsingError('OAuthFlow segment is missing required "tokenUrl"');
+    }
+
+    if (!segment['scopes']) {
+      throw new ParsingError('OAuthFlow segment is missing required "scopes"');
+    }
+
+    obj.setAuthorizationUrl(segment['authorizationUrl']);
+    obj.setTokenUrl(segment['tokenUrl']);
+    obj.setRefreshUrl(segment['refreshUrl']);
+    segment['scopes'].forEach((value, key) => (obj.getScopes()[key] = value));
+
     return obj;
   }
 
@@ -29,4 +48,8 @@ export class OAuthFlow {
   public setTokenUrl = (tokenUrl: string) => (this._tokenUrl = tokenUrl);
   public setRefreshUrl = (refreshUrl: string) => (this._refreshUrl = refreshUrl);
   public setScopes = (scopes: OAuthFlowHash) => (this._scopes = scopes);
+
+  toString() {
+    return `[OAuthFlow] _authorizationUrl=${this._authorizationUrl} _tokenUrl=${this._tokenUrl} _refreshUrl=${this._refreshUrl} _scopes=${this._scopes}`;
+  }
 }
