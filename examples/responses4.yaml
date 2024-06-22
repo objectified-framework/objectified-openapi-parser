@@ -1,0 +1,17 @@
+'200':
+  description: the user being returned
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          uuid: # the unique user id
+            type: string
+            format: uuid
+  links:
+    address:
+      # the target link operationId
+      operationId: getUserAddress
+      parameters:
+        # get the `id` field from the request path parameter named `id`
+        userId: $request.path.id
