@@ -24,6 +24,19 @@ export class Encoding {
   public static parse(segment: any): Encoding {
     const obj = new Encoding();
 
+    obj.setContentType(segment['contentType'] ?? null);
+    obj.setStyle(segment['style'] ?? null);
+    obj.setExplode(segment['explode'] ?? false);
+    obj.setAllowReserved(segment['allowReserved'] ?? false);
+
+    segment['headers'].forEach((value, key) => {
+      if (value.contains('$ref')) {
+        obj.getHeaders()[key] = Reference.parse(value);
+      } else {
+        obj.getHeaders()[key] = Header.parse(value);
+      }
+    });
+
     return obj;
   }
 
@@ -38,4 +51,8 @@ export class Encoding {
   public setStyle = (style: string) => (this._style = style);
   public setExplode = (explode: boolean) => (this._explode = explode);
   public setAllowReserved = (allowReserved: boolean) => (this._allowReserved = allowReserved);
+
+  toString() {
+    return `[Encoding] _contentType=${this._contentType} _headers=${this._headers} _style=${this._style} _explode=${this._explode} _allowReserved=${this._allowReserved}`;
+  }
 }
