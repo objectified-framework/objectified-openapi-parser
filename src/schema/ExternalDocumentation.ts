@@ -5,7 +5,7 @@ export class ExternalDocumentation {
 
   constructor() {}
 
-  public parse(segment: any): ExternalDocumentation {
+  public static parse(segment: any): ExternalDocumentation {
     const obj = new ExternalDocumentation();
 
     return obj;
