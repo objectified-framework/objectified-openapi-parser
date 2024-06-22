@@ -1,4 +1,6 @@
 // Covers 4.8.11.1
+import { ParsingError } from '../ParsingError';
+
 export class ExternalDocumentation {
   private _description: string;
   private _url: string; // Required
@@ -8,6 +10,13 @@ export class ExternalDocumentation {
   public static parse(segment: any): ExternalDocumentation {
     const obj = new ExternalDocumentation();
 
+    if (!segment['url']) {
+      throw new ParsingError('ExternalDocs segment is missing required "url"');
+    }
+
+    obj.setDescription(segment['description'] ?? null);
+    obj.setUrl(segment['url']);
+
     return obj;
   }
 
@@ -16,4 +25,8 @@ export class ExternalDocumentation {
 
   public setDescription = (description: string) => (this._description = description);
   public setUrl = (url: string) => (this._url = url);
+
+  toString() {
+    return `[ExternalDocumentation] _description=${this._description} url=${this._url}`;
+  }
 }
