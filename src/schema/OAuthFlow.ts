@@ -16,7 +16,7 @@ export class OAuthFlow {
     this._scopes = {};
   }
 
-  public parse(segment: any): OAuthFlow {
+  public static parse(segment: any): OAuthFlow {
     const obj = new OAuthFlow();
 
     if (!segment['authorizationUrl']) {

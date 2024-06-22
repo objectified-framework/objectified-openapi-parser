@@ -17,6 +17,22 @@ export class OAuthFlows {
   public static parse(segment: any): OAuthFlows {
     const obj = new OAuthFlows();
 
+    if (segment['implicit']) {
+      obj.setImplicit(OAuthFlow.parse(segment['implicit']));
+    }
+
+    if (segment['password']) {
+      obj.setPassword(OAuthFlow.parse(segment['password']));
+    }
+
+    if (segment['clientCredentials']) {
+      obj.setClientCredentials(OAuthFlow.parse(segment['clientCredentials']));
+    }
+
+    if (segment['authorizationCode']) {
+      obj.setAuthorizationCode(OAuthFlow.parse(segment['authorizationCode']));
+    }
+
     return obj;
   }
 
@@ -29,4 +45,8 @@ export class OAuthFlows {
   public setPassword = (password: OAuthFlow) => (this._password = password);
   public setClientCredentials = (clientCredentials: OAuthFlow) => (this._clientCredentials = clientCredentials);
   public setAuthorizationCode = (authorizationCode: OAuthFlow) => (this._authorizationCode = authorizationCode);
+
+  toString() {
+    return `[OAuthFlows] _implicit=${this._implicit} _password=${this._password} _clientCredentials=${this._clientCredentials} _authorizationCode=${this._authorizationCode}`;
+  }
 }
