@@ -96,4 +96,13 @@ export class Operation {
   public setDeprecated = (deprecated: boolean) => (this._deprecated = deprecated);
   public setSecurity = (security: SecurityRequirement[]) => (this._security = security);
   public setServers = (servers: Server[]) => (this._servers = servers);
+
+  toString() {
+    return (
+      `[Operation] _tags=${this._tags} _summary=${this._summary} _description=${this._description} ` +
+      `_externalDocs=${this._externalDocs} _operationId=${this._operationId} _parameters=${this._parameters} ` +
+      `_requestBody=${this._requestBody} _responses=${this._responses} _deprecated=${this._deprecated} ` +
+      `_security=${this._security} _servers=${this._servers}`
+    );
+  }
 }
