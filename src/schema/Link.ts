@@ -25,6 +25,20 @@ export class Link {
   public static parse(segment: any): Link {
     const obj = new Link();
 
+    obj.setOperationRef(segment['operationRef'] ?? null);
+    obj.setOperationId(segment['operationId'] ?? null);
+
+    if (segment['parameters']) {
+      segment['parameters'].forEach((value, key) => (obj.getParameters()[key] = value));
+    }
+
+    obj.setRequestBody(segment['requestBody'] ?? null);
+    obj.setDescription(segment['description'] ?? null);
+
+    if (segment['server']) {
+      obj.setServer(Server.parse(segment['server']));
+    }
+
     return obj;
   }
 
@@ -41,4 +55,11 @@ export class Link {
   public setRequestBody = (requestBody: any | string) => (this._requestBody = requestBody);
   public setDescription = (description: string) => (this._description = description);
   public setServer = (server: Server) => (this._server = server);
+
+  toString() {
+    return (
+      `[Link] _operationRef=${this._operationRef} _operationId=${this._operationId} _parameters=${this._parameters} ` +
+      `_requestBody=${this._requestBody} _description=${this._description} _server=${this._server}`
+    );
+  }
 }

@@ -1,0 +1,4 @@
+operationId: getUserAddressByUUID
+parameters:
+  # get the `uuid` field from the `uuid` field in the response body
+  userUuid: $response.body#/uuid

@@ -1,0 +1,5 @@
+# the target link operationId
+operationId: getUserAddress
+parameters:
+  # get the `id` field from the request path parameter named `id`
+  userId: $request.path.id

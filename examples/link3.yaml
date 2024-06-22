@@ -1,0 +1,4 @@
+# returns array of '#/components/schemas/repository'
+operationRef: '#/paths/~12.0~1repositories~1{username}/get'
+parameters:
+  username: $response.body#/username
