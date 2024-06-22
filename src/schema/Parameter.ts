@@ -1,4 +1,5 @@
-import { Example, MediaTypeMap, Reference, Schema } from '.';
+import { Example, MediaType, MediaTypeMap, Reference, Schema } from '.';
+import { ParsingError } from '../ParsingError';
 
 // Covers 4.8.12.2
 export type ExampleOrReferenceMap = {
@@ -33,6 +34,44 @@ export class Parameter {
 
   public static parse(segment: any): Parameter {
     const obj = new Parameter();
+
+    if (!segment['name']) {
+      throw new ParsingError('Parameter segment is missing required "name"');
+    }
+
+    if (!segment['in']) {
+      throw new ParsingError('Parameter segment is missing required "in"');
+    }
+
+    obj.setName(segment['name']);
+    obj.setIn(segment['in']);
+    obj.setDescription(segment['description'] ?? null);
+    obj.setRequired(segment['required'] ?? false);
+    obj.setDeprecated(segment['deprecated'] ?? false);
+    obj.setAllowEmptyValue(segment['_allowEmptyValue'] ?? false);
+    obj.setStyle(segment['style'] ?? null);
+    obj.setExplode(segment['explode'] ?? false);
+    obj.setAllowReserved(segment['allowReserved'] ?? false);
+
+    if (segment['schema']) {
+      obj.setSchema(Schema.parse(segment['schema']));
+    }
+
+    obj.setExample(segment['example']);
+
+    if (segment['examples']) {
+      segment['examples'].forEach((value, key) => {
+        if (Reference.isReference(value)) {
+          obj.getExamples()[key] = Reference.parse(value);
+        } else {
+          obj.getExamples()[key] = Example.parse(value);
+        }
+      });
+    }
+
+    if (segment['content']) {
+      segment['content'].forEach((value, key) => (obj.getContent()[key] = MediaType.parse(value)));
+    }
 
     return obj;
   }
