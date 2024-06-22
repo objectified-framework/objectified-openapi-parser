@@ -14,7 +14,7 @@ export class OAuthFlows {
     this._authorizationCode = new OAuthFlow();
   }
 
-  public parse(segment: any): OAuthFlows {
+  public static parse(segment: any): OAuthFlows {
     const obj = new OAuthFlows();
 
     return obj;

@@ -1,4 +1,5 @@
 import { OAuthFlows, Reference } from '.';
+import { ParsingError } from '../ParsingError';
 
 export type SecuritySchemeOrReferenceMap = {
   [key in string]: SecurityScheme | Reference;
@@ -22,6 +23,39 @@ export class SecurityScheme {
   public parse(segment: any): SecurityScheme {
     const obj = new SecurityScheme();
 
+    if (!segment['type']) {
+      throw new ParsingError('SecurityScheme segment is missing required "type"');
+    }
+
+    if (!segment['name']) {
+      throw new ParsingError('SecurityScheme segment is missing required "name"');
+    }
+
+    if (!segment['in']) {
+      throw new ParsingError('SecurityScheme segment is missing required "in"');
+    }
+
+    if (!segment['scheme']) {
+      throw new ParsingError('SecurityScheme segment is missing required "scheme"');
+    }
+
+    if (!segment['flows']) {
+      throw new ParsingError('SecurityScheme segment is missing required "flows"');
+    }
+
+    if (!segment['openIdConnectUrl']) {
+      throw new ParsingError('SecurityScheme segment is missing required "openIdConnectUrl"');
+    }
+
+    obj.setType(segment['type']);
+    obj.setDescription(segment['description'] ?? null);
+    obj.setName(segment['name']);
+    obj.setIn(segment['in']);
+    obj.setScheme(segment['scheme']);
+    obj.setBearerFormat(segment['bearerFormat'] ?? null);
+    obj.setFlows(OAuthFlows.parse(segment['flows']));
+    obj.setOpenIdConnectUrl(segment['openIdConnectUrl']);
+
     return obj;
   }
 
@@ -42,4 +76,11 @@ export class SecurityScheme {
   public setBearerFormat = (bearerFormat: string) => (this._bearerFormat = bearerFormat);
   public setFlows = (flows: OAuthFlows) => (this._flows = flows);
   public setOpenIdConnectUrl = (openIdConnectUrl: string) => (this._openIdConnectUrl = openIdConnectUrl);
+
+  toString() {
+    return (
+      `[SecurityScheme] _type=${this._type} _description=${this._description} _name=${this._name} _in=${this._in} _scheme=${this._scheme} ` +
+      `_bearerFormat=${this._bearerFormat} _flows=${this._flows} _openIdConnectUrl=${this._openIdConnectUrl}`
+    );
+  }
 }
