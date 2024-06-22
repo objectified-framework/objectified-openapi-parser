@@ -8,7 +8,7 @@ export class XML {
 
   constructor() {}
 
-  public parse(segment: any): XML {
+  public static parse(segment: any): XML {
     const obj = new XML();
 
     return obj;

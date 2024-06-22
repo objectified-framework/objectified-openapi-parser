@@ -1,0 +1,6 @@
+type: object
+required:
+  - rootCause
+properties:
+  rootCause:
+    type: string

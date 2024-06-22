@@ -14,7 +14,7 @@ export class Discriminator {
     this._mapping = {};
   }
 
-  public parse(segment: any): Discriminator {
+  public static parse(segment: any): Discriminator {
     const obj = new Discriminator();
 
     if (!segment['propertyName']) {

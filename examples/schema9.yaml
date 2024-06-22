@@ -1,0 +1,12 @@
+type: object
+properties:
+  huntingSkill:
+    type: string
+    description: The measured skill for hunting
+    enum:
+      - clueless
+      - lazy
+      - adventurous
+      - aggressive
+required:
+  - huntingSkill

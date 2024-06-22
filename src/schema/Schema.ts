@@ -1,4 +1,4 @@
-import { Discriminator, DiscriminatorMap, ExternalDocumentation, XML } from '.';
+import { Discriminator, DiscriminatorMap, Example, ExternalDocumentation, XML } from '.';
 
 export type SchemaMap = {
   [key in string]: Schema;
@@ -20,6 +20,31 @@ export class Schema {
 
   public static parse(segment: any): Schema {
     const obj = new Schema();
+
+    if (segment['discriminator']) {
+      obj.setDiscriminator(Discriminator.parse(segment['discriminator']));
+    }
+
+    if (segment['xml']) {
+      obj.setXml(XML.parse(segment['xml']));
+    }
+
+    if (segment['externalDocs']) {
+      obj.setExternalDocs(ExternalDocumentation.parse(segment['externalDocs']));
+    }
+
+    if (segment['example']) {
+      obj.setExample(Example.parse(segment['example']));
+    }
+
+    const newSchema = new Map(segment);
+
+    newSchema['discriminator'] = null;
+    newSchema['xml'] = null;
+    newSchema['externalDocs'] = null;
+    newSchema['example'] = null;
+
+    obj.setSchema(newSchema);
 
     return obj;
   }
