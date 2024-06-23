@@ -1,0 +1,45 @@
+import {XML} from '../../dist/src/schema';
+import fs from 'fs';
+import yaml from 'yaml';
+
+describe('OpenAPI Contact Segment', () => {
+  const fs = require('fs');
+  const yaml = require('yaml');
+
+  it('should parse xml1', async () => {
+    const contents = fs.readFileSync('examples/xml1.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+  it('should parse xml2', async () => {
+    const contents = fs.readFileSync('examples/xml2.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+  it('should parse xml3', async () => {
+    const contents = fs.readFileSync('examples/xml3.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+  it('should parse xml4', async () => {
+    const contents = fs.readFileSync('examples/xml4.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+  it('should parse xml5', async () => {
+    const contents = fs.readFileSync('examples/xml5.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+  it('should parse xml6', async () => {
+    const contents = fs.readFileSync('examples/xml6.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = XML.parse(data);
+  });
+
+});

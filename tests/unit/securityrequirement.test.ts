@@ -1,0 +1,21 @@
+import {SecurityRequirement} from '../../dist/src/schema';
+import fs from 'fs';
+import yaml from 'yaml';
+
+describe('OpenAPI SecurityRequirement Segment', () => {
+  const fs = require('fs');
+  const yaml = require('yaml');
+
+  it('should parse securityrequirement1', async () => {
+    const contents = fs.readFileSync('examples/securityrequirement1.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = SecurityRequirement.parse(data);
+  });
+
+  it('should parse securityrequirement2', async () => {
+    const contents = fs.readFileSync('examples/securityrequirement2.yaml', 'utf8');
+    const data = yaml.parse(contents);
+    const parsed = SecurityRequirement.parse(data);
+  });
+
+});
