@@ -1,4 +1,4 @@
-import {Paths} from '../../dist/src/schema';
+import {Paths} from '../../dist/schema';
 
 describe('OpenAPI Paths Segment', () => {
   const fs = require('fs');
