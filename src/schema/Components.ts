@@ -1,26 +1,22 @@
 import {
   CallbackOrReferenceMap,
-  ExampleOrReferenceMap,
-  HeaderOrReferenceMap,
   LinkOrReferenceMap,
-  ParameterOrReferenceMap,
-  PathItemOrReferenceMap,
-  RequestBodyOrReferenceMap,
-  ResponseOrReferenceMap,
-  Response,
   Schema,
   SchemaMap,
   SecuritySchemeOrReferenceMap,
-  Parameter,
-  Reference,
-  Example,
-  RequestBody,
-  Header,
   SecurityScheme,
   Link,
   Callback,
-  PathItem,
 } from '.';
+import {
+  ExampleOrReferenceMap,
+  HeaderOrReferenceMap,
+  ParameterOrReferenceMap, PathItemOrReferenceMap,
+  RequestBodyOrReferenceMap,
+  ResponseOrReferenceMap,
+  Response, Parameter, Reference, Example,
+  RequestBody, Header, PathItem,
+} from './sub';
 
 // Covers 4.8.7.1
 export class Components {

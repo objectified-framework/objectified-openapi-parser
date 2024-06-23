@@ -1,4 +1,4 @@
-import { OAuthFlow } from '.';
+import { OAuthFlow } from './sub';
 
 // Covers 4.8.28.1
 export class OAuthFlows {

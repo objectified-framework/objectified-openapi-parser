@@ -1,4 +1,5 @@
-import { Operation, Parameter, Reference, Server } from '../index';
+import { Operation, Server } from '..';
+import { Parameter, Reference } from '.';
 
 export type PathItemOrReferenceMap = {
   [key in string]: PathItem | Reference;

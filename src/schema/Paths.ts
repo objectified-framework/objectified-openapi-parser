@@ -1,4 +1,4 @@
-import { PathItem } from '.';
+import { PathItem } from './sub';
 
 // Covers 4.8.8.1
 export type PathMap = {

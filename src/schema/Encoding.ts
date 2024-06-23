@@ -1,4 +1,4 @@
-import { Header, Reference } from '.';
+import { Header, Reference } from './sub';
 
 // Covers 4.8.15.1
 export type HeaderReferenceMap = {

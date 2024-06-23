@@ -1,4 +1,4 @@
-import { Reference, Response } from '.';
+import { Reference, Response } from './sub';
 
 export type ResponsesOrReferenceMap = {
   [key in string]: Response | Reference;

@@ -1,5 +1,5 @@
 // Covers 4.8.4.1
-import { ParsingError } from '../ParsingError';
+import { ParsingError } from '.';
 
 export class License {
   private _name: string; // Required

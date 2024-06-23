@@ -1,5 +1,5 @@
-import { Example, MediaType, MediaTypeMap, Reference, Schema } from '../index';
-import { ParsingError } from '../../ParsingError';
+import { MediaType, MediaTypeMap, Schema, ParsingError } from '..';
+import { Example, Reference } from '.';
 
 // Covers 4.8.12.2
 export type ExampleOrReferenceMap = {

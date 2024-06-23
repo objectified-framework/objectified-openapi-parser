@@ -1,5 +1,5 @@
-import { Components, ExternalDocumentation, Info, PathItem, Paths, Reference, SecurityRequirement, Server, Tag } from '.';
-import { ParsingError } from '../ParsingError';
+import { Components, Info, Paths, Server, ParsingError } from '.';
+import { ExternalDocumentation, PathItem, Reference, SecurityRequirement, Tag } from './sub';
 
 // Covers 4.8.1.1
 export type WebHooksMap = {

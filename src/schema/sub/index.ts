@@ -6,6 +6,8 @@ export * from './OAuthFlow';
 export * from './Parameter';
 export * from './PathItem';
 export * from './Reference';
+export * from './RequestBody';
+export * from './Response';
 export * from './SecurityRequirement';
 export * from './ServerVariable';
 export * from './Tag';

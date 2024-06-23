@@ -1,4 +1,4 @@
-import { PathItem, Reference } from '.';
+import { PathItem, Reference } from './sub';
 
 export type CallbackOrReferenceMap = {
   [key in string]: Callback | Reference;

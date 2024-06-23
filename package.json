@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "description": "Objectified OpenAPI 3.1 Parser for TypeScript",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist docs",
     "build": "tsc",
     "lint": "prettier -c src/* --write",
-    "test": "jest"
+    "test": "jest",
+    "docs": "typedoc --out docs src/schema/index.ts src/schema/sub/index.ts --cleanOutputDir true"
   },
   "jest": {
     "transform": {
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.7",
+    "@microsoft/tsdoc": "^0.15.0",
     "@types/babel__preset-env": "^7",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.2",
@@ -30,7 +32,8 @@
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "prettier": "^3.3.2",
-    "ts-jest": "^29.1.5"
+    "ts-jest": "^29.1.5",
+    "typedoc": "^0.26.1"
   },
   "packageManager": "yarn@4.3.0+sha512.1606bef7c84bc7d83b8576063de2fd08f7d69f9939015bed800f9585a002390268ecc777e9feeba7e26e9556aef6beaad4806968db2182ab5dd3e955ab3b9a0b"
 }

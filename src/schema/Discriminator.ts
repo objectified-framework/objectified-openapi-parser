@@ -1,5 +1,5 @@
 // Covers 4.8.25.1 Hashmap
-import { ParsingError } from '../ParsingError';
+import { ParsingError } from '.';
 
 export type DiscriminatorMap = {
   [key in string]: string;

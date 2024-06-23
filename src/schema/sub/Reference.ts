@@ -1,5 +1,5 @@
 // Covers 4.8.23.1
-import { ParsingError } from '../../ParsingError';
+import { ParsingError } from '..';
 
 export class Reference {
   public _ref: string; // Required

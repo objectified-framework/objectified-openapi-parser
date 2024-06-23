@@ -1,5 +1,5 @@
-import { ServerVariable } from '.';
-import { ParsingError } from '../ParsingError';
+import { ServerVariable } from './sub';
+import { ParsingError } from '.';
 
 // Covers 4.8.5.1 Hashmap definition
 export type ServerVariablesMap = {

@@ -1,4 +1,5 @@
-import { Discriminator, DiscriminatorMap, Example, ExternalDocumentation, XML } from '.';
+import { Discriminator } from '.';
+import { Example, ExternalDocumentation, XML } from './sub';
 
 export type SchemaMap = {
   [key in string]: Schema;

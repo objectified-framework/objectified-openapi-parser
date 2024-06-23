@@ -1,4 +1,5 @@
-import { Encoding, EncodingMap, Example, ExampleOrReferenceMap, Reference, Schema } from '.';
+import { Encoding, EncodingMap, Schema } from '.';
+import { Example, ExampleOrReferenceMap, Reference } from './sub';
 
 // Covers 4.8.14.1
 export type MediaTypeMap = {

@@ -1,8 +1,5 @@
-import { Schema } from '../Schema';
-import { MediaType, MediaTypeMap } from '../MediaType';
-import { ExampleOrReferenceMap } from './Parameter';
-import { Reference } from './Reference';
-import { Example } from './Example';
+import { Schema, MediaType, MediaTypeMap } from '..';
+import { ExampleOrReferenceMap, Reference, Example } from '.';
 
 export type HeaderOrReferenceMap = {
   [key in string]: Header | Reference;

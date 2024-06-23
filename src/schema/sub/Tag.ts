@@ -1,5 +1,5 @@
-import { ExternalDocumentation } from '../index';
-import { ParsingError } from '../../ParsingError';
+import { ExternalDocumentation } from '.';
+import { ParsingError } from '..';
 
 // Covers 4.8.22.1
 export class Tag {

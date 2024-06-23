@@ -1,4 +1,5 @@
-import { Reference, Server } from '.';
+import { Server } from '.';
+import { Reference } from './sub';
 
 export type ParametersMap = {
   [key in string]: any | string;

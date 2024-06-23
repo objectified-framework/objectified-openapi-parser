@@ -1,5 +1,5 @@
-import { MediaType, MediaTypeMap, Reference } from '../index';
-import { ParsingError } from '../../ParsingError';
+import { MediaType, MediaTypeMap, ParsingError } from '..';
+import { Reference } from '.';
 
 export type RequestBodyOrReferenceMap = {
   [key in string]: RequestBody | Reference;

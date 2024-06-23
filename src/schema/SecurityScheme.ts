@@ -1,5 +1,5 @@
-import { OAuthFlows, Reference } from '.';
-import { ParsingError } from '../ParsingError';
+import { OAuthFlows, ParsingError } from '.';
+import { Reference } from './sub';
 
 export type SecuritySchemeOrReferenceMap = {
   [key in string]: SecurityScheme | Reference;

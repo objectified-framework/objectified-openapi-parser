@@ -1,5 +1,5 @@
-import { Contact, License } from '.';
-import { ParsingError } from '../ParsingError';
+import { License, ParsingError } from '.';
+import { Contact } from './sub';
 
 // Covers 4.8.2.1
 export class Info {

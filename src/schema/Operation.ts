@@ -1,4 +1,5 @@
-import { ExternalDocumentation, Parameter, Reference, RequestBody, Responses, SecurityRequirement, Server } from '.';
+import { Responses, Server } from '.';
+import { ExternalDocumentation, Parameter, Reference, RequestBody, SecurityRequirement } from './sub';
 
 // Covers 4.8.10.1
 export class Operation {

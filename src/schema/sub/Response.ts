@@ -1,5 +1,5 @@
-import { Header, Link, MediaType, MediaTypeMap, Reference } from '../index';
-import { ParsingError } from '../../ParsingError';
+import { Link, MediaType, MediaTypeMap, ParsingError } from '..';
+import { Reference, Header } from '.';
 
 export type ResponseHeaderMap = {
   [key in string]: Header | Reference;
