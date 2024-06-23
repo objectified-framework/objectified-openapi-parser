@@ -27,34 +27,44 @@ export class SecurityScheme {
       throw new ParsingError('SecurityScheme segment is missing required "type"');
     }
 
-    if (!segment['name']) {
-      throw new ParsingError('SecurityScheme segment is missing required "name"');
+    if (segment['type'].toLowerCase() === 'apikey') {
+      if (!segment['name']) {
+        throw new ParsingError('SecurityScheme segment is missing required "name"');
+      }
     }
 
-    if (!segment['in']) {
-      throw new ParsingError('SecurityScheme segment is missing required "in"');
+    if (segment['type'].toLowerCase() === 'apikey') {
+      if (!segment['in']) {
+        throw new ParsingError('SecurityScheme segment is missing required "in"');
+      }
     }
 
-    if (!segment['scheme']) {
-      throw new ParsingError('SecurityScheme segment is missing required "scheme"');
+    if (segment['type'].toLowerCase() === 'http') {
+      if (!segment['scheme']) {
+        throw new ParsingError('SecurityScheme segment is missing required "scheme"');
+      }
     }
 
-    if (!segment['flows']) {
-      throw new ParsingError('SecurityScheme segment is missing required "flows"');
+    if (segment['type'].toLowerCase() === 'oauth2') {
+      if (!segment['flows']) {
+        throw new ParsingError('SecurityScheme segment is missing required "flows"');
+      }
     }
 
-    if (!segment['openIdConnectUrl']) {
-      throw new ParsingError('SecurityScheme segment is missing required "openIdConnectUrl"');
+    if (segment['type'].toLowerCase() === 'openidconnect') {
+      if (!segment['openIdConnectUrl']) {
+        throw new ParsingError('SecurityScheme segment is missing required "openIdConnectUrl"');
+      }
     }
 
     obj.setType(segment['type']);
     obj.setDescription(segment['description'] ?? null);
-    obj.setName(segment['name']);
-    obj.setIn(segment['in']);
-    obj.setScheme(segment['scheme']);
+    obj.setName(segment['name'] ?? null);
+    obj.setIn(segment['in'] ?? null);
+    obj.setScheme(segment['scheme'] ?? null);
     obj.setBearerFormat(segment['bearerFormat'] ?? null);
-    obj.setFlows(OAuthFlows.parse(segment['flows']));
-    obj.setOpenIdConnectUrl(segment['openIdConnectUrl']);
+    obj.setFlows(segment['flows'] ? OAuthFlows.parse(segment['flows']) : null);
+    obj.setOpenIdConnectUrl(segment['openIdConnectUrl'] ?? null);
 
     return obj;
   }
