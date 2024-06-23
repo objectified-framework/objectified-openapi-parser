@@ -1,4 +1,4 @@
-import {PathItem} from '../../dist/src/schema';
+import {PathItem} from '../../dist/schema';
 
 describe('OpenAPI PathItem Segment', () => {
   const fs = require('fs');

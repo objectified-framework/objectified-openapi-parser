@@ -49,17 +49,19 @@ export class PathItem {
     obj.setTrace(segment['trace'] ? Operation.parse(segment['trace']) : null);
 
     if (segment['servers']) {
-      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+      for(const value of segment['servers']) {
+        obj.getServers().push(Server.parse(value));
+      }
     }
 
     if (segment['parameters']) {
-      segment['parameters'].forEach((value) => {
+      for(const value of segment['parameters']) {
         if (Reference.isReference(value)) {
           obj.getParameters().push(Reference.parse(value));
         } else {
           obj.getParameters().push(Parameter.parse(value));
         }
-      });
+      }
     }
 
     return obj;
