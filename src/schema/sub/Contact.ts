@@ -14,7 +14,7 @@ export class Contact {
    * Parses a segment of an OpenAPI document containing a `Contact`.
    *
    * @param segment `Contact` OpenAPI segment
-   * @returns `Contact` object.
+   * @returns `Contact` object populated with the provided segment.
    */
   public static parse(segment: any): Contact {
     const obj = new Contact();
