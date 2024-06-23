@@ -29,13 +29,17 @@ export class Encoding {
     obj.setExplode(segment['explode'] ?? false);
     obj.setAllowReserved(segment['allowReserved'] ?? false);
 
-    segment['headers'].forEach((value, key) => {
-      if (value.contains('$ref')) {
-        obj.getHeaders()[key] = Reference.parse(value);
-      } else {
-        obj.getHeaders()[key] = Header.parse(value);
+    if (segment['headers']) {
+      for(const key of Object.keys(segment['headers'])) {
+        const value = segment['headers'][key];
+
+        if (value.contains('$ref')) {
+          obj.getHeaders()[key] = Reference.parse(value);
+        } else {
+          obj.getHeaders()[key] = Header.parse(value);
+        }
       }
-    });
+    }
 
     return obj;
   }
