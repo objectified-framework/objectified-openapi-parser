@@ -45,17 +45,23 @@ export class Header {
     obj.setExample(segment['example'] ?? null);
 
     if (segment['examples']) {
-      segment['examples'].forEach((value, key) => {
+      for(const key of Object.keys(segment['examples'])) {
+        const value = segment['examples'][key];
+
         if (Reference.isReference(value)) {
           obj.getExamples()[key] = Reference.parse(value);
         } else {
           obj.getExamples()[key] = Example.parse(value);
         }
-      });
+      }
     }
 
     if (segment['content']) {
-      segment['content'].forEach((value, key) => (obj.getContent()[key] = MediaType.parse(value)));
+      for(const key of Object.keys(segment['content'])) {
+        const value = segment['content'][key];
+
+        obj.getContent()[key] = MediaType.parse(value);
+      }
     }
 
     return obj;
