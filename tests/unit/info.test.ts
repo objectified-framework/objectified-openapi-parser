@@ -1,4 +1,4 @@
-import {Info} from '../../dist/src/schema';
+import {Info} from '../../dist/schema';
 
 describe('OpenAPI Info Segment', () => {
   const fs = require('fs');
