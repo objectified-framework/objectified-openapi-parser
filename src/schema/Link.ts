@@ -29,7 +29,11 @@ export class Link {
     obj.setOperationId(segment['operationId'] ?? null);
 
     if (segment['parameters']) {
-      segment['parameters'].forEach((value, key) => (obj.getParameters()[key] = value));
+      for(const key of Object.keys(segment['parameters'])) {
+        const value = segment['parameters'][key];
+
+        obj.getParameters()[key] = value;
+      }
     }
 
     obj.setRequestBody(segment['requestBody'] ?? null);

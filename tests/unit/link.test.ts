@@ -1,6 +1,4 @@
-import {Link} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Link} from '../../dist/schema';
 
 describe('OpenAPI Contact Segment', () => {
   const fs = require('fs');
