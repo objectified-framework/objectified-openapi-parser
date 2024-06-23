@@ -9,7 +9,6 @@ export class SecurityRequirement {
 
   public static parse(segment: any): SecurityRequirement {
     const obj = new SecurityRequirement();
-
     const key = Object.keys(segment)[0];
     const value = segment[key];
 

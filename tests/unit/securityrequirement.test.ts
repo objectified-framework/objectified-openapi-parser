@@ -1,6 +1,4 @@
-import {SecurityRequirement} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {SecurityRequirement} from '../../dist/schema';
 
 describe('OpenAPI SecurityRequirement Segment', () => {
   const fs = require('fs');
