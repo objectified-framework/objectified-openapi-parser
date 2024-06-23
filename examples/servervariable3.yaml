@@ -1,3 +1,2 @@
-basePath:
-  # open meaning there is the opportunity to use special base paths as assigned by the provider, default is `v2`
-  default: v2
+# open meaning there is the opportunity to use special base paths as assigned by the provider, default is `v2`
+default: v2

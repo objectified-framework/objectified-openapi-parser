@@ -1,4 +1,3 @@
-username:
-  # note! no enum here means it is an open value
-  default: demo
-  description: this value is assigned by the service provider, in this example `gigantic-server.com`
+# note! no enum here means it is an open value
+default: demo
+description: this value is assigned by the service provider, in this example `gigantic-server.com`

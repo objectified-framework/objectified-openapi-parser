@@ -1,6 +1,4 @@
-import {ServerVariable} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {ServerVariable} from '../../dist/schema';
 
 describe('OpenAPI ServerVariable Segment', () => {
   const fs = require('fs');
