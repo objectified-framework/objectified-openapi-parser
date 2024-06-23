@@ -1,6 +1,4 @@
-import {RequestBody} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {RequestBody} from '../../dist/schema';
 
 describe('OpenAPI RequestBody Segment', () => {
   const fs = require('fs');
