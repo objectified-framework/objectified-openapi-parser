@@ -11,7 +11,7 @@ export class Reference {
   public static parse(segment: any): Reference {
     const obj = new Reference();
 
-    if (!segment['$ref']) {
+    if (!Reference.isReference(segment)) {
       throw new ParsingError('Reference segment is missing required "$ref"');
     }
 
