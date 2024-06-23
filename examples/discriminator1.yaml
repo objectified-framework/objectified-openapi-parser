@@ -1,2 +1,1 @@
-discriminator:
-  propertyName: petType
+propertyName: petType

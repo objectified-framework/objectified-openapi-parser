@@ -23,7 +23,13 @@ export class Discriminator {
 
     obj.setPropertyName(segment['propertyName']);
 
-    segment['mapping'].forEach((value, key) => (obj.getMapping()[key] = value));
+    if (segment['mapping']) {
+      for (const key of Object.keys(segment['mapping'])) {
+        const value = segment['mapping'][key];
+
+        obj.getMapping()[key] = value;
+      }
+    }
 
     return obj;
   }

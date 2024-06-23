@@ -1,4 +1,3 @@
-discriminator:
-  propertyName: petType
-  mapping:
-    dog: Dog
+propertyName: petType
+mapping:
+  dog: Dog
