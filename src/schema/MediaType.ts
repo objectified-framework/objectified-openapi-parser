@@ -28,17 +28,23 @@ export class MediaType {
     obj.setExample(segment['example'] ?? null);
 
     if (segment['examples']) {
-      segment['examples'].forEach((value, key) => {
-        if (value.contains('$ref')) {
+      for(const key of Object.keys(segment['examples'])) {
+        const value = segment['examples'][key];
+
+        if (Reference.isReference(value)) {
           obj.getExamples()[key] = Reference.parse(value);
         } else {
           obj.getExamples()[key] = Example.parse(value);
         }
-      });
+      }
     }
 
     if (segment['encoding']) {
-      segment['encoding'].forEach((value, key) => (obj.getEncoding()[key] = Encoding.parse(value)));
+      for(const key of Object.keys(segment['encoding'])) {
+        const value = segment['encoding'][key];
+
+        obj.getEncoding()[key] = Encoding.parse(value);
+      }
     }
 
     return obj;

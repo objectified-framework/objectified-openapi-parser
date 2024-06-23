@@ -1,6 +1,4 @@
-import {MediaType} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {MediaType} from '../../dist/schema';
 
 describe('OpenAPI MediaType Segment', () => {
   const fs = require('fs');
