@@ -33,7 +33,7 @@ export class Encoding {
       for(const key of Object.keys(segment['headers'])) {
         const value = segment['headers'][key];
 
-        if (value.contains('$ref')) {
+        if (Reference.isReference(value)) {
           obj.getHeaders()[key] = Reference.parse(value);
         } else {
           obj.getHeaders()[key] = Header.parse(value);
