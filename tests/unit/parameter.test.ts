@@ -1,4 +1,4 @@
-import {Parameter} from '../../dist/schema';
+import {Parameter} from '../../dist/schema/sub';
 
 describe('OpenAPI Parameter Segment', () => {
   const fs = require('fs');

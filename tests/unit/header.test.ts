@@ -1,4 +1,4 @@
-import {Header} from '../../dist/schema';
+import {Header} from '../../dist/schema/sub';
 
 describe('OpenAPI Header Segment', () => {
   const fs = require('fs');

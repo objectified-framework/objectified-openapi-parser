@@ -1,4 +1,4 @@
-import {ServerVariable} from '../../dist/schema';
+import {ServerVariable} from '../../dist/schema/sub';
 
 describe('OpenAPI ServerVariable Segment', () => {
   const fs = require('fs');

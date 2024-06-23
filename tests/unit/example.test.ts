@@ -1,4 +1,4 @@
-import {Example} from '../../dist/schema';
+import {Example} from '../../dist/schema/sub';
 
 describe('OpenAPI Example Segment', () => {
   const fs = require('fs');

@@ -1,4 +1,4 @@
-import {Contact} from '../../dist/schema';
+import {Contact} from '../../dist/schema/sub';
 
 describe('OpenAPI Contact Segment', () => {
   const fs = require('fs');

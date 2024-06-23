@@ -1,4 +1,4 @@
-import {Tag} from '../../dist/schema';
+import {Tag} from '../../dist/schema/sub';
 
 describe('OpenAPI Tag Segment', () => {
   const fs = require('fs');

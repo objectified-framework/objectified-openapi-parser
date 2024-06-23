@@ -1,4 +1,4 @@
-import {Reference} from '../../dist/schema';
+import {Reference} from '../../dist/schema/sub';
 
 describe('OpenAPI Reference Segment', () => {
   const fs = require('fs');
