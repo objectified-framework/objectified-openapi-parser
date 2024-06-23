@@ -1,6 +1,4 @@
-import {Response} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Response} from '../../dist/schema';
 
 describe('OpenAPI Response Segment', () => {
   const fs = require('fs');

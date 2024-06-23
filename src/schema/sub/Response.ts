@@ -34,22 +34,38 @@ export class Response {
     }
 
     obj.setDescription(segment['description']);
-    segment['headers'].forEach((value, key) => {
-      if (value.contains('$ref')) {
-        obj.getHeaders()[key] = Reference.parse(value);
-      } else {
-        obj.getHeaders()[key] = Header.parse(value);
-      }
-    });
 
-    segment['content'].forEach((value, key) => (obj.getContent()[key] = MediaType.parse(value)));
-    segment['links'].forEach((value, key) => {
-      if (value.contains('$ref')) {
-        obj.getLinks()[key] = Reference.parse(value);
-      } else {
-        obj.getLinks()[key] = Link.parse(value);
+    if (segment['headers']) {
+      for(const key of Object.keys(segment['headers'])) {
+        const value = segment['headers'][key];
+
+        if (Reference.isReference(value)) {
+          obj.getHeaders()[key] = Reference.parse(value);
+        } else {
+          obj.getHeaders()[key] = Header.parse(value);
+        }
       }
-    });
+    }
+
+    if (segment['content']) {
+      for(const key of Object.keys(segment['content'])) {
+        const value = segment['content'][key];
+
+        obj.getContent()[key] = MediaType.parse(value);
+      }
+    }
+
+    if (segment['links']) {
+      for(const key of Object.keys(segment['links'])) {
+        const value = segment['links'][key];
+
+        if (Reference.isReference(value)) {
+          obj.getLinks()[key] = Reference.parse(value);
+        } else {
+          obj.getLinks()[key] = Link.parse(value);
+        }
+      }
+    }
 
     return obj;
   }
