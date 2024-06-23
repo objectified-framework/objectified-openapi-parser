@@ -47,12 +47,10 @@ export class Operation {
     }
 
     if (segment['requestBody']) {
-      for (const value of segment['requestBody']) {
-        if (Reference.isReference(value)) {
-          obj.setRequestBody(Reference.parse(value));
-        } else {
-          obj.setRequestBody(RequestBody.parse(value));
-        }
+      if (Reference.isReference(segment['requestBody'])) {
+        obj.setRequestBody(Reference.parse(segment['requestBody']));
+      } else {
+        obj.setRequestBody(RequestBody.parse(segment['requestBody']));
       }
     }
 
