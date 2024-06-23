@@ -52,85 +52,111 @@ export class Components {
     const obj = new Components();
 
     if (segment['schemas']) {
-      segment['schemas'].forEach((value, key) => (obj.getSchemas()[key] = Schema.parse(value)));
+      for(const key of Object.keys(segment['schemas'])) {
+        const value = segment['schemas'][key];
+
+        obj.getSchemas()[key] = Schema.parse(value);
+      }
     }
 
     if (segment['responses']) {
-      segment['responses'].forEach((value, key) => (obj.getResponses()[key] = Response.parse(value)));
+      for(const key of Object.keys(segment['responses'])) {
+        const value = segment['responses'][key];
+
+        obj.getResponses()[key] = Response.parse(value);
+      }
     }
 
     if (segment['parameters']) {
-      segment['parameters'].forEach((value, key) => (obj.getParameters()[key] = Parameter.parse(value)));
+      for(const key of Object.keys(segment['parameters'])) {
+        const value = segment['parameters'][key];
+
+        obj.getParameters()[key] = Parameter.parse(value);
+      }
     }
 
     if (segment['examples']) {
-      segment['examples'].forEach((value, key) => {
+      for(const key of Object.keys(segment['examples'])) {
+        const value = segment['examples'][key];
+
         if (Reference.isReference(value)) {
           obj.getExamples()[key] = Reference.parse(value);
         } else {
           obj.getExamples()[key] = Example.parse(value);
         }
-      });
+      }
     }
 
     if (segment['requestBodies']) {
-      segment['requestBodies'].forEach((value, key) => {
+      for(const key of Object.keys(segment['requestBodies'])) {
+        const value = segment['requestBodies'][key];
+
         if (Reference.isReference(value)) {
           obj.getRequestBodies()[key] = Reference.parse(value);
         } else {
           obj.getRequestBodies()[key] = RequestBody.parse(value);
         }
-      });
+      }
     }
 
     if (segment['headers']) {
-      segment['headers'].forEach((value, key) => {
+      for(const key of Object.keys(segment['headers'])) {
+        const value = segment['headers'][key];
+
         if (Reference.isReference(value)) {
           obj.getHeaders()[key] = Reference.parse(value);
         } else {
           obj.getHeaders()[key] = Header.parse(value);
         }
-      });
+      }
     }
 
     if (segment['securitySchemes']) {
-      segment['securitySchemes'].forEach((value, key) => {
+      for(const key of Object.keys(segment['securitySchemes'])) {
+        const value = segment['securitySchemes'][key];
+
         if (Reference.isReference(value)) {
           obj.getSecuritySchemes()[key] = Reference.parse(value);
         } else {
           obj.getSecuritySchemes()[key] = SecurityScheme.parse(value);
         }
-      });
+      }
     }
 
     if (segment['links']) {
-      segment['links'].forEach((value, key) => {
+      for(const key of Object.keys(segment['links'])) {
+        const value = segment['links'][key];
+
         if (Reference.isReference(value)) {
           obj.getLinks()[key] = Reference.parse(value);
         } else {
           obj.getLinks()[key] = Link.parse(value);
         }
-      });
+      }
     }
 
     if (segment['callbacks']) {
-      segment['callbacks'].forEach((value, key) => {
+      for(const key of Object.keys(segment['callbacks'])) {
+        const value = segment['callbacks'][key];
+
         if (Reference.isReference(value)) {
           obj.getCallbacks()[key] = Reference.parse(value);
         } else {
           obj.getCallbacks()[key] = Callback.parse(value);
         }
-      });
+      }
     }
 
     if (segment['pathItems']) {
-      segment['pathItems'].forEach((value, key) => {
+      for(const key of Object.keys(segment['pathItems'])) {
+        const value = segment['pathItems'][key];
+
         if (Reference.isReference(value)) {
           obj.getPathItems()[key] = Reference.parse(value);
         } else {
           obj.getPathItems()[key] = PathItem.parse(value);
         }
-      });
+      }
     }
 
     return obj;
