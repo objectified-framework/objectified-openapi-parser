@@ -25,9 +25,14 @@ export class Server {
 
     obj.setUrl(segment['url']);
     obj.setDescription(segment['description'] ?? null);
-    segment['variables'].forEach((value, key) => {
-      obj.getVariables()[key] = ServerVariable.parse(value);
-    });
+
+    if (segment['variables']) {
+      for(const key of Object.keys(segment['variables'])) {
+        const value = segment['variables'][key];
+
+        obj.getVariables()[key] = ServerVariable.parse(value);
+      }
+    }
 
     return obj;
   }
