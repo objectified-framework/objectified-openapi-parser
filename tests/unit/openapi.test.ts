@@ -1,4 +1,4 @@
-import {OpenAPI} from '../../dist/src/schema';
+import {OpenAPI} from '../../dist/schema';
 
 describe('OpenAPI OpenAPI Segment', () => {
   const fs = require('fs');
