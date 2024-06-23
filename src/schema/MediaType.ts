@@ -28,7 +28,7 @@ export class MediaType {
     obj.setExample(segment['example'] ?? null);
 
     if (segment['examples']) {
-      for(const key of Object.keys(segment['examples'])) {
+      for (const key of Object.keys(segment['examples'])) {
         const value = segment['examples'][key];
 
         if (Reference.isReference(value)) {
@@ -40,7 +40,7 @@ export class MediaType {
     }
 
     if (segment['encoding']) {
-      for(const key of Object.keys(segment['encoding'])) {
+      for (const key of Object.keys(segment['encoding'])) {
         const value = segment['encoding'][key];
 
         obj.getEncoding()[key] = Encoding.parse(value);

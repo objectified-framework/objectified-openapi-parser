@@ -60,7 +60,7 @@ export class Parameter {
     obj.setExample(segment['example']);
 
     if (segment['examples']) {
-      for(const key of Object.keys(segment['examples'])) {
+      for (const key of Object.keys(segment['examples'])) {
         const value = segment['examples'][key];
 
         if (Reference.isReference(value)) {
@@ -72,7 +72,7 @@ export class Parameter {
     }
 
     if (segment['content']) {
-      for(const key of Object.keys(segment['content'])) {
+      for (const key of Object.keys(segment['content'])) {
         const value = segment['content'][key];
 
         obj.getContent()[key] = MediaType.parse(value);

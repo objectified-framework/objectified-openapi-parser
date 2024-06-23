@@ -27,34 +27,44 @@ export class SecurityScheme {
       throw new ParsingError('SecurityScheme segment is missing required "type"');
     }
 
-    if (segment['type'].toLowerCase() === 'apikey') {
+    const lowerType = segment['type'].toLowerCase();
+
+    if (lowerType === 'apikey') {
       if (!segment['name']) {
         throw new ParsingError('SecurityScheme segment is missing required "name"');
       }
-    }
 
-    if (segment['type'].toLowerCase() === 'apikey') {
       if (!segment['in']) {
         throw new ParsingError('SecurityScheme segment is missing required "in"');
       }
     }
 
-    if (segment['type'].toLowerCase() === 'http') {
+    if (lowerType === 'http') {
       if (!segment['scheme']) {
         throw new ParsingError('SecurityScheme segment is missing required "scheme"');
       }
     }
 
-    if (segment['type'].toLowerCase() === 'oauth2') {
+    if (lowerType === 'oauth2') {
       if (!segment['flows']) {
         throw new ParsingError('SecurityScheme segment is missing required "flows"');
       }
     }
 
-    if (segment['type'].toLowerCase() === 'openidconnect') {
+    if (lowerType === 'openidconnect') {
       if (!segment['openIdConnectUrl']) {
         throw new ParsingError('SecurityScheme segment is missing required "openIdConnectUrl"');
       }
+    }
+
+    if (
+      lowerType !== 'apikey' &&
+      lowerType !== 'http' &&
+      lowerType !== 'mutualtls' &&
+      lowerType !== 'oauth2' &&
+      lowerType !== 'openidconnect'
+    ) {
+      throw new ParsingError(`SecurityScheme segment value for "type" unexpected value: ${segment['type']}`);
     }
 
     obj.setType(segment['type']);

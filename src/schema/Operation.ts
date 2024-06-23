@@ -37,7 +37,7 @@ export class Operation {
     obj.setOperationId(segment['operationId'] ?? null);
 
     if (segment['parameters']) {
-      for(const value of segment['parameters']) {
+      for (const value of segment['parameters']) {
         if (Reference.isReference(value)) {
           obj.getParameters().push(Reference.parse(value));
         } else {
@@ -47,7 +47,7 @@ export class Operation {
     }
 
     if (segment['requestBody']) {
-      for(const value of segment['requestBody']) {
+      for (const value of segment['requestBody']) {
         if (Reference.isReference(value)) {
           obj.setRequestBody(Reference.parse(value));
         } else {
@@ -63,13 +63,13 @@ export class Operation {
     obj.setDeprecated(segment['deprecated'] ?? false);
 
     if (segment['security']) {
-      for(const value of segment['security']) {
+      for (const value of segment['security']) {
         obj.getSecurity().push(SecurityRequirement.parse(value));
       }
     }
 
     if (segment['servers']) {
-      for(const value of segment['servers']) {
+      for (const value of segment['servers']) {
         obj.getServers().push(Server.parse(value));
       }
     }

@@ -25,7 +25,7 @@ export class RequestBody {
     obj.setDescription(segment['description'] ?? null);
     obj.setRequired(segment['required'] ?? false);
 
-    for(const key of Object.keys(segment['content'])) {
+    for (const key of Object.keys(segment['content'])) {
       const value = segment['content'][key];
 
       obj.getContent()[key] = MediaType.parse(value);

@@ -27,7 +27,7 @@ export class Server {
     obj.setDescription(segment['description'] ?? null);
 
     if (segment['variables']) {
-      for(const key of Object.keys(segment['variables'])) {
+      for (const key of Object.keys(segment['variables'])) {
         const value = segment['variables'][key];
 
         obj.getVariables()[key] = ServerVariable.parse(value);

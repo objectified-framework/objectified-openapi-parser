@@ -36,7 +36,7 @@ export class Response {
     obj.setDescription(segment['description']);
 
     if (segment['headers']) {
-      for(const key of Object.keys(segment['headers'])) {
+      for (const key of Object.keys(segment['headers'])) {
         const value = segment['headers'][key];
 
         if (Reference.isReference(value)) {
@@ -48,7 +48,7 @@ export class Response {
     }
 
     if (segment['content']) {
-      for(const key of Object.keys(segment['content'])) {
+      for (const key of Object.keys(segment['content'])) {
         const value = segment['content'][key];
 
         obj.getContent()[key] = MediaType.parse(value);
@@ -56,7 +56,7 @@ export class Response {
     }
 
     if (segment['links']) {
-      for(const key of Object.keys(segment['links'])) {
+      for (const key of Object.keys(segment['links'])) {
         const value = segment['links'][key];
 
         if (Reference.isReference(value)) {

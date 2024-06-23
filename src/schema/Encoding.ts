@@ -30,7 +30,7 @@ export class Encoding {
     obj.setAllowReserved(segment['allowReserved'] ?? false);
 
     if (segment['headers']) {
-      for(const key of Object.keys(segment['headers'])) {
+      for (const key of Object.keys(segment['headers'])) {
         const value = segment['headers'][key];
 
         if (Reference.isReference(value)) {

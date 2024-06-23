@@ -52,7 +52,7 @@ export class Components {
     const obj = new Components();
 
     if (segment['schemas']) {
-      for(const key of Object.keys(segment['schemas'])) {
+      for (const key of Object.keys(segment['schemas'])) {
         const value = segment['schemas'][key];
 
         obj.getSchemas()[key] = Schema.parse(value);
@@ -60,7 +60,7 @@ export class Components {
     }
 
     if (segment['responses']) {
-      for(const key of Object.keys(segment['responses'])) {
+      for (const key of Object.keys(segment['responses'])) {
         const value = segment['responses'][key];
 
         obj.getResponses()[key] = Response.parse(value);
@@ -68,7 +68,7 @@ export class Components {
     }
 
     if (segment['parameters']) {
-      for(const key of Object.keys(segment['parameters'])) {
+      for (const key of Object.keys(segment['parameters'])) {
         const value = segment['parameters'][key];
 
         obj.getParameters()[key] = Parameter.parse(value);
@@ -76,7 +76,7 @@ export class Components {
     }
 
     if (segment['examples']) {
-      for(const key of Object.keys(segment['examples'])) {
+      for (const key of Object.keys(segment['examples'])) {
         const value = segment['examples'][key];
 
         if (Reference.isReference(value)) {
@@ -88,7 +88,7 @@ export class Components {
     }
 
     if (segment['requestBodies']) {
-      for(const key of Object.keys(segment['requestBodies'])) {
+      for (const key of Object.keys(segment['requestBodies'])) {
         const value = segment['requestBodies'][key];
 
         if (Reference.isReference(value)) {
@@ -100,7 +100,7 @@ export class Components {
     }
 
     if (segment['headers']) {
-      for(const key of Object.keys(segment['headers'])) {
+      for (const key of Object.keys(segment['headers'])) {
         const value = segment['headers'][key];
 
         if (Reference.isReference(value)) {
@@ -112,7 +112,7 @@ export class Components {
     }
 
     if (segment['securitySchemes']) {
-      for(const key of Object.keys(segment['securitySchemes'])) {
+      for (const key of Object.keys(segment['securitySchemes'])) {
         const value = segment['securitySchemes'][key];
 
         if (Reference.isReference(value)) {
@@ -124,7 +124,7 @@ export class Components {
     }
 
     if (segment['links']) {
-      for(const key of Object.keys(segment['links'])) {
+      for (const key of Object.keys(segment['links'])) {
         const value = segment['links'][key];
 
         if (Reference.isReference(value)) {
@@ -136,7 +136,7 @@ export class Components {
     }
 
     if (segment['callbacks']) {
-      for(const key of Object.keys(segment['callbacks'])) {
+      for (const key of Object.keys(segment['callbacks'])) {
         const value = segment['callbacks'][key];
 
         if (Reference.isReference(value)) {
@@ -148,7 +148,7 @@ export class Components {
     }
 
     if (segment['pathItems']) {
-      for(const key of Object.keys(segment['pathItems'])) {
+      for (const key of Object.keys(segment['pathItems'])) {
         const value = segment['pathItems'][key];
 
         if (Reference.isReference(value)) {

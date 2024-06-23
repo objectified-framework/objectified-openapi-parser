@@ -29,7 +29,7 @@ export class Link {
     obj.setOperationId(segment['operationId'] ?? null);
 
     if (segment['parameters']) {
-      for(const key of Object.keys(segment['parameters'])) {
+      for (const key of Object.keys(segment['parameters'])) {
         const value = segment['parameters'][key];
 
         obj.getParameters()[key] = value;

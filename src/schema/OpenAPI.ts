@@ -49,7 +49,7 @@ export class OpenAPI {
     obj.setJsonSchemaDialect(segment['jsonSchemaDialect'] ?? false);
 
     if (segment['servers']) {
-      for(const value of segment['servers']) {
+      for (const value of segment['servers']) {
         obj.getServers().push(Server.parse(value));
       }
     }
@@ -59,7 +59,7 @@ export class OpenAPI {
     }
 
     if (segment['webhooks']) {
-      for(const key of Object.keys(segment['webhooks'])) {
+      for (const key of Object.keys(segment['webhooks'])) {
         const value = segment['webhooks'][key];
 
         if (Reference.isReference(value)) {
@@ -75,13 +75,13 @@ export class OpenAPI {
     }
 
     if (segment['security']) {
-      for(const value of segment['security']) {
+      for (const value of segment['security']) {
         obj.getSecurity().push(SecurityRequirement.parse(value));
       }
     }
 
     if (segment['tags']) {
-      for(const value of segment['tags']) {
+      for (const value of segment['tags']) {
         obj.getTags().push(Tag.parse(value));
       }
     }

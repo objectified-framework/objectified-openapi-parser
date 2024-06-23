@@ -16,7 +16,7 @@ export class Paths {
   public static parse(segment: any): Paths {
     const obj = new Paths();
 
-    for(const key of Object.keys(segment)) {
+    for (const key of Object.keys(segment)) {
       const value = segment[key];
 
       obj.getPaths()[key] = PathItem.parse(value);

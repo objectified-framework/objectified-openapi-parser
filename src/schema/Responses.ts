@@ -25,7 +25,7 @@ export class Responses {
       }
     }
 
-    for(const key of Object.keys(segment)) {
+    for (const key of Object.keys(segment)) {
       if (key !== 'default') {
         const value = segment[key];
 
