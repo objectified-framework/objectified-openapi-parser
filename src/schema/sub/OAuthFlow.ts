@@ -23,16 +23,18 @@ export class OAuthFlow {
       throw new ParsingError('OAuthFlow segment is missing required "authorizationUrl"');
     }
 
+    obj.setAuthorizationUrl(segment['authorizationUrl']);
+
     if (!segment['tokenUrl']) {
       throw new ParsingError('OAuthFlow segment is missing required "tokenUrl"');
     }
+
+    obj.setTokenUrl(segment['tokenUrl']);
 
     if (!segment['scopes']) {
       throw new ParsingError('OAuthFlow segment is missing required "scopes"');
     }
 
-    obj.setAuthorizationUrl(segment['authorizationUrl']);
-    obj.setTokenUrl(segment['tokenUrl']);
     obj.setRefreshUrl(segment['refreshUrl']);
 
     if (segment['scopes']) {
