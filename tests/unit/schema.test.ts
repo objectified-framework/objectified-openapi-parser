@@ -1,6 +1,4 @@
-import {Schema} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Schema} from '../../dist/schema';
 
 describe('OpenAPI Schema Segment', () => {
   const fs = require('fs');
