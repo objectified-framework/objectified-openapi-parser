@@ -1,6 +1,4 @@
 import {License} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
 
 describe('OpenAPI License Segment', () => {
   const fs = require('fs');
