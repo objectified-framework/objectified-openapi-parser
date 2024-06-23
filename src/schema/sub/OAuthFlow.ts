@@ -35,10 +35,12 @@ export class OAuthFlow {
     obj.setTokenUrl(segment['tokenUrl']);
     obj.setRefreshUrl(segment['refreshUrl']);
 
-    for(const key of Object.keys(segment['scopes'])) {
-      const value = segment['scopes'][key];
+    if (segment['scopes']) {
+      for (const key of Object.keys(segment['scopes'])) {
+        const value = segment['scopes'][key];
 
-      obj.getScopes()[key] = value;
+        obj.getScopes()[key] = value;
+      }
     }
 
     return obj;
