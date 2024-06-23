@@ -18,19 +18,19 @@ export class OAuthFlows {
     const obj = new OAuthFlows();
 
     if (segment['implicit']) {
-      obj.setImplicit(OAuthFlow.parse(segment['implicit']));
+      obj.setImplicit(OAuthFlow.parse('implicit', segment['implicit']));
     }
 
     if (segment['password']) {
-      obj.setPassword(OAuthFlow.parse(segment['password']));
+      obj.setPassword(OAuthFlow.parse('password', segment['password']));
     }
 
     if (segment['clientCredentials']) {
-      obj.setClientCredentials(OAuthFlow.parse(segment['clientCredentials']));
+      obj.setClientCredentials(OAuthFlow.parse('clientCredentials', segment['clientCredentials']));
     }
 
     if (segment['authorizationCode']) {
-      obj.setAuthorizationCode(OAuthFlow.parse(segment['authorizationCode']));
+      obj.setAuthorizationCode(OAuthFlow.parse('authorizationCode', segment['authorizationCode']));
     }
 
     return obj;

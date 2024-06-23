@@ -16,20 +16,25 @@ export class OAuthFlow {
     this._scopes = {};
   }
 
-  public static parse(segment: any): OAuthFlow {
+  public static parse(section: string, segment: any): OAuthFlow {
     const obj = new OAuthFlow();
+    const lowerSection = section.toLowerCase();
 
-    if (!segment['authorizationUrl']) {
-      throw new ParsingError('OAuthFlow segment is missing required "authorizationUrl"');
+    if (lowerSection === 'implicit' || lowerSection === 'authorizationcode') {
+      if (!segment['authorizationUrl']) {
+        throw new ParsingError('OAuthFlow segment is missing required "authorizationUrl"');
+      }
     }
 
-    obj.setAuthorizationUrl(segment['authorizationUrl']);
+    obj.setAuthorizationUrl(segment['authorizationUrl'] ?? null);
 
-    if (!segment['tokenUrl']) {
-      throw new ParsingError('OAuthFlow segment is missing required "tokenUrl"');
+    if (lowerSection === 'password' || lowerSection === 'clientcredentials' || lowerSection === 'authorizationcode') {
+      if (!segment['tokenUrl']) {
+        throw new ParsingError('OAuthFlow segment is missing required "tokenUrl"');
+      }
     }
 
-    obj.setTokenUrl(segment['tokenUrl']);
+    obj.setTokenUrl(segment['tokenUrl'] ?? null);
 
     if (!segment['scopes']) {
       throw new ParsingError('OAuthFlow segment is missing required "scopes"');
