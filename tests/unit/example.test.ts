@@ -1,8 +1,6 @@
-import {Example} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Example} from '../../dist/schema';
 
-describe('OpenAPI Contact Segment', () => {
+describe('OpenAPI Example Segment', () => {
   const fs = require('fs');
   const yaml = require('yaml');
 

@@ -1,4 +1,4 @@
-import {Callback, Components} from '../../dist/src/schema';
+import {Components} from '../../dist/schema';
 
 describe('OpenAPI Components Segment', () => {
   const fs = require('fs');

@@ -1,6 +1,4 @@
-import {Callback} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Callback} from '../../dist/schema';
 
 describe('OpenAPI Callback Segment', () => {
   const fs = require('fs');

@@ -1,6 +1,4 @@
-import {Discriminator} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Discriminator} from '../../dist/schema';
 
 describe('OpenAPI Discriminator Segment', () => {
   const fs = require('fs');

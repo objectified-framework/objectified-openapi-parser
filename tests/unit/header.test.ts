@@ -1,6 +1,6 @@
-import {Header} from '../../dist/src/schema';
+import {Header} from '../../dist/schema';
 
-describe('OpenAPI Contact Segment', () => {
+describe('OpenAPI Header Segment', () => {
   const fs = require('fs');
   const yaml = require('yaml');
 

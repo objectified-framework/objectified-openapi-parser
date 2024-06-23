@@ -1,6 +1,4 @@
-import {Parameter} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Parameter} from '../../dist/schema';
 
 describe('OpenAPI Parameter Segment', () => {
   const fs = require('fs');

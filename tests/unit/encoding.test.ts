@@ -1,6 +1,4 @@
-import {Encoding} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {Encoding} from '../../dist/schema';
 
 describe('OpenAPI Encoding Segment', () => {
   const fs = require('fs');

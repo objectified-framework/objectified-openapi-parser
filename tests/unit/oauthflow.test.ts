@@ -1,6 +1,4 @@
-import {OAuthFlow} from '../../dist/src/schema';
-import fs from 'fs';
-import yaml from 'yaml';
+import {OAuthFlow} from '../../dist/schema';
 
 describe('OpenAPI OAuthFlow Segment', () => {
   const fs = require('fs');

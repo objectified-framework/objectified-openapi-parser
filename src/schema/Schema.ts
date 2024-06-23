@@ -37,14 +37,12 @@ export class Schema {
       obj.setExample(Example.parse(segment['example']));
     }
 
-    const newSchema = new Map(segment);
+    segment['discriminator'] = null;
+    segment['xml'] = null;
+    segment['externalDocs'] = null;
+    segment['example'] = null;
 
-    newSchema['discriminator'] = null;
-    newSchema['xml'] = null;
-    newSchema['externalDocs'] = null;
-    newSchema['example'] = null;
-
-    obj.setSchema(newSchema);
+    obj.setSchema(segment);
 
     return obj;
   }
