@@ -1,4 +1,4 @@
-import {ExternalDocumentation} from '../../dist/src/schema';
+import {ExternalDocumentation} from '../../dist/schema';
 
 describe('OpenAPI ExternalDocumentation Segment', () => {
   const fs = require('fs');
