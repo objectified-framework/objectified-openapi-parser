@@ -49,7 +49,9 @@ export class OpenAPI {
     obj.setJsonSchemaDialect(segment['jsonSchemaDialect'] ?? false);
 
     if (segment['servers']) {
-      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+      for(const value of segment['servers']) {
+        obj.getServers().push(Server.parse(value));
+      }
     }
 
     if (segment['paths']) {
@@ -57,13 +59,15 @@ export class OpenAPI {
     }
 
     if (segment['webhooks']) {
-      segment['webhooks'].forEach((value, key) => {
+      for(const key of Object.keys(segment['webhooks'])) {
+        const value = segment['webhooks'][key];
+
         if (Reference.isReference(value)) {
           obj.getWebhooks()[key] = Reference.parse(value);
         } else {
           obj.getWebhooks()[key] = PathItem.parse(value);
         }
-      });
+      }
     }
 
     if (segment['components']) {
@@ -71,11 +75,15 @@ export class OpenAPI {
     }
 
     if (segment['security']) {
-      segment['security'].forEach((value) => obj.getSecurity().push(SecurityRequirement.parse(value)));
+      for(const value of segment['security']) {
+        obj.getSecurity().push(SecurityRequirement.parse(value));
+      }
     }
 
     if (segment['tags']) {
-      segment['tags'].forEach((value) => obj.getTags().push(Tag.parse(value)));
+      for(const value of segment['tags']) {
+        obj.getTags().push(Tag.parse(value));
+      }
     }
 
     if (segment['externalDocs']) {

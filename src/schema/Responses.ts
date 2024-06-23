@@ -25,17 +25,17 @@ export class Responses {
       }
     }
 
-    const map: any = new Map(segment);
+    for(const key of Object.keys(segment)) {
+      if (key !== 'default') {
+        const value = segment[key];
 
-    map['default'] = null;
-
-    map.forEach((value, key) => {
-      if (Reference.isReference(value)) {
-        obj.getResponses()[key] = Reference.parse(value);
-      } else {
-        obj.getResponses()[key] = Response.parse(value);
+        if (Reference.isReference(value)) {
+          obj.getResponses()[key] = Reference.parse(value);
+        } else {
+          obj.getResponses()[key] = Response.parse(value);
+        }
       }
-    });
+    }
 
     return obj;
   }
