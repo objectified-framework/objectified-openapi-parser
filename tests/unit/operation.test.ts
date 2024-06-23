@@ -1,4 +1,4 @@
-import {Operation} from '../../dist/src/schema';
+import {Operation} from '../../dist/schema';
 
 describe('OpenAPI Operation Segment', () => {
   const fs = require('fs');

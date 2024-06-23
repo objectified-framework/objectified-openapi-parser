@@ -37,23 +37,23 @@ export class Operation {
     obj.setOperationId(segment['operationId'] ?? null);
 
     if (segment['parameters']) {
-      segment['parameters'].forEach((value) => {
+      for(const value of segment['parameters']) {
         if (Reference.isReference(value)) {
           obj.getParameters().push(Reference.parse(value));
         } else {
           obj.getParameters().push(Parameter.parse(value));
         }
-      });
+      }
     }
 
     if (segment['requestBody']) {
-      segment['requestBody'].forEach((value) => {
+      for(const value of segment['requestBody']) {
         if (Reference.isReference(value)) {
           obj.setRequestBody(Reference.parse(value));
         } else {
           obj.setRequestBody(RequestBody.parse(value));
         }
-      });
+      }
     }
 
     if (segment['responses']) {
@@ -63,11 +63,15 @@ export class Operation {
     obj.setDeprecated(segment['deprecated'] ?? false);
 
     if (segment['security']) {
-      segment['security'].forEach((value) => obj.getSecurity().push(SecurityRequirement.parse(value)));
+      for(const value of segment['security']) {
+        obj.getSecurity().push(SecurityRequirement.parse(value));
+      }
     }
 
     if (segment['servers']) {
-      segment['servers'].forEach((value) => obj.getServers().push(Server.parse(value)));
+      for(const value of segment['servers']) {
+        obj.getServers().push(Server.parse(value));
+      }
     }
 
     return obj;
