@@ -1,6 +1,11 @@
-// Covers 4.8.23.1
 import { ParsingError } from '..';
 
+/**
+ * Reference is a section of the OpenAPI that allows referencing other components in the OpenAPI document,
+ * interally and externally.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#reference-object}
+ */
 export class Reference {
   public _ref: string; // Required
   public _summary: string;
@@ -28,14 +33,25 @@ export class Reference {
     return obj;
   }
 
+  /** Indicates whether or not a given segment payload contains a reference. */
   public static isReference = (segment: any): boolean => segment['$ref'] != null;
 
+  /** Retrieves the reference. */
   public getRef = (): string => this._ref;
+
+  /** Retrieves the summary. */
   public getSummary = (): string => this._summary;
+
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
 
+  /** Sets the reference, _*REQUIRED*_.  This _MUST_ be in the form of a URI. */
   public setRef = (ref: string) => (this._ref = ref);
+
+  /** Sets the short summary which by default _SHOULD_ override that of the referenced component. */
   public setSummary = (summary: string) => (this._summary = summary);
+
+  /** Sets the description which by default _SHOULD_ override that of the referenced component. */
   public setDescription = (description: string) => (this._description = description);
 
   toString() {
