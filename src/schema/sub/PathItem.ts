@@ -5,7 +5,13 @@ export type PathItemOrReferenceMap = {
   [key in string]: PathItem | Reference;
 };
 
-// Covers 4.8.9.1
+/**
+ * PathItem is a section of the OpenAPI that describes the operations available on a single path.  A `PathItem`
+ * _MAY_ be empty, due to ACL constraints.  The path itself is still exposed to the documentation viewer but they
+ * will not know which operations and parameters are available.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#path-item-object}
+ */
 export class PathItem {
   private _ref: string;
   private _summary: string;
@@ -74,32 +80,82 @@ export class PathItem {
     return obj;
   }
 
+  /** Retrieves the ref definition. */
   public getRef = (): string => this._ref;
+
+  /** Retrieves the summary. */
   public getSummary = (): string => this._summary;
+
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves the `get` operation. */
   public getGet = (): Operation => this._get;
+
+  /** Retrieves the `put` operation. */
   public getPut = (): Operation => this._put;
+
+  /** Retrieves the `post` operation. */
   public getPost = (): Operation => this._post;
+
+  /** Retrieves the `delete` operation. */
   public getDelete = (): Operation => this._delete;
+
+  /** Retrieves the `options` operation. */
   public getOptions = (): Operation => this._options;
+
+  /** Retrieves the `head` operation. */
   public getHead = (): Operation => this._head;
+
+  /** Retrieves the `patch` operation. */
   public getPatch = (): Operation => this._patch;
+
+  /** Retrieves the `trace` operation. */
   public getTrace = (): Operation => this._trace;
+
+  /** Retrieves an alternative server array to service all operations in this path. */
   public getServers = (): Server[] => this._servers;
+
+  /** Retrieves the list of parameters that are applicable for all operations described under this path. */
   public getParameters = (): Parameter[] & Reference[] => this._parameters;
 
+  /** Sets the ref definition of this path item. */
   public setRef = (ref: string) => (this._ref = ref);
+
+  /** Sets the summary. */
   public setSummary = (summary: string) => (this._summary = summary);
+
+  /** Sets the description. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets the `get` operation. */
   public setGet = (op: Operation) => (this._get = op);
+
+  /** Sets the `put` operation. */
   public setPut = (op: Operation) => (this._put = op);
+
+  /** Sets the `post` operation. */
   public setPost = (op: Operation) => (this._post = op);
+
+  /** Sets the `delete` operation. */
   public setDelete = (op: Operation) => (this._delete = op);
+
+  /** Sets the `options` operation. */
   public setOptions = (op: Operation) => (this._options = op);
+
+  /** Sets the `head` operation. */
   public setHead = (op: Operation) => (this._head = op);
+
+  /** Sets the `patch` operation. */
   public setPatch = (op: Operation) => (this._patch = op);
+
+  /** Sets the `trace` operation. */
   public setTrace = (op: Operation) => (this._trace = op);
+
+  /** Sets the list of alternative `server` services for all operations in this path. */
   public setServers = (servers: Server[]) => (this._servers = servers);
+
+  /** Sets the list of parameters that are applicable for all operations described under this path. */
   public setParameters = (parameters: Parameter[] & Reference[]) => (this._parameters = parameters);
 
   toString() {
