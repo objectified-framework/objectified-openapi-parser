@@ -14,6 +14,12 @@ export class OAuthFlows {
     this._authorizationCode = new OAuthFlow();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `OAuthFlows`.
+   *
+   * @param segment `OAuthFlows` OpenAPI segment.
+   * @returns `OAuthFlows` object populated with the provided segment.
+   */
   public static parse(segment: any): OAuthFlows {
     const obj = new OAuthFlows();
 

@@ -8,6 +8,12 @@ export class Reference {
 
   constructor() {}
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Reference`.
+   *
+   * @param segment `Reference` OpenAPI segment.
+   * @returns `Reference` object populated with the provided segment.
+   */
   public static parse(segment: any): Reference {
     const obj = new Reference();
 

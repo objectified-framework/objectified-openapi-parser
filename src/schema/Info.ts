@@ -16,6 +16,12 @@ export class Info {
     this._license = new License();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Info`.
+   *
+   * @param segment `Info` OpenAPI segment.
+   * @returns `Info` object populated with the provided segment.
+   */
   public static parse(segment: any): Info {
     const obj = new Info();
 

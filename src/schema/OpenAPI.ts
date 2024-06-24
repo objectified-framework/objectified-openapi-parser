@@ -33,6 +33,12 @@ export class OpenAPI {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `OpenAPI`.
+   *
+   * @param segment `OpenAPI` OpenAPI segment.
+   * @returns `OpenAPI` object populated with the provided segment.
+   */
   public static parse(segment: any): OpenAPI {
     const obj = new OpenAPI();
 

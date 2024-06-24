@@ -19,6 +19,12 @@ export class MediaType {
     this._encoding = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `MediaType`.
+   *
+   * @param segment `MediaType` OpenAPI segment.
+   * @returns `MediaType` object populated with the provided segment.
+   */
   public static parse(segment: any): MediaType {
     const obj = new MediaType();
 

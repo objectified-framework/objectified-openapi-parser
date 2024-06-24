@@ -16,6 +16,12 @@ export class Server {
     this._variables = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Server`.
+   *
+   * @param segment `Server` OpenAPI segment.
+   * @returns `Server` object populated with the provided segment.
+   */
   public static parse(segment: any): Server {
     const obj = new Server();
 

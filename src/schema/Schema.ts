@@ -19,6 +19,12 @@ export class Schema {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Schema`.
+   *
+   * @param segment `Schema` OpenAPI segment.
+   * @returns `Schema` object populated with the provided segment.
+   */
   public static parse(segment: any): Schema {
     const obj = new Schema();
 

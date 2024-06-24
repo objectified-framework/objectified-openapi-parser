@@ -15,6 +15,12 @@ export class RequestBody {
     this._content = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `RequestBody`.
+   *
+   * @param segment `RequestBody` OpenAPI segment.
+   * @returns `RequestBody` object populated with the provided segment.
+   */
   public static parse(segment: any): RequestBody {
     const obj = new RequestBody();
 

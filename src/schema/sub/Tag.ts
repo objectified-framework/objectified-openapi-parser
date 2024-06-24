@@ -11,6 +11,12 @@ export class Tag {
     this._externalDocs = new ExternalDocumentation();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Tag`.
+   *
+   * @param segment `Tag` OpenAPI segment.
+   * @returns `Tag` object populated with the provided segment.
+   */
   public static parse(segment: any): Tag {
     const obj = new Tag();
 

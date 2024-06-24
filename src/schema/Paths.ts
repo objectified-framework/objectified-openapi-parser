@@ -13,6 +13,12 @@ export class Paths {
     this._paths = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Paths`.
+   *
+   * @param segment `Paths` OpenAPI segment.
+   * @returns `Paths` object populated with the provided segment.
+   */
   public static parse(segment: any): Paths {
     const obj = new Paths();
 

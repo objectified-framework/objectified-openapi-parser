@@ -23,6 +23,12 @@ export class Link {
     this._server = new Server();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Link`.
+   *
+   * @param segment `Link` OpenAPI segment.
+   * @returns `Link` object populated with the provided segment.
+   */
   public static parse(segment: any): Link {
     const obj = new Link();
 

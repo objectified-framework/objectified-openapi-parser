@@ -8,6 +8,12 @@ export class XML {
 
   constructor() {}
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `XML`.
+   *
+   * @param segment `XML` OpenAPI segment.
+   * @returns `XML` object populated with the provided segment.
+   */
   public static parse(segment: any): XML {
     const obj = new XML();
 

@@ -34,6 +34,12 @@ export class PathItem {
     this._parameters = [];
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `PathItem`.
+   *
+   * @param segment `PathItem` OpenAPI segment.
+   * @returns `PathItem` object populated with the provided segment.
+   */
   public static parse(segment: any): PathItem {
     const obj = new PathItem();
 

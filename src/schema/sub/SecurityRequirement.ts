@@ -7,6 +7,12 @@ export class SecurityRequirement {
     this._declarations = [];
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `SecurityRequirement`.
+   *
+   * @param segment `SecurityRequirement` OpenAPI segment.
+   * @returns `SecurityRequirement` object populated with the provided segment.
+   */
   public static parse(segment: any): SecurityRequirement {
     const obj = new SecurityRequirement();
     const key = Object.keys(segment)[0];

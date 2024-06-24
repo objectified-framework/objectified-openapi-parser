@@ -21,6 +21,12 @@ export class Encoding {
     this._headers = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Encoding`.
+   *
+   * @param segment `Encoding` OpenAPI segment.
+   * @returns `Encoding` object populated with the provided segment.
+   */
   public static parse(segment: any): Encoding {
     const obj = new Encoding();
 

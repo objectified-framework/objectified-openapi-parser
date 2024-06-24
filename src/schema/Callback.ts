@@ -13,6 +13,12 @@ export class Callback {
     this._value = null;
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Callback`.
+   *
+   * @param segment `Callback` OpenAPI segment.
+   * @returns `Callback` object populated with the provided segment.
+   */
   public static parse(segment: any): Callback {
     const obj = new Callback();
     const key = Object.keys(segment)[0];

@@ -8,6 +8,12 @@ export class License {
 
   constructor() {}
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `License`.
+   *
+   * @param segment `License` OpenAPI segment.
+   * @returns `License` object populated with the provided segment.
+   */
   public static parse(segment: any): License {
     const obj = new License();
 

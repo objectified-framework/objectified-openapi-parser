@@ -16,6 +16,12 @@ export class OAuthFlow {
     this._scopes = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `OAuthFlow`.
+   *
+   * @param segment `OAuthFlow` OpenAPI segment.
+   * @returns `OAuthFlow` object populated with the provided segment.
+   */
   public static parse(section: string, segment: any): OAuthFlow {
     const obj = new OAuthFlow();
     const lowerSection = section.toLowerCase();

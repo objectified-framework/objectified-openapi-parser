@@ -32,6 +32,12 @@ export class Parameter {
     this._content = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Parameter`.
+   *
+   * @param segment `Parameter` OpenAPI segment.
+   * @returns `Parameter` object populated with the provided segment.
+   */
   public static parse(segment: any): Parameter {
     const obj = new Parameter();
 

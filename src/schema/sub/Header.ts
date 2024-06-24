@@ -5,7 +5,15 @@ export type HeaderOrReferenceMap = {
   [key in string]: Header | Reference;
 };
 
-// Covers 4.8.21.1
+/**
+ * Header is a section of the OpenAPI that follows the structure of the `Parameter` object with the following changes:
+ *
+ * - `name` _MUST NOT_ be specified, it is given in the corresponding `headers` map.
+ * - `in` _MUST NOT_ be specified, it is implicitly in header`.
+ * - All traits that are affected by the location _MUST_ be applicable to a location of `header`.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#external-documentation-object}
+ */
 export class Header {
   private _description: string;
   private _required: boolean;
@@ -25,6 +33,12 @@ export class Header {
     this._content = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Header`.
+   *
+   * @param segment `Header` OpenAPI segment.
+   * @returns `Header` object populated with the provided segment.
+   */
   public static parse(segment: any): Header {
     const obj = new Header();
 

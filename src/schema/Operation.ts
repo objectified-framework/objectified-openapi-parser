@@ -24,6 +24,12 @@ export class Operation {
     this._servers = [];
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Operation`.
+   *
+   * @param segment `Operation` OpenAPI segment.
+   * @returns `Operation` object populated with the provided segment.
+   */
   public static parse(segment: any): Operation {
     const obj = new Operation();
 

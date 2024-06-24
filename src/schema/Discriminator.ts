@@ -14,6 +14,12 @@ export class Discriminator {
     this._mapping = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Discriminator`.
+   *
+   * @param segment `Discriminator` OpenAPI segment.
+   * @returns `Discriminator` object populated with the provided segment.
+   */
   public static parse(segment: any): Discriminator {
     const obj = new Discriminator();
 

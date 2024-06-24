@@ -20,6 +20,12 @@ export class SecurityScheme {
     this._flows = new OAuthFlows();
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `SecurityScheme`.
+   *
+   * @param segment `SecurityScheme` OpenAPI segment.
+   * @returns `SecurityScheme` object populated with the provided segment.
+   */
   public static parse(segment: any): SecurityScheme {
     const obj = new SecurityScheme();
 

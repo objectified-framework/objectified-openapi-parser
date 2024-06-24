@@ -14,6 +14,12 @@ export class Responses {
     this._responses = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Responses`.
+   *
+   * @param segment `Responses` OpenAPI segment.
+   * @returns `Responses` object populated with the provided segment.
+   */
   public static parse(segment: any): Responses {
     const obj = new Responses();
 

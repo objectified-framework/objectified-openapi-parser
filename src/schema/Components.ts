@@ -44,6 +44,12 @@ export class Components {
     this._pathItems = {};
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `Components`.
+   *
+   * @param segment `Components` OpenAPI segment.
+   * @returns `Components` object populated with the provided segment.
+   */
   public static parse(segment: any): Components {
     const obj = new Components();
 

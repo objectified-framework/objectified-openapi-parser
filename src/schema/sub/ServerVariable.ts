@@ -10,6 +10,12 @@ export class ServerVariable {
     this._enum = [];
   }
 
+  /**
+   * Parses a segment of an OpenAPI document containing an `ServerVariable`.
+   *
+   * @param segment `ServerVariable` OpenAPI segment.
+   * @returns `ServerVariable` object populated with the provided segment.
+   */
   public static parse(segment: any): ServerVariable {
     const obj = new ServerVariable();
 
