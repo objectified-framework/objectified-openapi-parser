@@ -27,3 +27,6 @@ try {
 }
 ```
 
+## License
+
+[Commercial-friendly Apache 2.0 License.](LICENSE)  100% Open Source.
