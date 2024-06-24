@@ -1,7 +1,12 @@
 import { ExternalDocumentation } from '.';
 import { ParsingError } from '..';
 
-// Covers 4.8.22.1
+/**
+ * Tag is a section of the OpenAPI that adds metadata to a single tag that is used by the `Operation` object.
+ * It is not mandatory to have a `Tag` object per tag defined in the `Operation` object instances.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#tag-object}
+ */
 export class Tag {
   private _name: string; // Required
   private _description: string;
@@ -34,12 +39,22 @@ export class Tag {
     return obj;
   }
 
+  /** Retrieves the name of the tag. */
   public getName = (): string => this._name;
+
+  /** Retrives the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves additional external documentation. */
   public getExternalDocs = (): ExternalDocumentation => this._externalDocs;
 
+  /** _*REQUIRED*_.  Sets the name of the tag. */
   public setName = (name: string) => (this._name = name);
+
+  /** Sets the description of the tag. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets additional external documentation for this tag. */
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
 
   toString() {

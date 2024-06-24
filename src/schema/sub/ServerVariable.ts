@@ -2,7 +2,7 @@
 import { ParsingError } from '..';
 
 /**
- * ServerVariable is a section of the OpenAPI that represents  a SErver Variable for server URL template substitution.
+ * ServerVariable is a section of the OpenAPI that represents a Server Variable for server URL template substitution.
  *
  * {@link https://spec.openapis.org/oas/latest.html#server-variable-object}
  */
