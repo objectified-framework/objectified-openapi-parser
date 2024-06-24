@@ -93,7 +93,7 @@ export class Parameter {
     return obj;
   }
 
-  /** Retrives the name of the parameter. */
+  /** Retrieves the name of the parameter. */
   public getName = (): string => this._name;
 
   /** Retrieves the location of the parameter. */
