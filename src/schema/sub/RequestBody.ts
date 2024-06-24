@@ -5,7 +5,11 @@ export type RequestBodyOrReferenceMap = {
   [key in string]: RequestBody | Reference;
 };
 
-// Covers 4.8.13.1
+/**
+ * RequestBody is a section of the OpenAPI that describes a single request body.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#request-body-object}
+ */
 export class RequestBody {
   private _description: string;
   private _content: MediaTypeMap; // Required
@@ -40,12 +44,22 @@ export class RequestBody {
     return obj;
   }
 
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves the content of the request body. */
   public getContent = (): MediaTypeMap => this._content;
+
+  /** Indicates whether or not the request body is required. */
   public isRequired = (): boolean => this._required;
 
+  /** Sets a brief description of the request body.  This could contain examples of use.  CommonMark syntax _MAY_ be used for rich text representation. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** _*REQUIRED*_.  The content of the request body. */
   public setContent = (content: MediaTypeMap) => (this._content = content);
+
+  /** Sets if the request body is required in a request. */
   public setRequired = (required: boolean) => (this._required = required);
 
   toString() {

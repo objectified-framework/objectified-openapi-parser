@@ -11,11 +11,17 @@ import {
 import {
   ExampleOrReferenceMap,
   HeaderOrReferenceMap,
-  ParameterOrReferenceMap, PathItemOrReferenceMap,
+  ParameterOrReferenceMap,
+  PathItemOrReferenceMap,
   RequestBodyOrReferenceMap,
   ResponseOrReferenceMap,
-  Response, Parameter, Reference, Example,
-  RequestBody, Header, PathItem,
+  Response,
+  Parameter,
+  Reference,
+  Example,
+  RequestBody,
+  Header,
+  PathItem,
 } from './sub';
 
 // Covers 4.8.7.1
