@@ -13,7 +13,12 @@ export type ResponseOrReferenceMap = {
   [key in string]: Response | Reference;
 };
 
-// Covers 4.8.17.1
+/**
+ * Response is a section of the OpenAPI that describes a single response from an API Operation, including design-time,
+ * static `links` to the operations based on the response.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#response-object}
+ */
 export class Response {
   private _description: string;
   private _headers: ResponseHeaderMap;
@@ -76,14 +81,28 @@ export class Response {
     return obj;
   }
 
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves a map of the headers to descriptions. */
   public getHeaders = (): ResponseHeaderMap => this._headers;
+
+  /** Retrieves a map of descriptions to response payloads. */
   public getContent = (): MediaTypeMap => this._content;
+
+  /** Retrieves a map of operation links to responses. */
   public getLinks = (): ResponseLinkMap => this._links;
 
+  /** _*REQUIRED*_.  Sets the description of the response.  CommonMark syntax _MAY_ be used for rich text representation. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets mapping of a header name to its definition. */
   public setHeaders = (headers: ResponseHeaderMap) => (this._headers = headers);
+
+  /** Sets mapping of descriptions to potential response payloads. */
   public setContent = (content: MediaTypeMap) => (this._content = content);
+
+  /** Sets mapping of operations links that can be followed from the response. */
   public setLinks = (links: ResponseLinkMap) => (this._links = links);
 
   toString() {
