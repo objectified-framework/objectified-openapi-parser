@@ -10,7 +10,12 @@ export type ParameterOrReferenceMap = {
   [key in string]: Parameter | Reference;
 };
 
-// Covers 4.8.12.2
+/**
+ * Header is a section of the OpenAPI that describes a single operation parameter.  A unique parameter is defined by a
+ * combination of a `name` and a `location`.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#parameter-object}
+ */
 export class Parameter {
   private _name: string; // Required
   private _in: string; // Required
@@ -88,32 +93,82 @@ export class Parameter {
     return obj;
   }
 
+  /** Retrives the name of the parameter. */
   public getName = (): string => this._name;
+
+  /** Retrieves the location of the parameter. */
   public getIn = (): string => this._in;
+
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Flag indicating if the parameter is required. */
   public isRequired = (): boolean => this._required;
+
+  /** Flag indicating if the parameter is deprecated. */
   public isDeprecated = (): boolean => this._deprecated;
+
+  /** Flag indicating if the parameter allows empty-valued parameters. */
   public isAllowEmptyValue = (): boolean => this._allowEmptyValue;
+
+  /** Retrieves the style of the serialization for the parameter value. */
   public getStyle = (): string => this._style;
+
+  /** Flag indicating if the array or object values generate separate parameters. */
   public isExplode = (): boolean => this._explode;
+
+  /** Flag indicating if the parameter value _SHOULD_ allow reserved characters as defined by RFC3986 */
   public isAllowReserved = (): boolean => this._allowReserved;
+
+  /** Retrieves the schema defining the type used for the parameter. */
   public getSchema = (): Schema => this._schema;
+
+  /** Retrieves the example of the parameter's potential value. */
   public getExample = (): any => this._example;
+
+  /** Retrieves an example of the parameter's potential values specified a parameter at a time. */
   public getExamples = (): ExampleOrReferenceMap => this._examples;
+
+  /** Retrieves a map containing the representations for the parameter. */
   public getContent = (): MediaTypeMap => this._content;
 
+  /** Sets the name of the parameter. */
   public setName = (name: string) => (this._name = name);
+
+  /** Sets the location of the parameter, values can be `query`, `header`, `path`, and `cookie`. */
   public setIn = (_in: string) => (this._in = _in);
+
+  /** Sets the description of the parameter. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets the flag indicating if this parameter is required to be set to a value. */
   public setRequired = (required: boolean) => (this._required = required);
+
+  /** Sets the flag indicating if this parameter is deprecated. */
   public setDeprecated = (deprecated: boolean) => (this._deprecated = deprecated);
+
+  /** Sets the flag indicating if this parameter allows an empty value. */
   public setAllowEmptyValue = (allowEmptyValue: boolean) => (this._allowEmptyValue = allowEmptyValue);
+
+  /** Sets the style of serialization for he parameter value, values can be `query-form`, `path-simple`, `header-simple` or `cookie-form`. */
   public setStyle = (style: string) => (this._style = style);
+
+  /** Sets the flag indicating if this parameter explodes values to other parameters. */
   public setExplode = (explode: boolean) => (this._explode = explode);
+
+  /** Sets the flag indicating if this parameter _SHOULD_ allow reserved characters as defined by RFC3986 */
   public setAllowReserved = (allowReserved: boolean) => (this._allowReserved = allowReserved);
+
+  /** Sets the schema for this parameter. */
   public setSchema = (schema: Schema) => (this._schema = schema);
+
+  /** Sets the example of the parameter's potential value. */
   public setExample = (example: any) => (this._example = example);
+
+  /** Sets the example of the parameter's potential values specified a parameter at a time. */
   public setExamples = (examples: ExampleOrReferenceMap) => (this._examples = examples);
+
+  /** Sets a map of representations for the parameter. */
   public setContent = (content: MediaTypeMap) => (this._content = content);
 
   toString() {

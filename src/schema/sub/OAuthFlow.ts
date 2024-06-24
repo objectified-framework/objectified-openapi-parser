@@ -5,7 +5,11 @@ export type OAuthFlowHash = {
   [key in string]: string;
 };
 
-// Covers 4.8.29.1
+/**
+ * Header is a section of the OpenAPI that provides configuration details for a supported OAuth Flow.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#oauth-flow-object}
+ */
 export class OAuthFlow {
   private _authorizationUrl: string; // Required
   private _tokenUrl: string; // Required
@@ -19,6 +23,7 @@ export class OAuthFlow {
   /**
    * Parses a segment of an OpenAPI document containing an `OAuthFlow`.
    *
+   * @param section The section of OAuth definition being used: implicit, authorizationCode, password, and clientCredentials.
    * @param segment `OAuthFlow` OpenAPI segment.
    * @returns `OAuthFlow` object populated with the provided segment.
    */
@@ -59,14 +64,28 @@ export class OAuthFlow {
     return obj;
   }
 
+  /** Retrieves the autorization URL. */
   public getAuthorizationUrl = (): string => this._authorizationUrl;
+
+  /** Retrieves the token URL. */
   public getTokenUrl = (): string => this._tokenUrl;
+
+  /** Retrieves the refresh URL. */
   public getRefreshUrl = (): string => this._refreshUrl;
+
+  /** Retrieves a map of scope definitions. */
   public getScopes = (): OAuthFlowHash => this._scopes;
 
+  /** Sets the authorization URL to be used for the flow. */
   public setAuthorizationUrl = (authorizationUrl: string) => (this._authorizationUrl = authorizationUrl);
+
+  /** Sets the token URL to be used for the flow. */
   public setTokenUrl = (tokenUrl: string) => (this._tokenUrl = tokenUrl);
+
+  /** Sets the URL to be used for obtaining refresh tokens.  This _MUST_ be in the form of a URL. */
   public setRefreshUrl = (refreshUrl: string) => (this._refreshUrl = refreshUrl);
+
+  /** Sets the available scopes for the OAuth2 security scheme. */
   public setScopes = (scopes: OAuthFlowHash) => (this._scopes = scopes);
 
   toString() {
