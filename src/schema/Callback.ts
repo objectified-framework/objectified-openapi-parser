@@ -14,7 +14,6 @@ export type CallbackOrReferenceMap = {
  *
  * {@link https://spec.openapis.org/oas/latest.html#callback-object}
  */
-
 export class Callback {
   private _expression: string;
   private _value: PathItem | Reference;
