@@ -6,7 +6,11 @@ export type MediaTypeMap = {
   [key in string]: MediaType;
 };
 
-// Covers 4.8.14.1
+/**
+ * MediaType is a section of the OpenAPI that provides a schema and examples for the media type identified by its key.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#media-type-object}
+ */
 export class MediaType {
   private _schema: Schema;
   private _example: any;
@@ -57,14 +61,28 @@ export class MediaType {
     return obj;
   }
 
+  /** Retrieves the schema. */
   public getSchema = (): Schema => this._schema;
+
+  /** Retrieves the example. */
   public getExample = (): any => this._example;
+
+  /** Retrieves a map of examples or references. */
   public getExamples = (): ExampleOrReferenceMap => this._examples;
+
+  /** Retrieves the encoding. */
   public getEncoding = (): EncodingMap => this._encoding;
 
+  /** Sets the schema defining the content of the request, response, or parameter. */
   public setSchema = (schema: Schema) => (this._schema = schema);
+
+  /** Sets the example of the media type.  The example object _SHOULD_ be in the correct format as specified by the media type. */
   public setExample = (example: any) => (this._example = example);
+
+  /** Sets the examples of the media type. */
   public setExamples = (examples: ExampleOrReferenceMap) => (this._examples = examples);
+
+  /** Sets a map between a property name and its encoding information.  The key, being the property name, _MUST_ exist in the schema as a property. */
   public setEncoding = (encoding: EncodingMap) => (this._encoding = encoding);
 
   toString() {
