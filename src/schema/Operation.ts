@@ -1,7 +1,11 @@
-import { Responses, Server } from '.';
+import { Callback, CallbackOrReferenceMap, Responses, Server } from '.';
 import { ExternalDocumentation, Parameter, Reference, RequestBody, SecurityRequirement } from './sub';
 
-// Covers 4.8.10.1
+/**
+ * Operation is a section of the OpenAPI that describes a single API operation on a path.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#operation-object}
+ */
 export class Operation {
   private _tags: string[];
   private _summary: string;
@@ -11,6 +15,7 @@ export class Operation {
   private _parameters: Parameter[] & Reference[];
   private _requestBody: RequestBody | Reference;
   private _responses: Responses;
+  private _callbacks: CallbackOrReferenceMap;
   private _deprecated: boolean;
   private _security: SecurityRequirement[];
   private _servers: Server[];
@@ -20,6 +25,7 @@ export class Operation {
     this._parameters = [];
     this._requestBody = null;
     this._responses = new Responses();
+    this._callbacks = {};
     this._security = [];
     this._servers = [];
   }
@@ -65,6 +71,18 @@ export class Operation {
       obj.setResponses(Responses.parse(segment['responses']));
     }
 
+    if (segment['callbacks']) {
+      for (const key of segment['callbacks']) {
+        const value = segment['callbacks'][key];
+
+        if (Reference.isReference(value)) {
+          obj.getCallbacks()[key] = Reference.parse(value);
+        } else {
+          obj.getCallbacks()[key] = Callback.parse(value);
+        }
+      }
+    }
+
     obj.setDeprecated(segment['deprecated'] ?? false);
 
     if (segment['security']) {
@@ -82,28 +100,76 @@ export class Operation {
     return obj;
   }
 
+  /** Retrieves the tags. */
   public getTags = (): string[] => this._tags;
+
+  /** Retrieves the summary. */
   public getSummary = (): string => this._summary;
+
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves external documentation. */
   public getExternalDocs = (): ExternalDocumentation => this._externalDocs;
+
+  /** Retrieves the operation ID. */
   public getOperationId = (): string => this._operationId;
+
+  /** Retrieves parameters associated with the operation. */
   public getParameters = (): Parameter[] & Reference[] => this._parameters;
+
+  /** Retrieves the request body definition or its reference. */
   public getRequestBody = (): RequestBody | Reference => this._requestBody;
+
+  /** Retrieves responses provided by this operation. */
   public getResponses = (): Responses => this._responses;
+
+  /** Retrieves callbacks. */
+  public getCallbacks = (): CallbackOrReferenceMap => this._callbacks;
+
+  /** Flag indicating if this operation is deprecated. */
   public isDeprecated = (): boolean => this._deprecated;
+
+  /** Retrieves security requirements list for this operation. */
   public getSecurity = (): SecurityRequirement[] => this._security;
+
+  /** Retrieves the list of servers. */
   public getServers = (): Server[] => this._servers;
 
+  /** Sets a list of tags for tAPI documentation control. */
   public setTags = (tags: string[]) => (this._tags = tags);
+
+  /** Sets a short summary of what the operation does. */
   public setSummary = (summary: string) => (this._summary = summary);
+
+  /** Sets a verbose explanation of the operation behavior.  CommonMark syntax _MAY_ be used for rich text representation. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets additional external documentation for this operation. */
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
+
+  /** Sets a unique string used to identify the operation.  The ID _MUST_ be unique among all operations described in the API. */
   public setOperationId = (operationId: string) => (this._operationId = operationId);
+
+  /** Sets a list of parameters that are applicable for this operation, or a reference. */
   public setParameters = (parameters: Parameter[] & Reference[]) => (this._parameters = parameters);
+
+  /** Sets the request body or reference applicable for this operation. */
   public setRequestBody = (requestBody: RequestBody | Reference) => (this._requestBody = requestBody);
+
+  /** Sets the list of possible responses as they are returned from executing this operation. */
   public setResponses = (responses: Responses) => (this._responses = responses);
+
+  /** Sets a map of possible out-of band callbacks related to the parent operation. */
+  public setCallbacks = (callbacks: CallbackOrReferenceMap) => (this._callbacks = callbacks);
+
+  /** Sets flag indicating if this operation is deprecated. */
   public setDeprecated = (deprecated: boolean) => (this._deprecated = deprecated);
+
+  /** Sets a declaration of which security mechanisms can be used for this operation. */
   public setSecurity = (security: SecurityRequirement[]) => (this._security = security);
+
+  /** Sets an alternative `Server` array to service this operation. */
   public setServers = (servers: Server[]) => (this._servers = servers);
 
   toString() {
