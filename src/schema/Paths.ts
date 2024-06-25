@@ -5,7 +5,13 @@ export type PathMap = {
   [key in string]: PathItem;
 };
 
-// Covers 4.8.8.1
+/**
+ * Paths is a section of the OpenAPI that holds the relative paths to the individual endpoints and their operations.
+ * The path is appended to the URL from the `Server` object in order to construct the full URL.  The Paths _MAY_ be
+ * empty, due to Access Control List constraints.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#paths-object}
+ */
 export class Paths {
   private _paths: PathMap;
 
@@ -31,8 +37,10 @@ export class Paths {
     return obj;
   }
 
+  /** Retrieves the list of paths. */
   public getPaths = (): PathMap => this._paths;
 
+  /** SDets a list of paths relative to their individual endpoints. */
   public setPaths = (paths: PathMap) => (this._paths = paths);
 
   toString() {
