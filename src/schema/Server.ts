@@ -6,7 +6,11 @@ export type ServerVariablesMap = {
   [key in string]: ServerVariable;
 };
 
-// Covers 4.8.5.1
+/**
+ * Server is a section of the OpenAPI that defines an object representing a server.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#server-object}
+ */
 export class Server {
   private _url: string; // Required
   private _description: string;
@@ -43,12 +47,23 @@ export class Server {
     return obj;
   }
 
+
+  /** Retrieves the URL. */
   public getUrl = (): string => this._url;
+
+  /** Retrieves the description. */
   public getDescription = (): string => this._description;
+
+  /** Retrieves a map of variables. */
   public getVariables = (): ServerVariablesMap => this._variables;
 
+  /** _*REQUIRED*_.  Sets the URL to the target host. */
   public setUrl = (url: string) => (this._url = url);
+
+  /** Sets an optional string describing the host designated by the URL.  CommonMark syntax _MAY_ be used for rich text representation. */
   public setDescription = (description: string) => (this._description = description);
+
+  /** Sets a map between the variable name and its value. */
   public setVariables = (variables: ServerVariablesMap) => (this._variables = variables);
 
   toString() {
