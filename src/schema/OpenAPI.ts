@@ -6,10 +6,11 @@ export type WebHooksMap = {
   [key in string]: PathItem | Reference;
 };
 
-// Covers 4.8.1.1
-//
-// This is the top level parsing structure.  Any OpenAPI specs should be passed to the `parse` function in this
-// class, as it is from where parsing starts.
+/**
+ * OpenAPI is a section of the OpenAPI that describes the root object of the OpenAPI document or specification.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#openapi-object}
+ */
 export class OpenAPI {
   private _openapi: string; // Required
   private _info: Info; // Required
@@ -99,26 +100,64 @@ export class OpenAPI {
     return obj;
   }
 
+  /** Retrieves the openapi document version. */
   public getOpenApi = (): string => this._openapi;
+
+  /** Retrieves the info object. */
   public getInfo = (): Info => this._info;
+
+  /** Retrieves the JSON schema dialect. */
   public getJsonSchemaDialect = (): string => this._jsonSchemaDialect;
+
+  /** Retrieves a list of servers. */
   public getServers = (): Server[] => this._servers;
+
+  /** Retrieves a list of paths. */
   public getPaths = (): Paths => this._paths;
+
+  /** Retrieves a mapping of webhooks to a `PathItem` or `Reference`. */
   public getWebhooks = (): WebHooksMap => this._webhooks;
+
+  /** Retrieves the components schema. */
   public getComponents = (): Components => this._components;
+
+  /** Retrieves the security requirement information. */
   public getSecurity = (): SecurityRequirement[] => this._security;
+
+  /** Retrieves the tag definitions. */
   public getTags = (): Tag[] => this._tags;
+
+  /** Retrieves the external documentation. */
   public getExternalDocs = (): ExternalDocumentation => this._externalDocs;
 
+  /** _*REQUIRED*_. Sets the version of the API spec that this object conforms to. */
   public setOpenApi = (openapi: string) => (this._openapi = openapi);
+
+  /** _*REQUIRED*_. Sets the provided metadata about the API. */
   public setInfo = (info: Info) => (this._info = info);
+
+  /** Sets the default value for the `$schema` keyword within `Schema` objects contained within this OpenAPI Spec. */
   public setJsonSchemaDialect = (jsonSchemaDialect: string) => (this._jsonSchemaDialect = jsonSchemaDialect);
+
+  /** Sets an array of server objects. */
   public setServers = (servers: Server[]) => (this._servers = servers);
+
+  /** Sets the available paths and operations for the API. */
   public setPaths = (paths: Paths) => (this._paths = paths);
+
+  /** Sets the incoming webhooks that _MAY_ be received as part of this API and that the API consumer _MAY_ choose to implement. */
   public setWebhooks = (webhooks: WebHooksMap) => (this._webhooks = webhooks);
+
+  /** Sets the various schema definitions for this spec. */
   public setComponents = (components: Components) => (this._components = components);
+
+  /** Sets the security mechanisms list that can be used across this API. */
   public setSecurity = (security: SecurityRequirement[]) => (this._security = security);
+
+  /** Sets the definition of tags used by the document with additional metadata. */
   public setTags = (tags: Tag[]) => (this._tags = tags);
+
+  /** Sets external documentation. */
   public setExternalDocs = (externalDocs: ExternalDocumentation) => (this._externalDocs = externalDocs);
 
   toString(): string {
