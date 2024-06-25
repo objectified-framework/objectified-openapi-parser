@@ -9,7 +9,11 @@ export type EncodingMap = {
   [key in string]: Encoding;
 };
 
-// Covers 4.8.15.1
+/**
+ * Encoding is a section of the OpenAPI that is a single encoding definition applied to a single schema property.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#encoding-object}
+ */
 export class Encoding {
   private _contentType: string;
   private _headers: HeaderReferenceMap;
@@ -50,16 +54,34 @@ export class Encoding {
     return obj;
   }
 
+  /** Retrieves the content type. */
   public getContentType = (): string => this._contentType;
+
+  /** Retrieves the mapping of headers or references. */
   public getHeaders = (): HeaderReferenceMap => this._headers;
+
+  /** Retrieves the style. */
   public getStyle = (): string => this._style;
+
+  /** Retrieves flag indicating if the property values are an array or object. */
   public isExplode = (): boolean => this._explode;
+
+  /** Retrieves flag indicating if the value _SHOULD_ allow reserved characters, defined by RFC3986. */
   public isAllowReserved = (): boolean => this._allowReserved;
 
+  /** Sets the content-type for the encoding. */
   public setContentType = (contentType: string) => (this._contentType = contentType);
+
+  /** Sets a map allowing additional information to be provided as headers. */
   public setHeaders = (headers: HeaderReferenceMap) => (this._headers = headers);
+
+  /** Sets the style describing how the value will be serialized. */
   public setStyle = (style: string) => (this._style = style);
+
+  /** Sets the flag indicating if the property values should store array or object data. */
   public setExplode = (explode: boolean) => (this._explode = explode);
+
+  /** Sets the flag indicating if the parameter value _SHOULD_ allow reserved characters, as defined by RFC3986. */
   public setAllowReserved = (allowReserved: boolean) => (this._allowReserved = allowReserved);
 
   toString() {
