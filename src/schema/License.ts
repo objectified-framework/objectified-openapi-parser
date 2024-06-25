@@ -1,7 +1,7 @@
 import { ParsingError } from '.';
 
 /**
- * Info is a section of the OpenAPI that provides license information for the exposed API.
+ * License is a section of the OpenAPI that provides license information for the exposed API.
  *
  * {@link https://spec.openapis.org/oas/latest.html#license-object}
  */
