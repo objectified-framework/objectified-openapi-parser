@@ -1,6 +1,10 @@
 import { OAuthFlow } from './sub';
 
-// Covers 4.8.28.1
+/**
+ * OAuthFlows is a section of the OpenAPI that allows configuration of the supported OAuth Flows.
+ *
+ * {@link https://spec.openapis.org/oas/latest.html#oauth-flows-object}
+ */
 export class OAuthFlows {
   private _implicit: OAuthFlow;
   private _password: OAuthFlow;
@@ -42,14 +46,28 @@ export class OAuthFlows {
     return obj;
   }
 
+  /** Retrieves the implicit configuration. */
   public getImplicit = (): OAuthFlow => this._implicit;
+
+  /** Retrieves the password configuration. */
   public getPassword = (): OAuthFlow => this._password;
+
+  /** Retrieves the clientCredentials configuration. */
   public getClientCredentials = (): OAuthFlow => this._clientCredentials;
+
+  /** Retrieves the authorizationCode configuration. */
   public getAuthorizationCode = (): OAuthFlow => this._authorizationCode;
 
+  /** Sets the configuration for the OAuth Implicit flow. */
   public setImplicit = (implicit: OAuthFlow) => (this._implicit = implicit);
+
+  /** Sets the configuration for the OAuth Resource Owner Password flow. */
   public setPassword = (password: OAuthFlow) => (this._password = password);
+
+  /** Sets the configuration for the OAuth Client Credentials flow. */
   public setClientCredentials = (clientCredentials: OAuthFlow) => (this._clientCredentials = clientCredentials);
+
+  /** Sets the configuration for the OAuth Authorization Code flow. */
   public setAuthorizationCode = (authorizationCode: OAuthFlow) => (this._authorizationCode = authorizationCode);
 
   toString() {
