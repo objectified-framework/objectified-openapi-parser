@@ -1,4 +1,4 @@
-# objectified-openapi-parser
+# openapi-parser
 
 This is an OpenAPI 3.1 Parser for the [Objectified Framework](https://www.github.com/objectified-framework/).
 
@@ -26,6 +26,10 @@ try {
   console.log('Unable to parse openapi spec', e);
 }
 ```
+
+## Used by
+
+@objectified/openapi-autogen
 
 ## License
 
