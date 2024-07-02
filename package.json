@@ -22,8 +22,10 @@
     "yaml": "^2.4.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@microsoft/tsdoc": "^0.15.0",
+    "@types/babel__core": "^7",
     "@types/babel__preset-env": "^7",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.2",
